@@ -1,0 +1,63 @@
+/* ========================================================================
+   VARIABLES
+   ======================================================================== */
+@use "sass:color";
+
+
+/* Global fonts */
+$font-sans-serif: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+  "Helvetica Neue", arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol";
+$font-serif: "Georgia", "Times New Roman", serif;
+
+
+
+/* --- Body / base --------------------------------------------------------- */
+
+/* Global Sizes */
+$media-width-transition: 1260px; /* for @media, min. 1280x1024 screens */
+$desktop-fixed-width: 1200px;
+$transition-time: 300ms;
+$base-font-size: 16px;
+$base-icon-padding: 4px;
+
+
+/* --- Header layout ------------------------------------------------------- */
+$header-primary-color: #ff7e7e;
+$header-primary-font: "Modern Antiqua", "Times New Roman", serif;
+$header-secondary-color: #ccc;
+$header-secondary-font: "Palatino LT", "Times New Roman", serif;
+$header-link-color: #ccc;
+$header-hover-color: #ff7e7e;
+$header-hover-line-color: #d20000;
+$header-bg-color: black;
+$header-bg-color-rgba: rgb(0 0 0 / 70%);
+$header-bg-color-rgba1: rgb(0 0 0 / 100%) 0%;
+$header-bg-color-rgba2: rgb(0 0 0 / 70%) 90%;
+$header-bg-color-rgba3: rgb(0 0 0 / 0%) 100%;
+$header-desktop-bar-thickness: 120px;
+$header-mobile-bar-thickness: 60px;
+$header-desktop-menu-sticky: true;
+
+/* --- Main/content layout ------------------------------------------------- */
+$main-color-title: black;
+$main-color-text: black;
+$main-color-link: black;
+$main-color-link-hover: black;
+$main-bg-outer: gray;
+$main-bg-inner: white;
+
+
+/* --- Footer layout ------------------------------------------------------- */
+$footer-color-title: black;
+$footer-color-text: black;
+$footer-color-link: black;
+$footer-color-link-hover: black;
+$footer-bg-outer: gray;
+$footer-bg-inner: white;
+
+
+/* --- Bootstrap ----------------------------------------------------------- */
+$primary: white;
+$enable-shadows: false;
+$prefix: "mo-";

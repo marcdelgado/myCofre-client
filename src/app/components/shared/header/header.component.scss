@@ -1,0 +1,25 @@
+.upper-header-layout{
+  background-color: cyan;
+
+  .horiz-wrapper{
+    justify-content: space-between;
+  }
+
+}
+
+
+.lower-header-layout{
+  position: sticky;
+  top: 0;
+
+  .horiz-wrapper{
+    justify-content: space-between;
+  }
+
+  &--fixed{
+    background-color: yellow;
+  }
+
+  height: 100px;
+  background-color: darkcyan;
+}

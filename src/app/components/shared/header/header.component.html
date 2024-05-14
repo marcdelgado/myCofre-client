@@ -1,0 +1,29 @@
+<!-- UPPER HEADER -->
+<header class="layout upper-header-layout">
+  <div class="horiz-wrapper">
+    <h1>Upper header layout</h1>
+  </div>
+</header>
+
+<!-- LOWER HEADER -->
+<header class="layout lower-header-layout">
+  <div class="horiz-wrapper">
+    <h2>Lower header layout</h2>
+  </div>
+</header>
+
+<div style="text-align:center">
+  <h1 (click)="selectLanguage">
+    {{ 'HOME.TITLE' | translate }}
+  </h1>
+  <select
+    [ngModel]="selectedLanguage"
+    (ngModelChange)="selectLanguage($event)">
+    <option value="es">
+      {{ 'HOME.SPANISH' | translate }}
+    </option>
+    <option value="en">
+      {{ 'HOME.ENGLISH' | translate }}
+    </option>
+  </select>
+</div>
