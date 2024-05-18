@@ -22,7 +22,7 @@ export class AuthService {
   constructor(private http: HttpClient, private sharedService: SharedService){
     this.controller = 'auth';
     this.action = 'login';
-    this.apiServiceUrl = 'http://localhost:9000/api' + "/" + this.controller + "/" + this.action;
+    this.apiServiceUrl = 'http://mycofre.madebo.cloudfabric.net:9000/api' + "/" + this.controller + "/" + this.action;
   }
 
   setMasterPassword(password: string): void {
