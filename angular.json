@@ -27,7 +27,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets/**"
             ],
             "styles": [
               "src/styles.scss"
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "myCofre-client:build:production"
+              "buildTarget": "myCofre-client:build:production"
             },
             "development": {
-              "browserTarget": "myCofre-client:build:development"
+              "buildTarget": "myCofre-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "myCofre-client:build"
+            "buildTarget": "myCofre-client:build"
           }
         },
         "test": {

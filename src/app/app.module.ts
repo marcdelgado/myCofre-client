@@ -12,9 +12,11 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {SyncComponent} from "./components/shared/sync/sync.component";
 
 @NgModule({
   declarations: [
@@ -26,21 +28,24 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     CategoryListComponent,
     CategoryDetailComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SyncComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+        FontAwesomeModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

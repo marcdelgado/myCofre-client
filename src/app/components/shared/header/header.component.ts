@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
+import {faCoffee, faRing} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-header',
@@ -18,4 +19,7 @@ export class HeaderComponent {
   selectLanguage(lang: string) {
     this.translateService.use(lang);
   }
+
+  protected readonly faCoffee = faCoffee;
+  protected readonly faRing = faRing;
 }

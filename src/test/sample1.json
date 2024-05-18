@@ -1,0 +1,116 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Correo electrónico"
+    },
+    {
+      "id": 2,
+      "name": "Banca en línea"
+    },
+    {
+      "id": 3,
+      "name": "Redes sociales"
+    },
+    {
+      "id": 4,
+      "name": "Streaming de música"
+    },
+    {
+      "id": 5,
+      "name": "Streaming de video"
+    },
+    {
+      "id": 6,
+      "name": "Tiendas en línea"
+    },
+    {
+      "id": 7,
+      "name": "Viajes"
+    },
+    {
+      "id": 8,
+      "name": "Salud y bienestar"
+    },
+    {
+      "id": 9,
+      "name": "Educación en línea"
+    },
+    {
+      "id": 10,
+      "name": "Hogar inteligente"
+    }
+  ],
+  "credentials": [
+    {
+      "id": 1,
+      "title": "Gmail",
+      "username": "usuario@gmail.com",
+      "secretKey": "contraseña123",
+      "notes": "Correo electrónico principal"
+    },
+    {
+      "id": 2,
+      "title": "BBVA",
+      "username": "usuario_bbva",
+      "secretKey": "clave_secreta_bbva",
+      "notes": "Cuenta de ahorros"
+    },
+    {
+      "id": 3,
+      "title": "Facebook",
+      "username": "usuario_facebook",
+      "secretKey": "contraseña_facebook",
+      "notes": "Red social para mantenerse en contacto con amigos"
+    },
+    {
+      "id": 4,
+      "title": "Spotify",
+      "username": "usuario_spotify",
+      "secretKey": "clave_spotify",
+      "notes": "Suscripción premium de música"
+    },
+    {
+      "id": 5,
+      "title": "Netflix",
+      "username": "usuario_netflix",
+      "secretKey": "contraseña_netflix",
+      "notes": "Cuenta familiar de streaming de video"
+    },
+    {
+      "id": 6,
+      "title": "Amazon",
+      "username": "usuario_amazon",
+      "secretKey": "clave_amazon",
+      "notes": "Cuenta para compras en línea"
+    },
+    {
+      "id": 7,
+      "title": "Booking",
+      "username": "usuario_booking",
+      "secretKey": "contraseña_booking",
+      "notes": "Reservas de hoteles y alojamientos"
+    },
+    {
+      "id": 8,
+      "title": "MyFitnessPal",
+      "username": "usuario_myfitnesspal",
+      "secretKey": "clave_myfitnesspal",
+      "notes": "Seguimiento de dieta y ejercicios"
+    },
+    {
+      "id": 9,
+      "title": "Coursera",
+      "username": "usuario_coursera",
+      "secretKey": "contraseña_coursera",
+      "notes": "Cursos en línea"
+    },
+    {
+      "id": 10,
+      "title": "Google Home",
+      "username": "usuario_googlehome",
+      "secretKey": "clave_googlehome",
+      "notes": "Control del hogar inteligente"
+    }
+  ]
+}

@@ -13,11 +13,15 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
     path: 'signup',
     component: SignupComponent
   },
   {
-    path: 'credentials',
+    path: 'credential-list',
     component: CredentialListComponent
   },
   {
@@ -25,7 +29,7 @@ const routes: Routes = [
     component: CredentialDetailComponent
   },
   {
-    path: 'categories',
+    path: 'category-list',
     component: CategoryListComponent
   },
   {
