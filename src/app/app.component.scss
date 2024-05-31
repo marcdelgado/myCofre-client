@@ -1,33 +1,18 @@
-body{
+:host {
   display: flex;
   flex-direction: column;
-}
+  min-height: 100vh;
 
-.layout{
-  display: flex;
-  flex-direction: row;
-  place-content: stretch center;
-  width: 100%;
-
-
-
-  .upper-header-layout, .lower-header-layout, .footer-layout{
-    flex: 0 0 auto;
+  .app-main {
+    flex: 1;
   }
 
-  .main-layout{
-    flex: 1 1 auto;
-  }
-}
-
-.horiz-wrapper{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 1200px;
 }
 
 
-.fas, .fa-regular, .fa-solid, .fab, .fa-brands, .fa-globe{
-  padding-right: 24px;
-}
+
+
+
+
+
+

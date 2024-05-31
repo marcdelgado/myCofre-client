@@ -1,19 +1,38 @@
+/* SCSS HEX */
+$upper-footer-bg-color: #464646;
+$lower-footer-bg-color: #282828;
+
+
+  .icon{
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20px;
+    fill: red;
+    stroke: red;
+    color: red;
+  }
+
 .upper-footer-layout{
   .horiz-wrapper{
     justify-content: space-between;
   }
 
-  height: 200px;
-  background-color: black;
+  background-color: #484848;
+  opacity: 1;
+  background-image:  linear-gradient(135deg, #393939 25%, transparent 25%), linear-gradient(225deg, #393939 25%, transparent 25%), linear-gradient(45deg, #393939 25%, transparent 25%), linear-gradient(315deg, #393939 25%, #484848 25%);
+  background-position:  5px 0, 5px 0, 0 0, 0 0;
+  background-size: 10px 10px;
+  background-repeat: repeat;
 }
 
 
 
 .lower-footer-layout{
+  background-color: $lower-footer-bg-color;
+  color: #e0e1dd;
   .horiz-wrapper{
     justify-content: space-between;
   }
 
-  height: 200px;
-  background-color: black;
+
 }

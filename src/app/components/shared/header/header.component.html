@@ -1,31 +1,51 @@
 <!-- UPPER HEADER -->
-<header class="layout upper-header-layout">
-  <div class="horiz-wrapper">
-    <h1>Upper header layout</h1>
+<header class="content-wrapper">
+
+  <div class="hamburger-button" (click)="deployHamburger(menuIcon)" #menuIcon>
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
   </div>
+
+  <div class="logo-wrapper">
+    <img class="logo-desktop" src="../../../../assets/images/logo-mobile.webp" alt=""/>
+  </div>
+
+
+  <nav class="sessionLanguageOptions">
+    <ul>
+      <li>
+        <fa-icon [icon]="faGlobe"></fa-icon>
+        <select
+          [ngModel]="selectedLanguage"
+          (ngModelChange)="selectLanguage($event)">
+          <option value="es">
+            {{ 'HOME.SPANISH' | translate }}
+          </option>
+          <option value="en">
+            {{ 'HOME.ENGLISH' | translate }}
+          </option>
+        </select>
+
+      </li>
+      <li><fa-icon [icon]="faArrowRightFromBracket"></fa-icon><span>Cerrar sesión</span></li>
+    </ul>
+  </nav>
+
+  <nav class="functionOptions">
+    <ul>
+      <li><fa-icon [icon]="faAddressCard"></fa-icon><span>Credenciales</span></li>
+      <li><fa-icon [icon]="faTags"></fa-icon><span>Categorías</span></li>
+      <li><fa-icon [icon]="faArrowsRotate"></fa-icon><span>Sincronizar ahora</span></li>
+    </ul>
+  </nav>
+
+  <nav class="profileOptions">
+    <ul>
+      <li><fa-icon [icon]="faUser"></fa-icon><span>Perfil de usuario</span></li>
+      <li><fa-icon [icon]="faTags"></fa-icon><span>Cambiar contraseña</span></li>
+    </ul>
+  </nav>
 </header>
 
-<!-- LOWER HEADER -->
-<header class="layout lower-header-layout">
-  <div class="horiz-wrapper">
-    <h2>Lower header layout</h2>
-    <fa-icon [icon]="faCoffee" title="Coffee: Best Drink Ever"></fa-icon>
-    <fa-icon [icon]="faRing" title="Coffee: Best Drink Ever"></fa-icon>
-  </div>
-</header>
 
-<div style="text-align:center">
-  <h1 (click)="selectLanguage">
-    {{ 'HOME.TITLE' | translate }}
-  </h1>
-  <select
-    [ngModel]="selectedLanguage"
-    (ngModelChange)="selectLanguage($event)">
-    <option value="es">
-      {{ 'HOME.SPANISH' | translate }}
-    </option>
-    <option value="en">
-      {{ 'HOME.ENGLISH' | translate }}
-    </option>
-  </select>
-</div>

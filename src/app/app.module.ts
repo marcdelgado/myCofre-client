@@ -17,6 +17,9 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {SyncComponent} from "./components/shared/sync/sync.component";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,7 @@ import {SyncComponent} from "./components/shared/sync/sync.component";
     CategoryDetailComponent,
     HeaderComponent,
     FooterComponent,
-    SyncComponent
+    SyncComponent,
   ],
     imports: [
         BrowserModule,
@@ -43,10 +46,14 @@ import {SyncComponent} from "./components/shared/sync/sync.component";
                 deps: [HttpClient]
             }
         }),
+        BrowserAnimationsModule,
         FontAwesomeModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

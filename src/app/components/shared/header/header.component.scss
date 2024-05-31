@@ -1,25 +1,201 @@
-.upper-header-layout{
-  background-color: cyan;
+@use "sass:math";
+@import '../../../../styles/variables';
 
-  .horiz-wrapper{
+:host{
+
+  .content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    color: $theme-header-fg-color;
+    font-family: $theme-header-font-family;
   }
 
-}
-
-
-.lower-header-layout{
-  position: sticky;
-  top: 0;
-
-  .horiz-wrapper{
-    justify-content: space-between;
+  .logo-wrapper {
+    img {
+      height: 100%;
+      width: auto;
+    }
   }
 
-  &--fixed{
-    background-color: yellow;
+
+  @media not ((min-width: 1200px) and (orientation: landscape)) {
+    position: fixed;
+    height: $mobile-header-height;
+    background-image: $theme-header-bg-image;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+
+    .content-wrapper {
+      width: 100vh;
+      height: 100%;
+      display: flex;
+
+      & > * {
+        padding: 5px 0 5px 0;
+      }
+
+      .hamburger-button {
+        display: inline-block;
+        cursor: pointer;
+
+        .bar1, .bar2, .bar3 {
+          width:  math.div($mobile-header-item-size, 2);
+          height: math.div($mobile-header-item-size, 20);
+          background-color: $theme-header-fg-color;
+          margin: 7px 0;
+          transition: 0.4s;
+        }
+
+        /* https://www.w3schools.com/howto/howto_css_menu_icon.asp */
+        &.deployed {
+          .bar1 {
+            transform: translate(0, 10px) rotate(-45deg);
+          }
+
+          .bar2 {
+            opacity: 0;
+          }
+
+          .bar3 {
+            transform: translate(0, -10px) rotate(45deg);
+          }
+        }
+      }
+
+      .logo-wrapper {
+        height: $mobile-header-item-size;
+        width: 50%;
+      }
+
+      .sessionLanguageOptions{
+        position: fixed;
+        top: $mobile-header-height;
+        background: red;
+      }
+
+      .functionOptions {
+        position: fixed;
+        top: $mobile-header-height;
+        background: red;
+      }
+
+      .profileOptions {
+        position: fixed;
+        top: $mobile-header-height;
+        background: red;
+      }
+    }
+
+
+
+
   }
 
-  height: 100px;
-  background-color: darkcyan;
+
+  @media (min-width: 1200px) and (orientation: landscape) {
+    position: sticky;
+    height: $desktop-header-height;
+    background-image: $theme-header-bg-image;
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: cover;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+
+    /* Translucid lower menu background */
+    &::before, &::after{
+      position: absolute;
+      height: $desktop-header-menu-height;
+      top: 80px;
+      z-index: -1;
+      width: 100%;
+      content: "";
+      background-color: rgba(5, 70, 108, 0.5);
+    }
+
+    .content-wrapper {
+
+      .hamburger-button{
+        display: none;
+      }
+
+
+      &>*{
+        padding: 10px 0 10px 0;
+      }
+      nav{
+        height: 40px;
+        ul{
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 40px;
+
+          li{
+            display: flex;
+            align-items: center;
+            &:hover{
+              color: $theme-header-fg-color-hover;
+            }
+          }
+        }
+      }
+
+      .logo-wrapper {
+        height: 80px;
+        width: 50%;
+      }
+
+      .sessionLanguageOptions {
+        li:focus{
+          color: $theme-header-fg-color-hover;
+        }
+        select {
+          cursor: pointer;
+          outline:0;
+          color: #ffffff;
+          padding: 0 10px;
+          min-width: 120px;
+          border-radius: 0;
+          border: 1px solid $theme-header-fg-color;
+          background-color: #ffffff00;
+          font-size: 0.9rem;
+        }
+        select:hover, select:focus{
+
+          background-color: $theme-header-bg-color;
+          color: $theme-header-fg-color-hover;
+          border: 1px solid $theme-header-fg-color;
+        }
+      }
+
+      .functionOptions {
+        width: 60%;
+      }
+
+      .profileOptions {
+        width: 40%;
+        &>*{
+          float: right;
+        }
+      }
+
+      fa-icon{
+        padding-right: 10px;
+        font-size: 1.25rem;
+      }
+
+
+    }
+
+  }
+
+
+
+
+
+
 }

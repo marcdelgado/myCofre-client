@@ -3,5 +3,20 @@
     "TITLE": "Ejemplo de Proyecto Angular con i18n (Internacionalizatión)",
     "ENGLISH": "Inglés",
     "SPANISH": "Español"
+  },
+
+  "LANGUAGE": {
+    "ENGLISH": "English",
+    "SPANISH": "Español",
+    "CATALAN": "Català"
+  },
+
+  "HEADER": {
+    "SYNC": "Sincronizar ahora",
+    "LOGOUT": "Cerrar sesión",
+    "PROFILE": "Perfil de usuario",
+    "CHG_PASS": "Cambiar contraseña",
+    "CREDENTIALS": "Credenciales",
+    "CATEGORIES": "Categorías"
   }
 }

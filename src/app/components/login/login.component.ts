@@ -8,6 +8,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {LocalStorageService} from "../../services/local-storage.service";
 import {finalize} from "rxjs";
 import * as fontAwesomeIcons from '@fortawesome/free-solid-svg-icons';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password,
     });
+      console.log('API URL:', environment.apiUrl);
   }
 
   ngOnInit(): void {}

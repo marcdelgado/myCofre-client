@@ -1,0 +1,42 @@
+/* ========================================================================
+   VARIABLES
+   ======================================================================== */
+@use "sass:color";
+/* --- Body / base --------------------------------------------------------- */
+
+/* Global Sizes */
+$media-width-transition: 1260px; /* for @media, min. 1280x1024 screens */
+$desktop-window-width: 1200px;
+$transition-time: 300ms;
+$base-font-size: 20px;
+$base-icon-padding: 20px;
+
+/* Layer proportions */
+$desktop-header-height: 120px;
+$desktop-header-menu-height: 40px;
+$desktop-footer-upper-height: 200px;
+$desktop-footer-lower-height: 40px;
+$mobile-header-height: 60px;
+$mobile-header-item-size: 60px;
+
+/* Header theme */
+$theme-header-fg-color: white;
+$theme-header-fg-color-hover: #ffb703;
+$theme-header-bg-color: #023047;
+$theme-header-bg-image: url("../assets/images/bg-padlock.webp");
+$theme-header-font-family: Arial, sans-serif;
+
+/* Main content theme */
+$theme-main-outer-bg-color: none;
+$theme-main-inner-bg-color: none;
+$theme-main-border-color: none;
+
+
+/* Footer theme */
+
+/* Others */
+$sky-blue: #8ecae6ff;
+$blue-green: #19758c;
+$selective-yellow: #ffb703ff;
+$ut-orange: #fb8500ff;
+

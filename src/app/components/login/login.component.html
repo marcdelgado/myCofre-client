@@ -1,50 +1,36 @@
-<p>login works!</p>
-<i class="fa-solid fa-magnifying-glass"></i>
-<i class="fa-solid fa-floppy-disk"></i>
-<i class="fa-solid fa-trash-can"></i>
-<i class="fa-solid fa-border-all"></i>
-<i class="fa-solid fa-clipboard"></i>
-<i class="fa-solid fa-border-none"></i>
-<i class="fa-solid fa-tags"></i>
-<i class="fa-solid fa-globe"></i>
-<i class="fa-solid fa-plus"></i>
-<i class="fa-solid fa-circle-plus"></i>
-<i class="fa-solid fa-file-circle-plus"></i>
-<i class="fa-solid fa-eye"></i>
-<i class="fa-solid fa-right-from-bracket"></i>
-<i class="fa-solid fa-pencil"></i>
-<i class="fa-solid fa-cloud"></i>
+<main class="content-wrapper">
+  <p>login works!</p>
 
-<fa-icon [icon]="icons.faGlobe"></fa-icon>
-<fa-icon [icon]="icons.faFloppyDisk"></fa-icon>
+  <fa-icon [icon]="icons.faGlobe"></fa-icon>
+  <fa-icon [icon]="icons.faFloppyDisk"></fa-icon>
 
-<!--
+  <!--
 
-https://www.flaticon.com/free-icon/treasure_1007354?term=chest&related_id=1007354
-https://www.flaticon.com/free-icon/chest_8339629?term=chest&page=1&position=92&origin=tag&related_id=8339629
+  https://www.flaticon.com/free-icon/treasure_1007354?term=chest&related_id=1007354
+  https://www.flaticon.com/free-icon/chest_8339629?term=chest&page=1&position=92&origin=tag&related_id=8339629
 
--->
-<div style="margin-left: auto; margin-right: auto">
-  <p id="loginFeedback"></p>
-</div>
-<div>
-  <h1>Login</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div>
-      <label for="email">Email: </label>
-      <input type="email" [formControl]="email" />
-    </div>
+  -->
+  <div style="margin-left: auto; margin-right: auto">
+    <p id="loginFeedback"></p>
+  </div>
+  <div>
+    <h1>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div>
+        <label for="email">Email: </label>
+        <input type="email" [formControl]="email" />
+      </div>
 
-    <div>
-      <label for="password">Password: </label>
-      <input type="password" [formControl]="password" />
-    </div>
+      <div>
+        <label for="password">Password: </label>
+        <input type="password" [formControl]="password" />
+      </div>
 
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
-  </form>
-</div>
+      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+  </div>
 
-<div *ngIf="email.errors">
+  <div *ngIf="email.errors">
   <span
     style="color: red"
     *ngIf="email.errors && (email.touched || email.dirty)"
@@ -52,9 +38,9 @@ https://www.flaticon.com/free-icon/chest_8339629?term=chest&page=1&position=92&o
     <span *ngIf="email.errors['required']">Email is required</span>
     <div *ngIf="email.errors['pattern']">Email not a valid format.</div>
   </span>
-</div>
+  </div>
 
-<div *ngIf="password.errors">
+  <div *ngIf="password.errors">
   <span
     style="color: red"
     *ngIf="password.errors && (password.touched || password.dirty)"
@@ -67,4 +53,6 @@ https://www.flaticon.com/free-icon/chest_8339629?term=chest&page=1&position=92&o
     >Password can be max 16 characters long</span
     >
   </span>
-</div>
+  </div>
+</main>
+
