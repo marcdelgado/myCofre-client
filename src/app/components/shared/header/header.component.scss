@@ -3,55 +3,70 @@
 
 :host{
 
+  color: $theme-header-fg-color;
+  font-family: $theme-header-font-family;
+
   .content-wrapper {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    color: $theme-header-fg-color;
-    font-family: $theme-header-font-family;
+    flex-wrap: wrap;
   }
 
   .logo-wrapper {
+    display: flex; /* Usamos flex para que el contenedor se ajuste al contenido */
+    align-items: center; /* Alineamos el contenido verticalmente */
+    overflow: hidden;
     img {
-      height: 100%;
+      height: 60px;
       width: auto;
+      max-width: 100%;
     }
   }
 
 
   @media not ((min-width: 1200px) and (orientation: landscape)) {
     position: fixed;
-    height: $mobile-header-height;
     background-image: $theme-header-bg-image;
     background-position: center;
     background-size: cover;
     z-index: 1;
+    display: block; /* Asegura que el host ocupe el espacio necesario */
+    width: 100%;
+    height: calc(60px + 15px);
+    padding: 5px;
+    font-size: 1.3rem;
 
     .content-wrapper {
-      width: 100vh;
-      height: 100%;
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
 
-      & > * {
-        padding: 5px 0 5px 0;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+
+      fa-icon{
+        font-size: 60px;
       }
 
       .hamburger-button {
+        order: 1;
         display: inline-block;
         cursor: pointer;
 
         .bar1, .bar2, .bar3 {
-          width:  math.div($mobile-header-item-size, 2);
-          height: math.div($mobile-header-item-size, 20);
+          width: $mobile-header-item-size;
+          height: 6px;
           background-color: $theme-header-fg-color;
-          margin: 7px 0;
+          margin: 10px 0;
           transition: 0.4s;
         }
 
         /* https://www.w3schools.com/howto/howto_css_menu_icon.asp */
         &.deployed {
           .bar1 {
-            transform: translate(0, 10px) rotate(-45deg);
+            transform: translate(0, 16px) rotate(-45deg);
           }
 
           .bar2 {
@@ -59,33 +74,90 @@
           }
 
           .bar3 {
-            transform: translate(0, -10px) rotate(45deg);
+            transform: translate(0, -16px) rotate(45deg);
           }
         }
       }
 
+      .add-button{
+        order: 3;
+      }
+
       .logo-wrapper {
-        height: $mobile-header-item-size;
         width: 50%;
+        order: 2;
+        img{
+          height: 40px;
+          margin: 0 auto;
+        }
       }
 
       .sessionLanguageOptions{
-        position: fixed;
+        width: 100vw;
+        order: 5;
         top: $mobile-header-height;
         background: red;
       }
 
-      .functionOptions {
-        position: fixed;
-        top: $mobile-header-height;
-        background: red;
+      .functionMenu {
+        position: relative;
+        width: 100vw;
+        order: 4;
+        .vault{
+        }
+        .profile{
+        }
       }
 
-      .profileOptions {
-        position: fixed;
-        top: $mobile-header-height;
-        background: red;
+
+      .sessionLanguageOptions, .functionMenu{
+        display: none;
+        background-color: black;
+        ul{
+          display: flex;
+          flex-direction: column;
+          margin-lefT: 40px;
+          li{
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            fa-icon{
+              //margin-right: 20px;
+              width: 100px;
+              text-align: center;
+            }
+          }
+          li:hover, active{
+            color: $theme-header-fg-color-hover;
+          }
+        }
+        span{
+
+        }
+        select {
+          cursor: pointer;
+          outline:0;
+          color: #ffffff;
+          padding: 0 10px;
+          min-width: 120px;
+          border-radius: 0;
+          border: 1px solid $theme-header-fg-color;
+          background-color: #ffffff00;
+          font-size: 1.3rem;
+        }
+        select:hover, select:focus{
+
+          background-color: $theme-header-bg-color;
+          color: $theme-header-fg-color-hover;
+          border: 1px solid $theme-header-fg-color;
+        }
+        &.deployed{
+          display: block;
+        }
+
       }
+
+
     }
 
 
@@ -103,6 +175,7 @@
     background-size: cover;
     z-index: 1;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
 
     /* Translucid lower menu background */
     &::before, &::after{
@@ -172,13 +245,12 @@
         }
       }
 
-      .functionOptions {
-        width: 60%;
-      }
-
-      .profileOptions {
-        width: 40%;
-        &>*{
+      .functionMenu {
+        width: 100%;
+        .vault{
+          float: left;
+        }
+        .profile{
           float: right;
         }
       }

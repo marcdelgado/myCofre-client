@@ -32,16 +32,17 @@
     </ul>
   </nav>
 
-  <nav class="functionOptions">
-    <ul>
+  <nav class="add-button only-mobile">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </nav>
+
+  <nav class="functionMenu">
+    <ul class="vault">
       <li><fa-icon [icon]="faAddressCard"></fa-icon><span>Credenciales</span></li>
       <li><fa-icon [icon]="faTags"></fa-icon><span>Categorías</span></li>
       <li><fa-icon [icon]="faArrowsRotate"></fa-icon><span>Sincronizar ahora</span></li>
     </ul>
-  </nav>
-
-  <nav class="profileOptions">
-    <ul>
+    <ul class="profile">
       <li><fa-icon [icon]="faUser"></fa-icon><span>Perfil de usuario</span></li>
       <li><fa-icon [icon]="faTags"></fa-icon><span>Cambiar contraseña</span></li>
     </ul>

@@ -6,7 +6,7 @@ import {
   faAddressCard,
   faUser,
   faTags,
-  faArrowRightFromBracket, faArrowsRotate, faLanguage, faGlobe
+  faArrowRightFromBracket, faArrowsRotate, faLanguage, faGlobe, faPlus
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -63,8 +63,13 @@ export class HeaderComponent  implements OnInit{
   protected readonly faArrowRightFromBracket = faArrowRightFromBracket;
   protected readonly faArrowsRotate = faArrowsRotate;
   protected readonly faGlobe = faGlobe;
+  protected readonly faPlus = faPlus;
 
   deployHamburger(x: HTMLElement) {
     x.classList.toggle('deployed');
+    const elementsToToggle = document.querySelectorAll('.sessionLanguageOptions, .functionMenu');
+    elementsToToggle.forEach((element) => {
+      element.classList.toggle('deployed');
+    });
   }
 }
