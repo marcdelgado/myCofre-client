@@ -3,6 +3,7 @@ import {AuthDto} from "../models/auth-dto";
 import {catchError, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {SharedService} from "./shared.service";
+import {environment} from "../../environments/environment.prod";
 
 export interface AuthToken {
   id: string;
@@ -22,7 +23,7 @@ export class AuthService {
   constructor(private http: HttpClient, private sharedService: SharedService){
     this.controller = 'auth';
     this.action = 'login';
-    this.apiServiceUrl = 'https://mycofre.madebo.cloudfabric.net:9000/api' + "/" + this.controller + "/" + this.action;
+    this.apiServiceUrl = environment.apiUrl + "/" + this.controller + "/" + this.action;
   }
 
   setMasterPassword(password: string): void {
@@ -41,5 +42,15 @@ export class AuthService {
     return this.http
       .post<AuthToken>(this.apiServiceUrl, auth)
       .pipe(catchError(this.sharedService.handleError));
+  }
+
+  // Comprueba si el usuario está autenticado, por ejemplo, verificando un token en localStorage
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('userToken');
+  }
+
+  // Método para cerrar sesión si es necesario
+  logout() {
+    localStorage.removeItem('userToken');
   }
 }

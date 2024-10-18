@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
 
     this.password = new UntypedFormControl('', [
       Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(16),
+      Validators.minLength(3),
+      Validators.maxLength(255),
     ]);
 
     this.loginForm = this.formBuilder.group({
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     let errorResponse: any;
 
     this.loginUser.email = this.email.value;
-    this.loginUser.password = this.password.value;
+    this.loginUser.repassword = this.password.value;
 
     this.authService
       .login(this.loginUser)
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
           );
 
           if (responseOK) {
-            this.authService.setMasterPassword(this.loginUser.password);
+            this.authService.setMasterPassword(this.loginUser.repassword);
             this.router.navigateByUrl('credential-list');
           }
         })

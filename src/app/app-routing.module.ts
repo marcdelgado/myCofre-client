@@ -10,7 +10,7 @@ import {CategoryDetailComponent} from "./components/category-detail/category-det
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: CredentialListComponent,
   },
   {
     path: 'login',

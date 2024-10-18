@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:9000/myCofre-api'
+  apiUrl: 'https://server.mycofre.com'
 };

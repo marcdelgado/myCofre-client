@@ -2,17 +2,17 @@ export class AuthDto {
   id: string;
   token: string;
   email: string;
-  password: string;
+  repassword: string;
 
   constructor(
     id: string,
     token: string,
     email: string,
-    password: string
+    repassword: string
   ) {
     this.id = id;
     this.token = token;
     this.email = email;
-    this.password = password;
+    this.repassword = repassword;
   }
 }

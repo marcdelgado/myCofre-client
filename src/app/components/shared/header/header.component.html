@@ -20,15 +20,18 @@
           [ngModel]="selectedLanguage"
           (ngModelChange)="selectLanguage($event)">
           <option value="es">
-            {{ 'HOME.SPANISH' | translate }}
+            {{ 'LANGUAGE.SPANISH' | translate }}
           </option>
           <option value="en">
-            {{ 'HOME.ENGLISH' | translate }}
+            {{ 'LANGUAGE.ENGLISH' | translate }}
+          </option>
+          <option value="ca">
+            {{ 'LANGUAGE.CATALAN' | translate }}
           </option>
         </select>
 
       </li>
-      <li><fa-icon [icon]="faArrowRightFromBracket"></fa-icon><span>Cerrar sesión</span></li>
+      <li><fa-icon [icon]="faArrowRightFromBracket"></fa-icon><span>{{ 'HEADER.LOGOUT' | translate }}</span></li>
     </ul>
   </nav>
 
@@ -38,13 +41,13 @@
 
   <nav class="functionMenu">
     <ul class="vault">
-      <li><fa-icon [icon]="faAddressCard"></fa-icon><span>Credenciales</span></li>
-      <li><fa-icon [icon]="faTags"></fa-icon><span>Categorías</span></li>
-      <li><fa-icon [icon]="faArrowsRotate"></fa-icon><span>Sincronizar ahora</span></li>
+      <li><fa-icon [icon]="faAddressCard"></fa-icon><span>{{ 'HEADER.CREDENTIALS' | translate }}</span></li>
+      <li><fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CATEGORIES' | translate }}</span></li>
+      <li><fa-icon [icon]="faArrowsRotate"></fa-icon><span>{{ 'HEADER.SYNC' | translate }}</span></li>
     </ul>
     <ul class="profile">
-      <li><fa-icon [icon]="faUser"></fa-icon><span>Perfil de usuario</span></li>
-      <li><fa-icon [icon]="faTags"></fa-icon><span>Cambiar contraseña</span></li>
+      <li><fa-icon [icon]="faUser"></fa-icon><span>{{ 'HEADER.USER_PROFILE' | translate }}</span></li>
+      <li><fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CHANGE_PASSWORD' | translate }}</span></li>
     </ul>
   </nav>
 </header>
