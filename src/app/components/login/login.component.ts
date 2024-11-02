@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService, AuthToken} from "../../services/auth.service";
 import {AuthDto} from "../../models/auth-dto";
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
-import {SharedService} from "../../services/shared.service";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
-import {LocalStorageService} from "../../services/local-storage.service";
+import {LocalStorageService} from "../../../../temp/local-storage.service";
 import {finalize} from "rxjs";
 import * as fontAwesomeIcons from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../../../environments/environment";
+import {AuthService} from "../../services/auth.service";
+import {SharedService} from "../../services/shared.service";
 
 @Component({
   selector: 'app-login',
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login(): void {
+  onLogin(): void {
     let responseOK: boolean = false;
     let errorResponse: any;
 
@@ -69,26 +69,18 @@ export class LoginComponent implements OnInit {
           );
 
           if (responseOK) {
-            this.authService.setMasterPassword(this.loginUser.repassword);
             this.router.navigateByUrl('credential-list');
           }
         })
       )
       .subscribe(
-        (resp: AuthToken) => {
+        () => {
           responseOK = true;
-          this.loginUser.id = resp.id;
-          this.loginUser.token = resp.token;
-
-          this.localStorageService.set('id',this.loginUser.id);
-          this.localStorageService.set('email',this.loginUser.email);
-          this.localStorageService.set('token',this.loginUser.token);
         },
         (error: HttpErrorResponse) => {
           responseOK = false;
-          errorResponse = error.error;
-
-          this.sharedService.errorLog(error.error);
+          if(error.error) this.sharedService.printResponseError(error.error);
+          else this.sharedService.printErrorMessage(error);
         }
       );
   }

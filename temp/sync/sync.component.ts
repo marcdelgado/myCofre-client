@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { SyncService } from '../../../services/sync.service';
-import { UserDataService } from '../../../services/user-data.service';
-import { CredentialDto } from '../../../models/credential-dto';
-import { CategoryDto } from '../../../models/category-dto';
-import { RelCredentialCategoryDto  } from '../../../models/rel-credential-category-dto';
+import { SyncService } from '../sync.service';
+import { UserDataService } from '../vault.service';
+import { CredentialDto } from '../../src/app/models/credential-dto';
+import { CategoryDto } from '../../src/app/models/category-dto';
+import { RelCredentialCategoryDto  } from '../../src/app/models/rel-credential-category-dto';
 
 @Component({
   selector: 'app-sync',

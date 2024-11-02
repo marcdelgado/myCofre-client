@@ -27,7 +27,13 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets/**"
+              "src/assets/**",
+              {
+                "glob": "**/*",
+                "input": "src",
+                "ignore": ["temp/**"],
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles/main.scss",
@@ -72,10 +78,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "myCofre-client:build:production"
+              "browserTarget": "myCofre-client:build:production"
             },
             "development": {
-              "buildTarget": "myCofre-client:build:development"
+              "browserTarget": "myCofre-client:build:development"
             }
           },
           "defaultConfiguration": "development"

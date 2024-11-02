@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://server.mycofre.com'
+  apiUrl: 'https://server.mycofre.com/myCofre-api'
 };

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface ResponseError {
   statusCode: number;
@@ -54,12 +55,16 @@ export class SharedService {
     }
   }
 
-  errorLog(error: ResponseError): void {
+  printResponseError(error: ResponseError): void {
     console.error('path:', error.path);
     console.error('timestamp:', error.timestamp);
     console.error('message:', error.message);
     console.error('messageDetail:', error.messageDetail);
     console.error('statusCode:', error.statusCode);
+  }
+
+  printErrorMessage(error: any): void {
+    console.error(error);
   }
 
   async wait(ms: number) {
@@ -72,3 +77,11 @@ export class SharedService {
     return throwError(error);
   }
 }
+
+
+export function debugLog(message: any) {
+  if (!environment.production) {
+    console.debug(message);
+  }
+}
+

@@ -8,6 +8,8 @@ import {
   faTags,
   faArrowRightFromBracket, faArrowsRotate, faLanguage, faGlobe, faPlus
 } from "@fortawesome/free-solid-svg-icons";
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -20,7 +22,7 @@ export class HeaderComponent  implements OnInit{
   currentLanguagePlaceholder: string = "Español";
 
   //https://mugan86.medium.com/internacionalizaci%C3%B3n-en-un-proyecto-angular-ngx-translate-1-3-9331c7509d12
-  constructor(private translateService: TranslateService) {
+  constructor(private translateService: TranslateService, public authService: AuthService, private router: Router) {
     this.translateService.setDefaultLang(this.selectedLanguage);
     this.translateService.use(this.selectedLanguage);
     this.currentLanguagePlaceholder = this.translateService.instant('HOME.SPANISH');
@@ -71,5 +73,10 @@ export class HeaderComponent  implements OnInit{
     elementsToToggle.forEach((element) => {
       element.classList.toggle('deployed');
     });
+  }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

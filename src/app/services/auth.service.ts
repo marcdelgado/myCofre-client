@@ -1,56 +1,50 @@
 import { Injectable } from '@angular/core';
-import {AuthDto} from "../models/auth-dto";
-import {catchError, Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {SharedService} from "./shared.service";
-import {environment} from "../../environments/environment.prod";
-
-export interface AuthToken {
-  id: string;
-  token: string;
-}
+import {catchError, map, Observable, tap, throwError} from "rxjs";
+import {ApiService} from "./api.service";
+import {LoginForm} from "../models/forms/login-form";
+import {AuthLoginRequest} from "../models/api/auth-login-request";
+import {AuthLoginResponse} from "../models/api/auth-login-response";
+import {ApiErrorResponse} from "../models/api/api-error-response";
+import {debugLog, SharedService} from "./shared.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiServiceUrl: string;
-  private controller: string;
-  private action: string;
 
-  private masterPasswordKey = 'masterPassword';
+  constructor(
+    private apiService: ApiService,
+    /*private sharedService: SharedService*/) {}
 
-  constructor(private http: HttpClient, private sharedService: SharedService){
-    this.controller = 'auth';
-    this.action = 'login';
-    this.apiServiceUrl = environment.apiUrl + "/" + this.controller + "/" + this.action;
+
+  public login(form: LoginForm): Observable<void> {
+    const request: AuthLoginRequest = new AuthLoginRequest(form.email, form.repassword);
+    return this.apiService.postAuthLogin(request).pipe(
+      tap((response) => {
+        sessionStorage .setItem('userToken', (response as AuthLoginResponse).sessionToken);
+      }),
+      map(() => undefined),
+      catchError((error) => {
+        sessionStorage .removeItem('userToken');
+        return throwError(() => error); // Propagamos el error sin procesar
+      })
+    );
   }
 
-  setMasterPassword(password: string): void {
-    sessionStorage.setItem(this.masterPasswordKey, password);
+  public logout(): void {
+    sessionStorage.removeItem('userToken');
   }
 
-  getMasterPassword(): string | null {
-    return sessionStorage.getItem(this.masterPasswordKey);
+  public isAuthenticated(): boolean{
+    const token = sessionStorage.getItem('userToken');
+    return !!token;
   }
 
-  clearMasterPassword(): void {
-    sessionStorage.removeItem(this.masterPasswordKey);
+  private isAuthLoginResponse(response: AuthLoginResponse | ApiErrorResponse): response is AuthLoginResponse {
+      return (response as AuthLoginResponse).sessionToken !== undefined;
   }
 
-  login(auth: AuthDto): Observable<AuthToken> {
-    return this.http
-      .post<AuthToken>(this.apiServiceUrl, auth)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  // Comprueba si el usuario está autenticado, por ejemplo, verificando un token en localStorage
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('userToken');
-  }
-
-  // Método para cerrar sesión si es necesario
-  logout() {
-    localStorage.removeItem('userToken');
-  }
 }
+
+
+

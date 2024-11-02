@@ -1,10 +1,7 @@
-import {CanActivate, CanActivateFn, Router} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot} from '@angular/router';
 import {Injectable} from "@angular/core";
+import {Observable} from "rxjs";
 import {AuthService} from "../services/auth.service";
-
-export const authGuard: CanActivateFn = (route, state) => {
-  return true;
-};
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +9,14 @@ export const authGuard: CanActivateFn = (route, state) => {
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(): boolean {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isAuthenticated()) {
-      return true;
+      return true; // Permite la navegación
     } else {
-      // Redirige al login si el usuario no está autenticado
+      // Redirecciona al login si no está autenticado
       this.router.navigate(['/login']);
       return false;
     }

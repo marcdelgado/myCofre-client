@@ -31,7 +31,9 @@
         </select>
 
       </li>
-      <li><fa-icon [icon]="faArrowRightFromBracket"></fa-icon><span>{{ 'HEADER.LOGOUT' | translate }}</span></li>
+      <li *ngIf="authService.isAuthenticated()"><a (click)="onLogout()">
+        <fa-icon [icon]="faArrowRightFromBracket"></fa-icon><span>{{ 'HEADER.LOGOUT' | translate }}</span>
+      </a></li>
     </ul>
   </nav>
 
@@ -41,13 +43,23 @@
 
   <nav class="functionMenu">
     <ul class="vault">
-      <li><fa-icon [icon]="faAddressCard"></fa-icon><span>{{ 'HEADER.CREDENTIALS' | translate }}</span></li>
-      <li><fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CATEGORIES' | translate }}</span></li>
-      <li><fa-icon [icon]="faArrowsRotate"></fa-icon><span>{{ 'HEADER.SYNC' | translate }}</span></li>
+      <li><a routerLink="/credential-list" routerLinkActive="active">
+        <fa-icon [icon]="faAddressCard"></fa-icon><span>{{ 'HEADER.CREDENTIALS' | translate }}</span>
+      </a></li>
+      <li><a routerLink="/category-list" routerLinkActive="active">
+        <fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CATEGORIES' | translate }}</span>
+      </a></li>
+      <li><a routerLink="/sync" routerLinkActive="active">
+        <fa-icon [icon]="faArrowsRotate"></fa-icon><span>{{ 'HEADER.SYNC' | translate }}</span>
+      </a></li>
     </ul>
     <ul class="profile">
-      <li><fa-icon [icon]="faUser"></fa-icon><span>{{ 'HEADER.USER_PROFILE' | translate }}</span></li>
-      <li><fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CHANGE_PASSWORD' | translate }}</span></li>
+      <li><a routerLink="/profile" routerLinkActive="active">
+        <fa-icon [icon]="faUser"></fa-icon><span>{{ 'HEADER.USER_PROFILE' | translate }}</span>
+      </a></li>
+      <li><a routerLink="/password" routerLinkActive="active">
+        <fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CHANGE_PASSWORD' | translate }}</span>
+      </a></li>
     </ul>
   </nav>
 </header>

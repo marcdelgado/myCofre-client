@@ -17,5 +17,10 @@
     "CHANGE_PASSWORD": "Canviar contrasenya",
     "PROFILE": "Perfil d'usuari",
     "LOGOUT": "Tancar sessió"
+  },
+
+  "LOGIN": {
+    "USER" : "Usuari",
+    "PASSWORD": "Contrasenya"
   }
 }

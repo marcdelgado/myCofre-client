@@ -6,11 +6,12 @@ import {CredentialListComponent} from "./components/credential-list/credential-l
 import {CredentialDetailComponent} from "./components/credential-detail/credential-detail.component";
 import {CategoryListComponent} from "./components/category-list/category-list.component";
 import {CategoryDetailComponent} from "./components/category-detail/category-detail.component";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
-    component: CredentialListComponent,
+    redirectTo: 'credential-list', pathMatch: 'full'
   },
   {
     path: 'login',
@@ -22,19 +23,23 @@ const routes: Routes = [
   },
   {
     path: 'credential-list',
-    component: CredentialListComponent
+    component: CredentialListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'credential/:id',
-    component: CredentialDetailComponent
+    component: CredentialDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'category-list',
-    component: CategoryListComponent
+    component: CategoryListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'category/:id',
-    component: CategoryDetailComponent
+    component: CategoryDetailComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

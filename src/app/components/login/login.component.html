@@ -15,14 +15,14 @@
   </div>
   <div>
     <h1>Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div>
-        <label for="email">Email: </label>
+        <label for="email">{{ 'LOGIN.USER' | translate }}: </label>
         <input type="email" [formControl]="email" />
       </div>
 
       <div>
-        <label for="password">Password: </label>
+        <label for="password">{{ 'LOGIN.PASSWORD' | translate }}: </label>
         <input type="password" [formControl]="password" />
       </div>
 

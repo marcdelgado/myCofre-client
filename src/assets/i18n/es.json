@@ -17,5 +17,10 @@
     "CHANGE_PASSWORD": "Cambiar contraseña",
     "PROFILE": "Perfil de usuario",
     "LOGOUT": "Cerrar sesión"
+  },
+
+  "LOGIN": {
+    "USER" : "Usuario",
+    "PASSWORD": "Contraseña"
   }
 }

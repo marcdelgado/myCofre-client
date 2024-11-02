@@ -17,5 +17,10 @@
     "CHANGE_PASSWORD": "Change password",
     "PROFILE": "Profile",
     "LOGOUT": "Logout"
+  },
+
+  "LOGIN": {
+    "USER" : "User",
+    "PASSWORD": "Password"
   }
 }
