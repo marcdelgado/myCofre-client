@@ -6,7 +6,7 @@ import { ApiService } from "./api.service";
 import { catchError, map, Observable, throwError } from "rxjs";
 import { VaultReadResponse } from "../models/api/vault-read-response";
 import { ApiErrorResponse } from "../models/api/api-error-response";
-import {plainToClass, plainToInstance} from 'class-transformer';
+import {deserialize, plainToClass, plainToInstance} from 'class-transformer';
 import {debugLog} from "./shared.service";
 
 @Injectable({
@@ -24,8 +24,9 @@ export class VaultService {
                 if (!vaultBase64 || vaultBase64 === "") {
                     vault = this.createEmptyVault();
                 } else {
-                    const vaultString: string = atob(vaultBase64);
-                    vault = plainToInstance(VaultDto, JSON.parse(vaultString))[0];
+                    let vaultString: string = atob(vaultBase64);
+                    vault = deserialize(VaultDto, vaultString);
+                    //vault = instanceToClass(VaultDto, vaultString);
                 }
 
                 this.setVaultToSession(vault);
@@ -164,7 +165,7 @@ export class VaultService {
 
     private getVaultFromSession(): VaultDto | null {
         const vaultData = sessionStorage.getItem('vault');
-        return vaultData ? plainToInstance(VaultDto, JSON.parse(vaultData))[0] : null;
+        return vaultData ? deserialize(VaultDto, vaultData) : null;
     }
 
     private setVaultToSession(vault: VaultDto): void {
