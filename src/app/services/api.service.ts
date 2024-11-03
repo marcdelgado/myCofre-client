@@ -15,6 +15,7 @@ import {AuthLoginResponse} from "../models/api/auth-login-response";
 import {AuthChangeRepasswordRequest} from "../models/api/auth-change-repassword-request";
 import {AuthGetLoginAttemptsResponse} from "../models/api/auth-get-login-attempts-response";
 import {debugLog} from "./shared.service";
+import {VaultWriteRequest} from "../models/api/vault-write-request";
 
 @Injectable({
     providedIn: 'root'
@@ -26,9 +27,8 @@ export class ApiService {
     // VAULT ENDPOINTS
     // --------------------------------------------------------------------------
 
-    putVaultWrite(vaultData: any): Observable<void | ApiErrorResponse> {
+    putVaultWrite(vaultData: VaultWriteRequest): Observable<void | ApiErrorResponse> {
         const url = `${environment.apiUrl}/vault/write`;
-        debugLog("token de trabajo:" + sessionStorage.getItem("sessionToken"));
         return this.http.put<void>(url, vaultData, { headers: this.getHeaders() }).pipe(
             catchError((error) => {
                 const apiError: ApiErrorResponse = this.generateApiError(error);
@@ -39,7 +39,6 @@ export class ApiService {
 
     getVaultRead(): Observable<VaultReadResponse | ApiErrorResponse> {
         const url = `${environment.apiUrl}/vault/read`;
-        debugLog("token de trabajo:" + sessionStorage.getItem("sessionToken"));
         return this.http.get<VaultReadResponse>(url, { headers: this.getHeaders() }).pipe(
             catchError((error) => {
                 const apiError: ApiErrorResponse = this.generateApiError(error);

@@ -27,4 +27,13 @@ export class CredentialListComponent implements OnInit{
     );
   }
 
+
+    testWrite() {
+        const exampleData = { key: 'exampleKey', value: 'exampleValue' };
+        this.vaultService.write().subscribe(
+            response => console.log('Write success:', response),
+            error => console.error('Write error:', error)
+        );
+    }
+
 }

@@ -6,8 +6,11 @@ import { ApiService } from "./api.service";
 import { catchError, map, Observable, throwError } from "rxjs";
 import { VaultReadResponse } from "../models/api/vault-read-response";
 import { ApiErrorResponse } from "../models/api/api-error-response";
-import {deserialize, plainToClass, plainToInstance} from 'class-transformer';
+import {deserialize, plainToClass, plainToInstance, serialize} from 'class-transformer';
 import {debugLog} from "./shared.service";
+import {AuthLoginRequest} from "../models/api/auth-login-request";
+import {decrypt, encrypt, setRepassword} from "./crypto.service";
+import {VaultWriteRequest} from "../models/api/vault-write-request";
 
 @Injectable({
     providedIn: 'root'
@@ -20,11 +23,19 @@ export class VaultService {
             map((response) => {
                 const vaultBase64: string = (response as VaultReadResponse).vaultContent;
                 let vault: VaultDto;
-
+                sessionStorage.setItem("lastUpdateTimestamp", (response as VaultReadResponse).lastUpdateTimestamp);
                 if (!vaultBase64 || vaultBase64 === "") {
                     vault = this.createEmptyVault();
                 } else {
                     let vaultString: string = atob(vaultBase64);
+                    //Provisional para test:
+                    let request: AuthLoginRequest;
+                    const password = sessionStorage.getItem("password");
+                    debugLog(vaultString);
+                    if(password) vaultString = decrypt(vaultString, password);
+
+
+
                     vault = deserialize(VaultDto, vaultString);
                     //vault = instanceToClass(VaultDto, vaultString);
                 }
@@ -38,14 +49,24 @@ export class VaultService {
         );
     }
     public write(): Observable<void> {
-        const vault = this.getVaultFromSession();
-        if (!vault) {
-            return throwError(() => new Error('vault not found'));
-        }
-        const vaultString: any = JSON.stringify(vault.toJSON());
+        const vault:any = this.getVaultFromSession();
+        let vaultString:string= serialize(vault);
+
+
+
+
+        const password = sessionStorage.getItem("password");
+        debugLog(password);
+        if(password) vaultString = encrypt(vaultString, password);
+
+
         const vaultBase64: string = btoa(vaultString);
 
-        return this.apiService.putVaultWrite(vaultBase64).pipe(
+        const lastUpdateTimestamp:string = sessionStorage.getItem("lastUpdateTimestamp") || "";
+        debugLog(lastUpdateTimestamp);
+        const request:VaultWriteRequest = new VaultWriteRequest(vaultBase64, lastUpdateTimestamp);
+
+        return this.apiService.putVaultWrite(request).pipe(
             map(() => undefined),
             catchError((error: ApiErrorResponse) => {
                 return throwError(() => error);
@@ -169,11 +190,7 @@ export class VaultService {
     }
 
     private setVaultToSession(vault: VaultDto): void {
-        if (!vault) {
-            console.error("Intento de guardar un vault nulo o indefinido en sessionStorage.");
-            return;
-        }
-        sessionStorage.setItem('vault', JSON.stringify(vault.toJSON()));
+        sessionStorage.setItem('vault', serialize(vault));
     }
 
     private createEmptyVault(): VaultDto {

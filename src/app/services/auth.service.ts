@@ -6,6 +6,7 @@ import {AuthLoginRequest} from "../models/api/auth-login-request";
 import {AuthLoginResponse} from "../models/api/auth-login-response";
 import {ApiErrorResponse} from "../models/api/api-error-response";
 import {debugLog, SharedService} from "./shared.service";
+import {setRepassword} from "./crypto.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +19,17 @@ export class AuthService {
 
 
   public login(form: LoginForm): Observable<void> {
-    const request: AuthLoginRequest = new AuthLoginRequest(form.email, form.repassword);
+    const request = new AuthLoginRequest(form.email, setRepassword(form.password));
+    //const request = new AuthLoginRequest(form.email, form.repassword);
     return this.apiService.postAuthLogin(request).pipe(
       tap((response) => {
-        sessionStorage .setItem('userToken', (response as AuthLoginResponse).sessionToken);
+        sessionStorage.setItem('password', form.password);
+        sessionStorage.setItem('rePassword', setRepassword(form.password));
+        sessionStorage.setItem('userToken', (response as AuthLoginResponse).sessionToken);
       }),
       map(() => undefined),
       catchError((error) => {
+        sessionStorage .removeItem('password');
         sessionStorage .removeItem('userToken');
         return throwError(() => error); // Propagamos el error sin procesar
       })

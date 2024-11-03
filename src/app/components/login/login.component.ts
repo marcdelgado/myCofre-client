@@ -9,6 +9,7 @@ import * as fontAwesomeIcons from '@fortawesome/free-solid-svg-icons';
 import {environment} from "../../../environments/environment";
 import {AuthService} from "../../services/auth.service";
 import {SharedService} from "../../services/shared.service";
+import {LoginForm} from "../../models/forms/login-form";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,6 @@ import {SharedService} from "../../services/shared.service";
 })
 export class LoginComponent implements OnInit {
   icons = fontAwesomeIcons;
-  loginUser: AuthDto;
   email: UntypedFormControl;
   password: UntypedFormControl;
   loginForm: UntypedFormGroup;
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private router: Router
   ) {
-    this.loginUser = new AuthDto('', '', '', '');
 
     this.email = new UntypedFormControl('', [
       Validators.required,
@@ -55,11 +54,10 @@ export class LoginComponent implements OnInit {
     let responseOK: boolean = false;
     let errorResponse: any;
 
-    this.loginUser.email = this.email.value;
-    this.loginUser.repassword = this.password.value;
+    const login: LoginForm = new LoginForm(this.email.value, this.password.value);
 
     this.authService
-      .login(this.loginUser)
+      .login(login)
       .pipe(
         finalize(async () => {
           await this.sharedService.managementToast(
