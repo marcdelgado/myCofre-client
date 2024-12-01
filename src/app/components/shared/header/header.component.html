@@ -49,7 +49,7 @@
       <li><a routerLink="/category-list" routerLinkActive="active">
         <fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CATEGORIES' | translate }}</span>
       </a></li>
-      <li><a routerLink="/sync" routerLinkActive="active">
+      <li><a (click)="syncVault()">
         <fa-icon [icon]="faArrowsRotate"></fa-icon><span>{{ 'HEADER.SYNC' | translate }}</span>
       </a></li>
     </ul>
@@ -57,7 +57,7 @@
       <li><a routerLink="/profile" routerLinkActive="active">
         <fa-icon [icon]="faUser"></fa-icon><span>{{ 'HEADER.USER_PROFILE' | translate }}</span>
       </a></li>
-      <li><a routerLink="/password" routerLinkActive="active">
+      <li><a routerLink="/change-password" routerLinkActive="active">
         <fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CHANGE_PASSWORD' | translate }}</span>
       </a></li>
     </ul>

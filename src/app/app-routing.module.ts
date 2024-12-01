@@ -7,11 +7,14 @@ import {CredentialDetailComponent} from "./components/credential-detail/credenti
 import {CategoryListComponent} from "./components/category-list/category-list.component";
 import {CategoryDetailComponent} from "./components/category-detail/category-detail.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {HomeComponent} from "./components/home/home.component";
+import {UserProfileComponent} from "./components/user-profile/user-profile.component";
+import {ChangePasswordComponent} from "./components/change-password/change-password.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'credential-list', pathMatch: 'full'
+    redirectTo: 'home', pathMatch: 'full'
   },
   {
     path: 'login',
@@ -22,12 +25,17 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'credential-list',
     component: CredentialListComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'credential/:id',
+    path: 'credential-detail',
     component: CredentialDetailComponent,
     canActivate: [AuthGuard]
   },
@@ -37,8 +45,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'category/:id',
+    path: 'category-detail',
     component: CategoryDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
     canActivate: [AuthGuard]
   }
 ];

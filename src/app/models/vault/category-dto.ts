@@ -10,12 +10,11 @@ export class CategoryDto {
   name: string;
 
   @Expose()
-  @Type(() => CredentialDto)
-  credentials: CredentialDto[] = [];
+  credentials: string[] = [];
 
   constructor(
       name: string,
-      credentials: CredentialDto[] = [],
+      credentials: string[] = [],
       id?: string
   ) {
     this.name = name;
@@ -27,7 +26,7 @@ export class CategoryDto {
     return {
       id: this.id,
       name: this.name,
-      credentials: this.credentials.map(credential => credential.id),
+      credentials: this.credentials,
     };
   }
 }

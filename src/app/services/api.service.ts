@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiErrorResponse} from "../models/api/api-error-response";
-import {catchError, Observable, tap, throwError} from "rxjs";
+import {catchError, map, Observable, tap, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {VaultReadResponse} from "../models/api/vault-read-response";
@@ -56,6 +56,9 @@ export class ApiService {
     putUserSignup(signupData: UserSignupRequest): Observable<void | ApiErrorResponse> {
         const url = `${environment.apiUrl}/user/signup`;
         return this.http.put<void>(url, signupData).pipe(
+            tap((response)=>{
+                console.log("hola");
+            }),
             catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
                 return throwError(() => apiError);
@@ -64,7 +67,7 @@ export class ApiService {
     }
 
     patchUserRequestDelete(requestData: UserRequestDeleteRequest): Observable<void | ApiErrorResponse> {
-        const url = `${environment.apiUrl}/user/request-delete`;
+        const url = `${environment.apiUrl}/user/requestDelete`;
         return this.http.patch<void>(url, requestData, {headers: this.getHeaders()}).pipe(
             catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
@@ -76,6 +79,7 @@ export class ApiService {
     patchUserEdit(editData: UserEditRequest): Observable<void | ApiErrorResponse> {
         const url = `${environment.apiUrl}/user/edit`;
         return this.http.patch<void>(url, editData, {headers: this.getHeaders()}).pipe(
+            tap(() => console.log('Solicitud exitosa: Datos enviados correctamente.')), // Log en caso de éxito
             catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
                 return throwError(() => apiError);
@@ -84,7 +88,7 @@ export class ApiService {
     }
 
     patchUserConfirmDelete(confirmData: UserConfirmDeleteRequest): Observable<void | ApiErrorResponse> {
-        const url = `${environment.apiUrl}/user/confirm-delete`;
+        const url = `${environment.apiUrl}/user/confirmDelete`;
         return this.http.patch<void>(url, confirmData, {headers: this.getHeaders()}).pipe(
             catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
@@ -119,8 +123,7 @@ export class ApiService {
         const url = `${environment.apiUrl}/auth/login`;
         return this.http.post<AuthLoginResponse>(url, loginData).pipe(
             tap((response: AuthLoginResponse) => {
-                sessionStorage.setItem("sessionToken", response.sessionToken!);
-                debugLog("token devuelto:" + sessionStorage.getItem("sessionToken"));
+              this.setSessionToken(response.sessionToken!);
             }),catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
                 return throwError(() => apiError);
@@ -129,17 +132,24 @@ export class ApiService {
     }
 
     patchChangeRepassword(repasswordData: AuthChangeRepasswordRequest): Observable<void | ApiErrorResponse> {
-        const url = `${environment.apiUrl}/auth/change-repassword`;
-        return this.http.patch<void>(url, repasswordData, {headers: this.getHeaders()}).pipe(
+        const url = `${environment.apiUrl}/auth/changeRepassword`;
+        return this.http.patch<void | ApiErrorResponse>(url, repasswordData, { headers: this.getHeaders() }).pipe(
+            tap((response)=>{
+                console.log("hola");
+            }),
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
+                console.error('Error en la API:', error);
+                const apiError: ApiErrorResponse = {
+                    errorCode: error.status || 'UNKNOWN',
+                    description: error.message || 'Error desconocido en la API'
+                };
                 return throwError(() => apiError);
             })
         );
     }
 
     getAuthGetLoginAttempts(): Observable<AuthGetLoginAttemptsResponse | ApiErrorResponse> {
-        const url = `${environment.apiUrl}/auth/get-login-attempts`;
+        const url = `${environment.apiUrl}/auth/getLoginAttempts`;
         return this.http.get<AuthGetLoginAttemptsResponse>(url, {headers: this.getHeaders()}).pipe(
             catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
@@ -165,10 +175,18 @@ export class ApiService {
 
     private getHeaders(): HttpHeaders {
         let headers = new HttpHeaders();
-        if (sessionStorage.getItem("sessionToken")) {
-            headers = headers.set('Authorization', `Bearer ${sessionStorage.getItem("sessionToken")}`);
+        if (this.getSessionToken()) {
+            headers = headers.set('Authorization', `Bearer ${this.getSessionToken()}`);
         }
         return headers;
     }
+
+  private setSessionToken(token:string):void {
+    sessionStorage.setItem("apiService__sessionToken", token);
+  }
+
+  private getSessionToken():string {
+    return sessionStorage.getItem("apiService__sessionToken")||"";
+  }
 
 }

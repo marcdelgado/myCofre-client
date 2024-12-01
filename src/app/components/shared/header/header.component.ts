@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
+import {VaultService} from "../../../services/vault.service";
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,10 @@ export class HeaderComponent  implements OnInit{
   currentLanguagePlaceholder: string = "Español";
 
   //https://mugan86.medium.com/internacionalizaci%C3%B3n-en-un-proyecto-angular-ngx-translate-1-3-9331c7509d12
-  constructor(private translateService: TranslateService, public authService: AuthService, private router: Router) {
+  constructor(private translateService: TranslateService,
+              public authService: AuthService,
+              private router: Router,
+              private vaultService: VaultService) {
     this.translateService.setDefaultLang(this.selectedLanguage);
     this.translateService.use(this.selectedLanguage);
     this.currentLanguagePlaceholder = this.translateService.instant('HOME.SPANISH');
@@ -78,5 +82,18 @@ export class HeaderComponent  implements OnInit{
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  syncVault(): void {
+    this.vaultService.sync().subscribe({
+      next: () => {
+        console.log('Vault sincronizado correctamente.');
+        alert('Sincronización completada.');
+      },
+      error: (err) => {
+        console.error('Error al sincronizar el vault:', err);
+        alert('Error durante la sincronización.');
+      }
+    });
   }
 }

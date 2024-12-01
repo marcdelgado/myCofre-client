@@ -55,7 +55,7 @@ export class SharedService {
     }
   }
 
-  printResponseError(error: ResponseError): void {
+  responseErrorLog(error: ResponseError): void {
     console.error('path:', error.path);
     console.error('timestamp:', error.timestamp);
     console.error('message:', error.message);
@@ -63,7 +63,7 @@ export class SharedService {
     console.error('statusCode:', error.statusCode);
   }
 
-  printErrorMessage(error: any): void {
+  errorLog(error: any): void {
     console.error(error);
   }
 

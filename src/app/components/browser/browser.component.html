@@ -1,0 +1,7 @@
+<form (submit)="onSearch($event)">
+    <mat-form-field appearance="fill">
+        <mat-label>Buscar</mat-label>
+        <input matInput type="text" [(ngModel)]="searchTerm" name="search" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Buscar</button>
+</form>

@@ -1,58 +1,62 @@
-<main class="content-wrapper">
-  <p>login works!</p>
 
-  <fa-icon [icon]="icons.faGlobe"></fa-icon>
-  <fa-icon [icon]="icons.faFloppyDisk"></fa-icon>
+<div class="wrapper">
 
-  <!--
+  <header class="header">
+    <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
+  </header>
 
-  https://www.flaticon.com/free-icon/treasure_1007354?term=chest&related_id=1007354
-  https://www.flaticon.com/free-icon/chest_8339629?term=chest&page=1&position=92&origin=tag&related_id=8339629
+  <main class="main">
+    <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+    <!-- FORMULARIO DE LOGIN -->
+    <form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="login-form">
+      <!-- Campo 'email' -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'LOGIN.USER' | translate }}</mat-label>
+        <input matInput formControlName="email" id="email" type="email" />
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          {{ 'WARNS.FIELD_REQUIRED' | translate }}
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+          {{ 'WARNS.FIELD_EMAIL_FORMAT' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-  -->
-  <div style="margin-left: auto; margin-right: auto">
-    <p id="loginFeedback"></p>
-  </div>
-  <div>
-    <h1>Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <div>
-        <label for="email">{{ 'LOGIN.USER' | translate }}: </label>
-        <input type="email" [formControl]="email" />
-      </div>
+      <!-- Campo 'password' -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
+        <input matInput formControlName="password" id="password" type="password" />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          {{ 'WARNS.FIELD_REQUIRED' | translate }}
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+          {{ 'WARNS.FIELD_CHARS_6_64' | translate }}
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">
+          {{ 'WARNS.FIELD_CHARS_6_64' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-      <div>
-        <label for="password">{{ 'LOGIN.PASSWORD' | translate }}: </label>
-        <input type="password" [formControl]="password" />
-      </div>
-
-      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+      <!-- Botón de login -->
+      <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!loginForm.valid"
+              type="submit"
+              class="full-width"
+      >
+        {{ 'LOGIN.BUT_LOGIN' | translate }}
+      </button>
     </form>
-  </div>
 
-  <div *ngIf="email.errors">
-  <span
-    style="color: red"
-    *ngIf="email.errors && (email.touched || email.dirty)"
-  >
-    <span *ngIf="email.errors['required']">Email is required</span>
-    <div *ngIf="email.errors['pattern']">Email not a valid format.</div>
-  </span>
-  </div>
+    <!-- Enlace de registro -->
+    <p class="signup-link">
+      {{ 'LOGIN.NO_SIGNED' | translate }}
+      <a routerLink="/signup">{{ 'LOGIN.LINK_SIGNUP' | translate }}</a>
+    </p>
+  </main>
 
-  <div *ngIf="password.errors">
-  <span
-    style="color: red"
-    *ngIf="password.errors && (password.touched || password.dirty)"
-  >
-    <span *ngIf="password.errors['required']">Password is required</span>
-    <span *ngIf="password.errors['minlength']"
-    >Password must be greater tha 8 characters</span
-    >
-    <span *ngIf="password.errors['maxlength']"
-    >Password can be max 16 characters long</span
-    >
-  </span>
-  </div>
-</main>
 
+  <footer class="footer">
+    <p>Esto es el footer</p>
+  </footer>
+</div>

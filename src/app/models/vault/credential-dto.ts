@@ -16,8 +16,7 @@ export class CredentialDto {
   password: string;
 
   @Expose()
-  @Type(() => CategoryDto)
-  categories: CategoryDto[] = [];
+  categories: string[] = [];
 
   @Expose()
   id: string;
@@ -27,7 +26,7 @@ export class CredentialDto {
       serviceUrl: string,
       username: string,
       password: string,
-      categories: CategoryDto[] = [],
+      categories: string[] = [],
       id?: string
   ) {
     this.serviceName = serviceName;
@@ -44,7 +43,7 @@ export class CredentialDto {
       serviceUrl: this.serviceUrl,
       username: this.username,
       password: this.password,
-      categories: this.categories.map(category => category.id),
+      categories: this.categories,
       id: this.id
     };
   }

@@ -1,1 +1,50 @@
-<p>category-list works!</p>
+<div class="credential-list">
+  <div *ngIf="currentView === 'home'">
+  <mat-selection-list>
+  <mat-list-option
+    *ngFor="let category of dataSource.data"
+    [value]="category.id"
+    [selected]="category.selected"
+    (click)="onSelectionChange(category.id)">
+    {{ category.name }}
+  </mat-list-option>
+</mat-selection-list>
+</div>
+
+<div *ngIf="currentView === 'category-list'">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Columna de selección -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="toggleSelectAll($event)"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox [(ngModel)]="row.selected" (ngModelChange)="toggleRowSelection(row)"> </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Servicio </th>
+      <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-button (click)="viewDetails(row.id)">Ver Detalle</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="actions">
+    <button (click)="selectAll()">Seleccionar Todo</button>
+    <button (click)="deselectAll()">Deseleccionar Todo</button>
+    <button (click)="deleteSelected()">Eliminar Seleccionados</button>
+    <button (click)="editSelected()" [disabled]="selectedCategories.size !== 1">Editar Seleccionado</button>
+    <button (click)="addCredential()">Añadir Elemento</button>
+  </div>
+</div>
+</div>

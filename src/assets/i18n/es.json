@@ -1,6 +1,10 @@
 {
+  "HTML":{
+    "TITLE": "myCofre - Gestor de Credenciales"
+  },
+
   "HOME": {
-    "TITLE": "Ejemplo de Proyecto Angular con i18n (Internacionalizatión)"
+    "TITLE": "myCofre - Gestor de Credenciales"
   },
 
   "LANGUAGE": {
@@ -19,8 +23,25 @@
     "LOGOUT": "Cerrar sesión"
   },
 
+  "FOOTER": {
+
+  },
+
   "LOGIN": {
+    "TITLE": "Iniciar sesión",
     "USER" : "Usuario",
-    "PASSWORD": "Contraseña"
+    "PASSWORD": "Contraseña",
+    "BUT_LOGIN": "Iniciar sesión",
+    "NO_SIGNED": "¿Todavía no estás registrado?",
+    "LINK_SIGNUP": "Date de alta"
+
+  },
+
+  "WARNS": {
+    "FIELD_REQUIRED": "Campo obligatorio.",
+    "FIELD_EMAIL_FORMAT": "Campo obligatorio.",
+    "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres"
   }
+
+
 }

@@ -1,7 +1,5 @@
-<app-header class="app-header"></app-header>
+<app-header *ngIf="!isHeaderExcluded()"></app-header>
 
-<div class="app-main">
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 
-<app-footer class="app-footer"></app-footer>
+<app-footer *ngIf="!isFooterExcluded()"></app-footer>
