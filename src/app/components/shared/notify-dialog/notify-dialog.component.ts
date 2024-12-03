@@ -4,23 +4,19 @@ import {MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
-  selector: 'app-confirm-dialog',
+  selector: 'app-notify-dialog',
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
-  templateUrl: './confirm-dialog.component.html',
+  templateUrl: './notify-dialog.component.html',
   styleUrl: './notify-dialog.component.scss'
 })
-export class ConfirmDialogComponent {
+export class NotifyDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
+    public dialogRef: MatDialogRef<NotifyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { message: string }
   ) {}
 
   onConfirm(): void {
     this.dialogRef.close(true);
-  }
-
-  onCancel(): void {
-    this.dialogRef.close(false);
   }
 }

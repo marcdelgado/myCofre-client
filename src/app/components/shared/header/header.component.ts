@@ -6,7 +6,7 @@ import {
   faAddressCard,
   faUser,
   faTags,
-  faArrowRightFromBracket, faArrowsRotate, faLanguage, faGlobe, faPlus
+  faArrowRightFromBracket, faArrowsRotate, faLanguage, faGlobe, faPlus, faHouse
 } from "@fortawesome/free-solid-svg-icons";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
@@ -96,4 +96,6 @@ export class HeaderComponent  implements OnInit{
       }
     });
   }
+
+  protected readonly faHouse = faHouse;
 }

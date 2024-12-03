@@ -1,0 +1,29 @@
+
+<div class="request-delete-content">
+
+  <header class="header">
+    <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
+  </header>
+
+  <main class="main">
+    <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+    <!-- FORMULARIO DE LOGIN -->
+  <form (ngSubmit)="onSubmit()" #deleteForm="ngForm" class="login-form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required />
+      <mat-error *ngIf="true">
+        {{ 'WARNS.FIELD_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="deleteForm.invalid">
+      Enviar
+    </button>
+  </form>
+  </main>
+
+  <footer class="footer">
+    <p>Esto es el footer</p>
+  </footer>
+</div>

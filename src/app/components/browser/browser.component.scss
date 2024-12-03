@@ -1,0 +1,18 @@
+.browser-container {
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  padding: 1rem; /* Opcional: Agregar espacio alrededor */
+
+  form {
+    display: flex; /* Usar flexbox para organizar los elementos */
+    align-items: center;
+    gap: 1rem; /* Espacio entre el campo de texto y el botón */
+
+    .full-width {
+      flex: 1; /* Asegura que el input ocupe todo el espacio posible */
+    }
+
+    button {
+      flex: 0 0 auto; /* El botón mantiene su tamaño natural */
+    }
+  }
+}

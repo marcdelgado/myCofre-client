@@ -1,5 +1,5 @@
 
-<div class="wrapper">
+<div class="login-content">
 
   <header class="header">
     <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
@@ -52,6 +52,11 @@
     <p class="signup-link">
       {{ 'LOGIN.NO_SIGNED' | translate }}
       <a routerLink="/signup">{{ 'LOGIN.LINK_SIGNUP' | translate }}</a>
+    </p>
+    <p class="signup-link">
+      {{ 'LOGIN.FORGOTTEN_1' | translate }}
+      <a routerLink="/request-delete">{{ 'LOGIN.LINK_DELETE' | translate }}</a>
+      {{ 'LOGIN.FORGOTTEN_2' | translate }}
     </p>
   </main>
 

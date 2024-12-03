@@ -10,6 +10,9 @@ import {AuthGuard} from "./guards/auth.guard";
 import {HomeComponent} from "./components/home/home.component";
 import {UserProfileComponent} from "./components/user-profile/user-profile.component";
 import {ChangePasswordComponent} from "./components/change-password/change-password.component";
+import {ActivateComponent} from "./components/activate/activate.component";
+import {RequestDeleteComponent} from "./components/request-delete/request-delete.component";
+import {DeleteComponent} from "./components/delete/delete.component";
 
 const routes: Routes = [
   {
@@ -23,6 +26,18 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'activate',
+    component: ActivateComponent
+  },
+  {
+    path: 'request-delete',
+    component: RequestDeleteComponent
+  },
+  {
+    path: 'delete',
+    component: DeleteComponent
   },
   {
     path: 'home',

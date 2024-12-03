@@ -8,7 +8,9 @@
   </div>
 
   <div class="logo-wrapper">
-    <img class="logo-desktop" src="../../../../assets/images/logo-mobile.webp" alt=""/>
+    <a routerLink="/home">
+      <img class="logo-desktop" src="../../../../assets/images/logo-mobile.webp" alt="Logo" />
+    </a>
   </div>
 
 
@@ -43,6 +45,9 @@
 
   <nav class="functionMenu">
     <ul class="vault">
+      <li><a routerLink="/home" routerLinkActive="active">
+        <fa-icon [icon]="faHouse"></fa-icon><span>{{ 'HEADER.HOME' | translate }}</span>
+      </a></li>
       <li><a routerLink="/credential-list" routerLinkActive="active">
         <fa-icon [icon]="faAddressCard"></fa-icon><span>{{ 'HEADER.CREDENTIALS' | translate }}</span>
       </a></li>

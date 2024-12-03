@@ -8,6 +8,9 @@ import {UserSignupRequest} from "../models/api/user-signup-request";
 import {SignupForm} from "../models/forms/signup-form";
 import * as CryptoJS from "./crypto.service";
 import {ApiErrorResponse} from "../models/api/api-error-response";
+import {UserActivateRequest} from "../models/api/user-activate-request";
+import {UserRequestDeleteRequest} from "../models/api/user-request-delete-request";
+import {UserConfirmDeleteRequest} from "../models/api/user-confirm-delete-request";
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +65,51 @@ export class UserService {
                 return throwError(() => new Error(errorMessage));            })
         );
     }
+
+  activate(email: string, token: string): Observable<void> {
+    const request: UserActivateRequest = new UserActivateRequest(email, token);
+
+    return this.apiService.patchUserActivate(request).pipe(
+      map(response => {
+        return; // Emitimos un resultado vacío en caso de éxito
+      }),
+      catchError((error: ApiErrorResponse) => {
+        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
+        console.error(errorMessage);
+        return throwError(() => new Error(errorMessage)); // Emitimos un error con un mensaje más comprensible
+      })
+    );
+  }
+
+  requestDelete(email: string): Observable<void> {
+    const request: UserRequestDeleteRequest = new UserRequestDeleteRequest(email, "");
+
+    return this.apiService.patchUserRequestDelete(request).pipe(
+      map(response => {
+        return; // Emitimos un resultado vacío en caso de éxito
+      }),
+      catchError((error: ApiErrorResponse) => {
+        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
+        console.error(errorMessage);
+        return throwError(() => new Error(errorMessage)); // Emitimos un error con un mensaje más comprensible
+      })
+    );
+  }
+
+  delete(email: string, token: string): Observable<void> {
+      const request: UserConfirmDeleteRequest = new UserRequestDeleteRequest(email, token);
+
+    return this.apiService.patchUserConfirmDelete(request).pipe(
+      map(response => {
+        return; // Emitimos un resultado vacío en caso de éxito
+      }),
+      catchError((error: ApiErrorResponse) => {
+        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
+        console.error(errorMessage);
+        return throwError(() => new Error(errorMessage)); // Emitimos un error con un mensaje más comprensible
+      })
+    );
+  }
 
   private isUserViewResponse(obj: any): obj is { name: string; surname: string; email: string } {
     return obj && typeof obj.name === 'string' && typeof obj.surname === 'string' && typeof obj.email === 'string';

@@ -46,6 +46,7 @@ export class CredentialDetailComponent implements OnInit {
 
     // Cargar categorías
     this.loadCategories();
+    this.selectedCategories = [...this.credentialForm.value.categories];
 
     // Recuperar la ruta de origen desde el servicio
     this.from = this.navigationStateService.getFromRoute();
@@ -131,7 +132,7 @@ export class CredentialDetailComponent implements OnInit {
   }
 
 
-  selectedCategories: string[] = []; // IDs de categorías seleccionadas como strings
+  selectedCategories: string[] = [];
 
   toggleCategorySelection(categoryId: string): void {
     const index = this.selectedCategories.indexOf(categoryId);
@@ -140,8 +141,9 @@ export class CredentialDetailComponent implements OnInit {
     } else {
       this.selectedCategories.push(categoryId); // Selecciona si no está seleccionado
     }
-    // Actualiza el control del formulario
-    this.credentialForm.get('categories')?.setValue(this.selectedCategories);
+    // Actualiza el control de formulario
+    this.credentialForm.get('categories')?.setValue([...this.selectedCategories]);
+
   }
 
 }

@@ -122,4 +122,19 @@ export class CategoryDetailComponent {
     this.navigationStateService.clearFromRoute();
   }
 
+
+  selectedCredentials: string[] = [];
+
+  toggleCredentialSelection(credentialId: string): void {
+    const index = this.selectedCredentials.indexOf(credentialId);
+    if (index >= 0) {
+      this.selectedCredentials.splice(index, 1); // Deselecciona si ya está seleccionado
+    } else {
+      this.selectedCredentials.push(credentialId); // Selecciona si no está seleccionado
+    }
+    // Actualiza el control de formulario
+    this.categoryForm.get('credentials')?.setValue([...this.selectedCredentials]);
+  }
+
+
 }

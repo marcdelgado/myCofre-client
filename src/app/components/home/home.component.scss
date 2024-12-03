@@ -1,5 +1,28 @@
 .home-container {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  flex-direction: column; /* Organización vertical */
+  height: 100vh; /* Asegura que ocupe toda la altura del viewport */
+
+  .browser-container {
+    flex: 0 0 auto; /* Mantiene su tamaño natural */
+    width: 100%; /* Ocupa todo el ancho */
+  }
+
+  .content-container {
+    flex: 1; /* Ocupa el resto del espacio */
+    display: flex;
+    flex-direction: row; /* Organización horizontal */
+    gap: 1rem; /* Espacio entre los elementos */
+    padding: 1rem; /* Opcional: Agregar padding interno */
+
+    .category-list-container {
+      flex: 1; /* Ocupa el 25% del espacio disponible */
+      max-width: 25%;
+    }
+
+    .credential-list-container {
+      flex: 3; /* Ocupa el 75% del espacio disponible */
+      max-width: 75%;
+    }
+  }
 }

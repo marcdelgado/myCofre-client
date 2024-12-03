@@ -1,64 +1,73 @@
-<div class="signup-container">
-    <h1>Signup</h1>
+<div class="signup-content">
+  <header class="header">
+    <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
+  </header>
+
+  <main class="main">
+    <h1>{{ 'SIGNUP.TITLE' | translate }}</h1>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <!-- Nombre -->
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Nombre</mat-label>
+            <mat-label>{{ 'SIGNUP.NAME' | translate }}</mat-label>
             <input matInput formControlName="name" />
             <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
-                El nombre es obligatorio.
+              {{ 'WARNS.FIELD_REQUIRED' | translate }}
             </mat-error>
         </mat-form-field>
 
         <!-- Apellido -->
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Apellido</mat-label>
+            <mat-label>{{ 'SIGNUP.SURNAME' | translate }}</mat-label>
             <input matInput formControlName="surname" />
             <mat-error *ngIf="signupForm.get('surname')?.hasError('required')">
-                El apellido es obligatorio.
+              {{ 'WARNS.FIELD_REQUIRED' | translate }}
             </mat-error>
         </mat-form-field>
 
         <!-- Correo electrónico -->
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Correo electrónico</mat-label>
+            <mat-label>{{ 'SIGNUP.USER' | translate }}</mat-label>
             <input matInput type="email" formControlName="email" />
             <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
-                El correo electrónico es obligatorio.
+              {{ 'WARNS.FIELD_REQUIRED' | translate }}
             </mat-error>
             <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
-                Introduzca un correo electrónico válido.
+              {{ 'WARNS.FIELD_REQUIRED' | translate }}
             </mat-error>
         </mat-form-field>
 
         <!-- Contraseña -->
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Contraseña</mat-label>
+            <mat-label>{{ 'SIGNUP.PASSWORD' | translate }}</mat-label>
             <input matInput type="password" formControlName="password" />
             <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
-                La contraseña es obligatoria.
+              {{ 'WARNS.FIELD_REQUIRED' | translate }}
             </mat-error>
             <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
-                La contraseña debe tener al menos 6 caracteres.
+              {{ 'WARNS.FIELD_CHARS_6_64' | translate }}
             </mat-error>
         </mat-form-field>
 
         <!-- Confirmar Contraseña -->
         <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Confirmar Contraseña</mat-label>
+            <mat-label>{{ 'SIGNUP.PASSWORD_CONFIRM' | translate }}</mat-label>
             <input matInput type="password" formControlName="confirmPassword" />
-            <mat-error *ngIf="signupForm.hasError('passwordsDoNotMatch') && signupForm.get('confirmPassword')?.touched">
-                Las contraseñas no coinciden.
+            <mat-error *ngIf="signupForm.hasError('passwordsMismatch') && signupForm.get('confirmPassword')?.touched">
+              {{ 'WARNS.PASSWORD_NOT_MATCH' | translate }}
             </mat-error>
         </mat-form-field>
 
 
         <!-- Botón de Signup -->
         <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
-            Registrarse
+          {{ 'SIGNUP.SUBMIT' | translate }}
         </button>
 
         <!-- Error general -->
         <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
     </form>
+  </main>
+  <footer class="footer">
+    <p>Esto es el footer</p>
+  </footer>
 </div>

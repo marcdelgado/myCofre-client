@@ -1,6 +1,29 @@
 @use "sass:math";
 @import '../../../../styles/variables';
 
+
+/* Normaliza los estilos de los enlaces */
+nav.functionMenu ul li a {
+  color:$theme-header-fg-color-hover; /* Color base */
+  text-decoration: none; /* Sin subrayado */
+}
+
+nav.functionMenu ul li a:hover {
+  color: $theme-header-fg-color-hover; /* Color al hacer hover */
+}
+
+/* Aplica los mismos estilos al enlace de syncVault */
+nav.functionMenu ul li a[routerLink],
+nav.functionMenu ul li a:not([routerLink]) {
+  color: inherit; /* Usa el color definido en los estilos base */
+}
+
+nav.functionMenu ul li a[routerLink]:hover,
+nav.functionMenu ul li a:not([routerLink]):hover {
+  color: $theme-header-fg-color-hover;
+}
+
+
 :host{
 
   color: $theme-header-fg-color;
@@ -35,12 +58,13 @@
     height: calc(60px + 15px);
     padding: 5px;
     font-size: 1.3rem;
+    margin-bottom: 20px;
 
     .content-wrapper {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      
+
 
       align-items: center;
       width: 100%;
@@ -176,6 +200,7 @@
     z-index: 1;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
     width: 100%;
+    margin-bottom: 50px;
 
     /* Translucid lower menu background */
     &::before, &::after{

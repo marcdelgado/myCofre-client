@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardActions, MatCardContent, MatCardModule, MatCardTitle} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   exports: [
@@ -24,7 +25,8 @@ import {MatChipsModule} from "@angular/material/chips";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   imports: []
 })

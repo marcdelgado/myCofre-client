@@ -68,7 +68,7 @@ export class ApiService {
 
     patchUserRequestDelete(requestData: UserRequestDeleteRequest): Observable<void | ApiErrorResponse> {
         const url = `${environment.apiUrl}/user/requestDelete`;
-        return this.http.patch<void>(url, requestData, {headers: this.getHeaders()}).pipe(
+        return this.http.patch<void>(url, requestData).pipe(
             catchError((error) => {
                 let apiError: ApiErrorResponse = this.generateApiError(error);
                 return throwError(() => apiError);

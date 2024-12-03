@@ -209,6 +209,18 @@ export class CategoryListComponent {
     }
   }
 
+  onCategoryClick(categoryId: string): void {
+    const category = this.dataSource.data.find((cat) => cat.id === categoryId);
+    if (category) {
+      // Alternar selección del elemento
+      category.selected = !category.selected;
 
+      const selectedIds = this.dataSource.data
+        .filter(category => category.selected)
+        .map(category => category.id);
 
-}
+      this.filterChange.emit(selectedIds);
+    }
+  }
+
+ }

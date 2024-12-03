@@ -12,9 +12,9 @@ export class AppComponent {
   title = 'myCofre-client';
   currentRoute: string = '';
 
-  header_excludeRoutes = ['/login','/signup/'];
+  header_excludeRoutes = ['/login','/signup','/request-delete','/delete','/activate'];
 
-  footer_excludeRoutes = ['/login','/signup/'];
+  footer_excludeRoutes = ['/login','/signup','/request-delete','/delete','/activate'];
 
   constructor(private router: Router, private translate: TranslateService) {
     //Idiomas disponibles e idioma del navegador
@@ -27,6 +27,13 @@ export class AppComponent {
     this.translate.use(languageToUse).subscribe(() => {
       console.log('Traducciones cargadas.');
     });
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const navEndEvent = event as NavigationEnd;
+        this.currentRoute = navEndEvent.urlAfterRedirects;
+      });
   }
 
   ngOnInit(): void {
@@ -43,11 +50,13 @@ export class AppComponent {
 
   }
 
-  isHeaderExcluded(): boolean{
-    return this.header_excludeRoutes.includes(this.currentRoute);
+  isHeaderExcluded(): boolean {
+    return this.header_excludeRoutes.some(
+      route => this.currentRoute.includes(route));
   }
 
-  isFooterExcluded(): boolean{
-    return this.footer_excludeRoutes.includes(this.currentRoute);
+  isFooterExcluded(): boolean {
+    return this.footer_excludeRoutes.some(
+      route => this.currentRoute.includes(route));
   }
 }

@@ -1,15 +1,16 @@
 <div class="credential-list">
   <div *ngIf="currentView === 'home'">
-  <mat-selection-list>
-  <mat-list-option
-    *ngFor="let category of dataSource.data"
-    [value]="category.id"
-    [selected]="category.selected"
-    (click)="onSelectionChange(category.id)">
-    {{ category.name }}
-  </mat-list-option>
-</mat-selection-list>
-</div>
+    <div class="category-buttons">
+      <button
+        mat-button
+        type="button"
+        *ngFor="let category of dataSource.data"
+        [class.selected]="category.selected"
+        (click)="onCategoryClick(category.id)">
+        {{ category.name }}
+      </button>
+    </div>
+  </div>
 
 <div *ngIf="currentView === 'category-list'">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -40,11 +41,13 @@
   </table>
 
   <div class="actions">
-    <button (click)="selectAll()">Seleccionar Todo</button>
-    <button (click)="deselectAll()">Deseleccionar Todo</button>
-    <button (click)="deleteSelected()">Eliminar Seleccionados</button>
-    <button (click)="editSelected()" [disabled]="selectedCategories.size !== 1">Editar Seleccionado</button>
-    <button (click)="addCredential()">Añadir Elemento</button>
+    <button mat-raised-button color="primary" (click)="selectAll()">Seleccionar Todo</button>
+    <button mat-raised-button color="primary" (click)="deselectAll()">Deseleccionar Todo</button>
+    <button mat-raised-button color="warn" (click)="deleteSelected()">Eliminar Seleccionados</button>
+    <button mat-raised-button color="accent" (click)="editSelected()" [disabled]="selectedCategories.size !== 1">
+      Editar Seleccionado
+    </button>
+    <button mat-raised-button color="primary" (click)="addCredential()">Añadir Elemento</button>
   </div>
 </div>
 </div>

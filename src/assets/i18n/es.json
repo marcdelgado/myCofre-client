@@ -14,6 +14,7 @@
   },
 
   "HEADER": {
+    "HOME": "Inicio",
     "CREDENTIALS": "Credenciales",
     "CATEGORIES": "Categorías",
     "SYNC": "Sincronizar ahora",
@@ -29,18 +30,31 @@
 
   "LOGIN": {
     "TITLE": "Iniciar sesión",
-    "USER" : "Usuario",
-    "PASSWORD": "Contraseña",
+    "USER" : "E-mail",
+    "PASSWORD": "Contraseña maestra",
     "BUT_LOGIN": "Iniciar sesión",
     "NO_SIGNED": "¿Todavía no estás registrado?",
-    "LINK_SIGNUP": "Date de alta"
+    "LINK_SIGNUP": "Date de alta",
+    "LINK_DELETE": "eliminar",
+    "FORGOTTEN_1": "¿Olvidaste tu contraseña? Puedes",
+    "FORGOTTEN_2": "tu cuenta y empezar de nuevo."
+  },
 
+  "SIGNUP": {
+    "TITLE": "Crear cuenta",
+    "USER" : "E-mail",
+    "NAME" : "Nombre",
+    "SURNAME" : "Apellido",
+    "PASSWORD": "Contraseña maestra",
+    "PASSWORD_CONFIRM": "Repetir contraseña",
+    "SUBMIT": "Registrarse"
   },
 
   "WARNS": {
     "FIELD_REQUIRED": "Campo obligatorio.",
     "FIELD_EMAIL_FORMAT": "Campo obligatorio.",
-    "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres"
+    "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres",
+    "PASSWORD_NOT_MATCH": "Las contraseñas no coinciden."
   }
 
 

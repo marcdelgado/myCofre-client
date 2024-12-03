@@ -26,6 +26,10 @@ import {UserProfileComponent} from "./components/user-profile/user-profile.compo
 import {MatCardActions, MatCardContent, MatCardModule, MatCardTitle} from "@angular/material/card";
 import {MatError, MatLabel} from "@angular/material/input";
 import {ChangePasswordComponent} from "./components/change-password/change-password.component";
+import {MatChipListbox, MatChipListboxChange} from "@angular/material/chips";
+import {RequestDeleteComponent} from "./components/request-delete/request-delete.component";
+import {DeleteComponent} from "./components/delete/delete.component";
+import {ActivateComponent} from "./components/activate/activate.component";
 
 @NgModule({
     declarations: [
@@ -41,7 +45,10 @@ import {ChangePasswordComponent} from "./components/change-password/change-passw
         FooterComponent,
         BrowserComponent,
         UserProfileComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        ActivateComponent,
+        RequestDeleteComponent,
+        DeleteComponent
     ],
     imports: [
         BrowserModule,
@@ -59,6 +66,7 @@ import {ChangePasswordComponent} from "./components/change-password/change-passw
         FontAwesomeModule,
         ReactiveFormsModule,
         MaterialModule,
+        MatChipListbox
     ],
     providers: [
         provideAnimationsAsync()

@@ -1,5 +1,5 @@
 @media not ((min-width: 1200px) and (orientation: landscape)){
-  .login-content {
+  .request-delete-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,7 +48,7 @@
 
 
 @media (min-width: 1000px) {
-  .login-content {
+  .request-delete-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
