@@ -15,13 +15,13 @@ import {debugLog} from "../../services/shared.service";
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  signupForm: FormGroup; // Grupo de control para el formulario
-  isSubmitting: boolean = false; // Estado de envío
-  errorMessage: string | null = null; // Mensaje de error en caso de fallo
+  signupForm: FormGroup;
+  isSubmitting: boolean = false;
+  errorMessage: string | null = null;
 
   constructor(
-      private fb: FormBuilder, // Servicio para construir formularios reactivos
-      private userService: UserService, // Servicio para realizar la operación de registro
+      private fb: FormBuilder,
+      private userService: UserService,
       private dialog: MatDialog,
       private router: Router,
   ) {
@@ -37,19 +37,16 @@ export class SignupComponent {
   }
 
 
-  // Método para enviar el formulario
   onSubmit() {
     if (!this.signupForm.invalid) {
 
 
-    this.isSubmitting = true; // Activar el estado de envío
-    this.errorMessage = null; // Limpiar mensajes de error previos
+    this.isSubmitting = true;
+    this.errorMessage = null;
 
-    // Crear un objeto `SignupForm` con los valores del formulario
     const formValue = this.signupForm.value;
     const signupData = new SignupForm(formValue.name,formValue.surname, formValue.email, formValue.password);
 
-    // Llamar al servicio de registro
     this.userService.signup(signupData).subscribe({
       next: () => {
         this.isSubmitting = false;
@@ -60,15 +57,14 @@ export class SignupComponent {
       }
     });
   } else {
-      console.log(this.signupForm.errors); // Verificar errores a nivel de grupo
-      console.log(this.signupForm.get('confirmPassword')?.errors); // Verificar errores específicos
+      console.log(this.signupForm.errors);
+      console.log(this.signupForm.get('confirmPassword')?.errors);
 
       console.error('El formulario es inválido. Corrige los errores antes de enviar.');
   alert('El formulario contiene errores. Por favor, corrígelos antes de enviar.');
 }
   }
 
-  // Validador personalizado para verificar que las contraseñas coincidan
   private passwordsMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const newPassword = group.get('password')?.value;
     const confirmNewPassword = group.get('confirmPassword')?.value;

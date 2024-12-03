@@ -14,7 +14,7 @@ export class HomeComponent {
   handleCategoryFilter(selectedCategoryIds: string[]): void {
     if (this.credentialListComponent) {
       console.log(selectedCategoryIds);
-      this.credentialListComponent.filter(selectedCategoryIds); // Llama al filtro del CredentialListComponent
+      this.credentialListComponent.filter(selectedCategoryIds);
     }
   }
 

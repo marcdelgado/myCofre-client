@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       private router: Router,
       private vaultService: VaultService
   ) {
-    //Declaración del formulario y restricciones
     this.loginForm = this.formBuilder.group({
       email: ['', [
         Validators.required,
@@ -51,11 +50,9 @@ export class LoginComponent implements OnInit {
         this.loginForm.get('email')?.value,
         this.loginForm.get('password')?.value);
 
-    //Llamada al servicio de Login
     this.authService.login(loginForm).pipe(
         switchMap(() => {
           responseOK = true;
-          //Llamada encadenada al servicio de inicialización del vault
           return this.vaultService.init(loginForm.password);
         }),
         finalize(async () => {

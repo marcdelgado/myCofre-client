@@ -7,14 +7,14 @@ export class NavigationStateService {
   private fromRouteKey = 'navigation.fromRoute';
 
   setFromRoute(route: string): void {
-    sessionStorage.setItem(this.fromRouteKey, route); // Almacena en sessionStorage
+    sessionStorage.setItem(this.fromRouteKey, route);
   }
 
   getFromRoute(): string {
-    return sessionStorage.getItem(this.fromRouteKey) || 'home'; // Valor por defecto
+    return sessionStorage.getItem(this.fromRouteKey) || 'home';
   }
 
   clearFromRoute(): void {
-    sessionStorage.removeItem(this.fromRouteKey); // Limpia el estado si es necesario
+    sessionStorage.removeItem(this.fromRouteKey);
   }
 }

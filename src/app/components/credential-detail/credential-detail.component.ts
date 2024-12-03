@@ -26,7 +26,6 @@ export class CredentialDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Inicialización del formulario
     this.credentialForm = this.fb.group({
       serviceName: ['', Validators.required],
       serviceUrl: [''],
@@ -34,8 +33,6 @@ export class CredentialDetailComponent implements OnInit {
       password: ['', Validators.required],
       categories: [[]]
     });
-
-    // Obtener parámetros de la URL
     this.route.queryParams.subscribe(params => {
       this.action = params['action'] || 'new';
       this.credentialId = params['id'];
@@ -43,12 +40,8 @@ export class CredentialDetailComponent implements OnInit {
         this.loadCredential(this.credentialId);
       }
     });
-
-    // Cargar categorías
     this.loadCategories();
     this.selectedCategories = [...this.credentialForm.value.categories];
-
-    // Recuperar la ruta de origen desde el servicio
     this.from = this.navigationStateService.getFromRoute();
   }
 
@@ -107,7 +100,6 @@ export class CredentialDetailComponent implements OnInit {
       if (actionObservable) {
         actionObservable.subscribe({
           next: () => {
-            // Redirigir tras guardar exitosamente
             const targetRoute = this.from === 'credential-list' ? '/credential-list' : '/home';
             this.router.navigate([targetRoute]).then(() => {
               console.log('Navegación completada.');
@@ -115,7 +107,7 @@ export class CredentialDetailComponent implements OnInit {
           },
           error: (err) => {
             console.error('Error al guardar la credencial:', err);
-            alert('Ocurrió un error al guardar la credencial. Por favor, intenta de nuevo.');
+            alert('Ocurrió un error al guardar la credencial.');
           }
         });
       }
@@ -123,11 +115,8 @@ export class CredentialDetailComponent implements OnInit {
   }
 
   onCancel(): void {
-    // Redirigir a la ruta de origen
     const targetRoute = this.from === 'credential-list' ? '/credential-list' : '/home';
     this.router.navigate([targetRoute]).then(() => {});
-
-    // Limpia el estado si no quieres que persista
     this.navigationStateService.clearFromRoute();
   }
 
@@ -137,9 +126,9 @@ export class CredentialDetailComponent implements OnInit {
   toggleCategorySelection(categoryId: string): void {
     const index = this.selectedCategories.indexOf(categoryId);
     if (index >= 0) {
-      this.selectedCategories.splice(index, 1); // Deselecciona si ya está seleccionado
+      this.selectedCategories.splice(index, 1);
     } else {
-      this.selectedCategories.push(categoryId); // Selecciona si no está seleccionado
+      this.selectedCategories.push(categoryId);
     }
     // Actualiza el control de formulario
     this.credentialForm.get('categories')?.setValue([...this.selectedCategories]);

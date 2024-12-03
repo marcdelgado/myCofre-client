@@ -31,7 +31,6 @@ export class ChangePasswordComponent implements OnInit {
     }, { validator: this.passwordsMatchValidator });
   }
 
-  // Validador personalizado para verificar que las contraseñas coincidan
   private passwordsMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const newPassword = group.get('newPassword')?.value;
     const confirmNewPassword = group.get('confirmNewPassword')?.value;
@@ -42,7 +41,6 @@ export class ChangePasswordComponent implements OnInit {
     if (this.changePasswordForm.valid) {
       const formData: ChangePasswordForm = this.changePasswordForm.value;
 
-      // Ejecutar AuthService primero y luego VaultService secuencialmente
       this.authService.changeRepassword(formData).pipe(
           concatMap(() => {
             console.log('Cambio de contraseña en AuthService exitoso, llamando a VaultService...');
@@ -51,14 +49,12 @@ export class ChangePasswordComponent implements OnInit {
           catchError(err => {
             console.error('Error durante el cambio de contraseña:', err.message);
             alert('Hubo un problema al cambiar la contraseña. Por favor, inténtalo de nuevo.');
-            return of(); // Retorna un observable vacío para terminar la secuencia en caso de error
+            return of();
           })
       ).subscribe({
         next: () => {
           console.log('Contraseña actualizada y vault re-encriptado correctamente.');
           alert('¡Contraseña cambiada con éxito!');
-          // Redirigir al usuario, si es necesario:
-          // this.router.navigate(['/']);
         },
         error: (err) => {
           console.error('Error inesperado durante el flujo:', err.message);

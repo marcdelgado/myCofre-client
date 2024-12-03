@@ -58,7 +58,7 @@ export class UserProfileComponent implements OnInit {
         }
       });
     } else {
-      alert('El formulario contiene errores. Por favor, corrígelos antes de enviar.');
+      alert('El formulario contiene errores.');
     }
   }
 }

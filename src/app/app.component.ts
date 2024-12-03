@@ -17,11 +17,9 @@ export class AppComponent {
   footer_excludeRoutes = ['/login','/signup','/request-delete','/delete','/activate'];
 
   constructor(private router: Router, private translate: TranslateService) {
-    //Idiomas disponibles e idioma del navegador
     const supportedLanguages = ['en', 'es', 'ca'];
     const browserLang = navigator.language.split('-')[0] || 'en';
     console.log('Idioma del navegador detectado:', browserLang);
-    //Idioma a usar e idioma por defecto
     const languageToUse = supportedLanguages.includes(browserLang) ? browserLang : 'en';
     this.translate.setDefaultLang(languageToUse);
     this.translate.use(languageToUse).subscribe(() => {
@@ -37,10 +35,8 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    // Inicializar currentRoute con la ruta actual
     this.currentRoute = this.router.url;
 
-    // Suscribirse a eventos de navegación para actualizar currentRoute
     this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
         .subscribe((event) => {

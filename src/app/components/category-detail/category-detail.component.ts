@@ -32,8 +32,6 @@ export class CategoryDetailComponent {
       name: ['', Validators.required],
       credentials: [[]]
     });
-
-    // Obtener parámetros de la URL
     this.route.queryParams.subscribe(params => {
       this.action = params['action'] || 'new';
       this.categoryId = params['id'];
@@ -41,11 +39,7 @@ export class CategoryDetailComponent {
         this.loadCategory(this.categoryId);
       }
     });
-
-    // Cargar credenciales
     this.loadCredentials();
-
-    // Recuperar la ruta de origen desde el servicio
     this.from = this.navigationStateService.getFromRoute();
   }
 
@@ -89,10 +83,10 @@ export class CategoryDetailComponent {
       let actionObservable;
 
       if (this.action === 'new') {
-        actionObservable = this.vaultService.addCategory(categoryData); // Retorna un observable
+        actionObservable = this.vaultService.addCategory(categoryData);
       } else if (this.action === 'edit' && this.categoryId) {
         console.log('Editando categoría...');
-        actionObservable = this.vaultService.updateCategory(categoryData); // Retorna un observable
+        actionObservable = this.vaultService.updateCategory(categoryData);
       }
 
       if (actionObservable) {
@@ -128,9 +122,9 @@ export class CategoryDetailComponent {
   toggleCredentialSelection(credentialId: string): void {
     const index = this.selectedCredentials.indexOf(credentialId);
     if (index >= 0) {
-      this.selectedCredentials.splice(index, 1); // Deselecciona si ya está seleccionado
+      this.selectedCredentials.splice(index, 1);
     } else {
-      this.selectedCredentials.push(credentialId); // Selecciona si no está seleccionado
+      this.selectedCredentials.push(credentialId);
     }
     // Actualiza el control de formulario
     this.categoryForm.get('credentials')?.setValue([...this.selectedCredentials]);

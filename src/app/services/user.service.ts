@@ -22,7 +22,6 @@ export class UserService {
     return this.apiService.getUserView().pipe(
         map(response => {
           if (this.isUserViewResponse(response)) {
-            // Crear una instancia de UserProfileForm con los datos de la respuesta
             return new UserProfileForm(response.name, response.surname, response.email);
           } else {
             throw new Error('La respuesta no tiene el formato esperado.');
@@ -37,7 +36,6 @@ export class UserService {
   }
 
   saveUserProfile(form: UserProfileForm): Observable<void> {
-    // Preparar el objeto request para el backend
     const request = new UserEditRequest(form.name,form.surname, form.email);
 
     return this.apiService.patchUserEdit(request).pipe(
