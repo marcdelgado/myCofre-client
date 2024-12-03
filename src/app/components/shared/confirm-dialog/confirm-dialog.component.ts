@@ -8,7 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
   templateUrl: './confirm-dialog.component.html',
-  styleUrl: './notify-dialog.component.scss'
+  styleUrl: './confirm-dialog.component.scss'
 })
 export class ConfirmDialogComponent {
   constructor(
