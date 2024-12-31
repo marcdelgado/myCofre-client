@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import {ApiErrorResponse} from "../models/api/api-error-response";
 
 export interface ResponseError {
   statusCode: number;
@@ -85,3 +86,25 @@ export function debugLog(message: any) {
   }
 }
 
+export function extractGenericError(error: any): Error {
+  let message = 'Unknown error';
+  if (error instanceof ApiErrorResponse) {
+    message = error.message || 'An unexpected error occurred in the API';
+  }
+  else if (error instanceof HttpErrorResponse) {
+    if (error.error && typeof error.error === 'object' && 'message' in error.error) {
+      message = error.error.message || 'An unexpected error occurred in the API';
+    } else if (error.status === 0) {
+      message = 'No network connection.';
+    } else {
+      message = `HTTP Error ${error.status}: ${error.statusText}`;
+    }
+  }
+  else if (error instanceof Error) {
+    message = error.message || 'An unexpected error occurred in the application';
+  }
+  else {
+    message = String(error) || 'An unknown error occurred';
+  }
+  return new Error(message);
+}

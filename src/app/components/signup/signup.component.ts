@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {NotifyDialogComponent} from "../shared/notify-dialog/notify-dialog.component";
 import {debugLog} from "../../services/shared.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-signup',
@@ -24,6 +25,7 @@ export class SignupComponent {
       private userService: UserService,
       private dialog: MatDialog,
       private router: Router,
+      private translateService: TranslateService
   ) {
     // Inicializar el formulario con validaciones
     this.signupForm = this.fb.group({
@@ -45,15 +47,15 @@ export class SignupComponent {
     this.errorMessage = null;
 
     const formValue = this.signupForm.value;
-    const signupData = new SignupForm(formValue.name,formValue.surname, formValue.email, formValue.password);
-
+    const language = this.translateService.currentLang;
+    const signupData = new SignupForm(formValue.name,formValue.surname, formValue.email, formValue.password, language);
     this.userService.signup(signupData).subscribe({
       next: () => {
         this.isSubmitting = false;
         this.afterSignup();
       },
       error: (err: Error) => {
-        this.errorMessage = `Error al guardar los datos: ${err.message}`;
+        this.errorMessage = `Error al guarerdar los datos: ${err.message}`;
       }
     });
   } else {

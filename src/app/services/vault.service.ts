@@ -7,11 +7,12 @@ import {catchError, concatMap, map, Observable, of, switchMap, tap, throwError} 
 import {VaultReadResponse} from "../models/api/vault-read-response";
 import {ApiErrorResponse} from "../models/api/api-error-response";
 import {deserialize, serialize} from 'class-transformer';
-import {debugLog} from "./shared.service";
+import {debugLog, extractGenericError} from "./shared.service";
 import {decrypt, encrypt} from "./crypto.service";
 import {VaultWriteRequest} from "../models/api/vault-write-request";
 import sampleData from '../../test/sample1.json';
 import {AuthService} from "./auth.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -39,25 +40,13 @@ export class VaultService {
         this.setDirty(false);
       }),
       catchError((error) => {
-        // Si ocurre algún error, reseteamos el estado
         this.reset();
-        return throwError(() => error); // Propagamos el error para que pueda manejarse externamente
+        return throwError(() => extractGenericError(error)); // Propagamos el error para que pueda manejarse externamente
       })
     );
   }
 
-/*
-  public sync(): Observable<void> {
-    if (this.isDirty()) {
-      return this.write();
-    } else {
-      return new Observable<void>((observer) => {
-        // Emitimos un complete inmediato si no es necesario sincronizar
-        observer.complete();
-      });
-    }
-  }
-*/
+
   public sync(): Observable<void> {
     if (this.isDirty()) {
       return this.write().pipe(
@@ -69,7 +58,6 @@ export class VaultService {
             }
           }),
           map(() => {
-            // Devuelve void en caso de éxito
             return;
           })
       );
@@ -445,15 +433,8 @@ export class VaultService {
           })
         );
       }),
-      catchError((error: ApiErrorResponse | Error) => {
-        if (error instanceof ApiErrorResponse) {
-          const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-          console.error(errorMessage);
-          return throwError(() => new Error(errorMessage));
-        } else {
-          console.error("ERROR:", error.message || error);
-          return throwError(() => error); // Vuelve a lanzar el error si es necesario
-        }
+      catchError((error) => {
+        return throwError(() => extractGenericError(error));
       })
     );
   }
@@ -472,15 +453,8 @@ export class VaultService {
           map(() => undefined) // Completa la operación sin emitir un valor
         );
       }),
-      catchError((error: ApiErrorResponse | Error) => {
-        if (error instanceof ApiErrorResponse) {
-          const errorMessage = `ERROR ${error.errorCode}:, ${error.description}`;
-          console.error(errorMessage);
-          return throwError(() => new Error(errorMessage));
-        }else{
-          console.error("ERROR:", error.message);
-          return throwError(() => error); // Vuelve a lanzar el error si es necesario
-        }
+      catchError((error) => {
+        return throwError(() => extractGenericError(error));
       })
     );
   }

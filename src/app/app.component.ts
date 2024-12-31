@@ -55,4 +55,8 @@ export class AppComponent {
     return this.footer_excludeRoutes.some(
       route => this.currentRoute.includes(route));
   }
+
+  isComponentFullScreen(): boolean{
+    return this.isHeaderExcluded() && this.isFooterExcluded();
+  }
 }

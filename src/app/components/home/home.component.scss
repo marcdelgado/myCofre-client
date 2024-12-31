@@ -1,28 +1,57 @@
-.home-container {
+@import '../../../styles/main';
+
+:host {
+
+}
+
+.browser-container {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+#split-container {
   display: flex;
-  flex-direction: column; /* Organización vertical */
-  height: 100vh; /* Asegura que ocupe toda la altura del viewport */
+  flex: 1;
+  flex-direction: column;
+}
 
-  .browser-container {
-    flex: 0 0 auto; /* Mantiene su tamaño natural */
-    width: 100%; /* Ocupa todo el ancho */
-  }
+/* MOBILE ---------------------------------------------------------------- */
 
-  .content-container {
-    flex: 1; /* Ocupa el resto del espacio */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+
+
+  #split-container {
+    position: relative;
+    height: calc(100%); /* Contenedor ocupa toda la altura del viewport */
     display: flex;
-    flex-direction: row; /* Organización horizontal */
-    gap: 1rem; /* Espacio entre los elementos */
-    padding: 1rem; /* Opcional: Agregar padding interno */
+    flex-direction: column;
+  }
 
-    .category-list-container {
-      flex: 1; /* Ocupa el 25% del espacio disponible */
-      max-width: 25%;
+  .split {
+    overflow: auto; /* Permite el desplazamiento si hay mucho contenido */
+  }
+
+}
+
+/* DESKTOP --------------------------------------------------------------- */
+
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host {
+    display: flex;
+    flex-direction: column;
+    #split-container {
+      flex-direction: row;
     }
 
-    .credential-list-container {
-      flex: 3; /* Ocupa el 75% del espacio disponible */
-      max-width: 75%;
+    .split.top-pane {
+      width: 25%;
+      flex: 0 0 25%;
+    }
+
+    .split.bottom-pane {
+      width: 75%;
+      flex: 0 0 75%;
     }
   }
+
 }

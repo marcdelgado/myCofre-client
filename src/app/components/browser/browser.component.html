@@ -4,6 +4,10 @@
       <mat-label>Buscar</mat-label>
       <input matInput type="text" [(ngModel)]="searchTerm" name="search" />
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Buscar</button>
+    <button class="actionButton" mat-raised-button color="primary" type="submit">
+      <span class="innerButton">
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon><span class="label">Buscar</span>
+      </span>
+    </button>
   </form>
 </div>

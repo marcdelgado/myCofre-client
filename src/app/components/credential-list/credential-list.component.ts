@@ -19,13 +19,14 @@ import {MatPaginator} from "@angular/material/paginator";
 import {Router} from "@angular/router";
 import {NavigationStateService} from "../../services/navigation-state.service";
 import {concatMap, from} from "rxjs";
+import {Fontawesome} from "../shared/fontawesome";
 
 @Component({
   selector: 'app-credential-list',
   templateUrl: './credential-list.component.html',
   styleUrls: ['./credential-list.component.scss']
 })
-export class CredentialListComponent implements OnInit{
+export class CredentialListComponent extends Fontawesome implements OnInit {
 
   categories: CategoryDto[] = [];
   credentials: CredentialDto[] = [];
@@ -45,6 +46,7 @@ export class CredentialListComponent implements OnInit{
               private cdr: ChangeDetectorRef,
               private router: Router,
               private navigationStateService: NavigationStateService) {
+    super();
     this.form = this.fb.group({
       selectAll: [false]
     });
@@ -242,7 +244,5 @@ export class CredentialListComponent implements OnInit{
       this.dataSource.data = [];
     }
   }
-
-
 }
 

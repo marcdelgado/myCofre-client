@@ -4,6 +4,78 @@
 @use "sass:color";
 /* --- Body / base --------------------------------------------------------- */
 
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+$mycofre-palette: (
+  50: #dbf0ff,
+  100: #b8d9f1,
+  200: #9abeda,
+  300: #79a2c2,
+  400: #608daf,
+  500: #457a9e,
+  600: #376b8c,
+  700: #275775,
+  800: #19455f,
+  900: #023047,
+  A100: #84ffff,
+  A200: #18ffff,
+  A400: #00e5ff,
+  A700: #00b8d4,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+
+$mycofre-accent-palette: (
+  50: #fff9e1,
+  100: #feeeb4,
+  200: #fee384,
+  300: #fed951,
+  400: #fece2b,
+  500: #ffc60d,
+  600: #ffb803,
+  700: #ffa500,
+  800: #ff9400,
+  900: #ff7400,
+  A100: #ffe57f,
+  A200: #ffd740,
+  A400: #ffc400,
+  A700: #ffab00,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $dark-primary-text,
+    600: $dark-primary-text,
+    700: $dark-primary-text,
+    800: $dark-primary-text,
+    900: $dark-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+
+
 /* Global Sizes */
 $media-width-transition: 1260px; /* for @media, min. 1280x1024 screens */
 $desktop-window-width: 1200px;
@@ -14,10 +86,10 @@ $base-icon-padding: 20px;
 /* Layer proportions */
 $desktop-header-height: 120px;
 $desktop-header-menu-height: 40px;
-$desktop-footer-upper-height: 200px;
-$desktop-footer-lower-height: 40px;
-$mobile-header-height: 60px;
+$desktop-footer-height: 60px;
+$mobile-header-height: 70px;
 $mobile-header-item-size: 60px;
+$mobile-footer-height: 40px;
 
 /* Header theme */
 $theme-header-fg-color: white;
@@ -30,13 +102,21 @@ $theme-header-font-family: Arial, sans-serif;
 $theme-main-outer-bg-color: none;
 $theme-main-inner-bg-color: none;
 $theme-main-border-color: none;
+$theme-main-gutter: #608daf;
 
 
 /* Footer theme */
+$theme-footer-fg-color: #9cd8f8;
+$theme-footer-fg-action: white;
+$theme-footer-fg-action-hover: #ffb703;
+$theme-footer-border: #8ecae6ff;
+$theme-footer-bg-color: map-get($mycofre-palette, 600);
 
 /* Others */
 $sky-blue: #8ecae6ff;
 $blue-green: #19758c;
 $selective-yellow: #ffb703ff;
 $ut-orange: #fb8500ff;
+
+
 

@@ -11,6 +11,8 @@ import {ApiErrorResponse} from "../models/api/api-error-response";
 import {UserActivateRequest} from "../models/api/user-activate-request";
 import {UserRequestDeleteRequest} from "../models/api/user-request-delete-request";
 import {UserConfirmDeleteRequest} from "../models/api/user-confirm-delete-request";
+import {extractGenericError} from "./shared.service";
+import {UserDeleteRequest} from "../models/api/user-delete-request";
 
 @Injectable({
   providedIn: 'root'
@@ -52,15 +54,14 @@ export class UserService {
 
     signup(form: SignupForm): Observable<void> {
         const repassword = CryptoJS.generateRepassword(form.password)
-        const request: UserSignupRequest = new UserSignupRequest(form.name, form.surname, form.email, repassword);
+        const request: UserSignupRequest = new UserSignupRequest(form.name, form.surname, form.email, repassword, form.language);
         return this.apiService.putUserSignup(request).pipe(
             map(response => {
                 return;
             }),
             catchError((error: ApiErrorResponse) => {
-                const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-                console.error(errorMessage);
-                return throwError(() => new Error(errorMessage));            })
+              return throwError(() => extractGenericError(error));
+            })
         );
     }
 
@@ -69,42 +70,36 @@ export class UserService {
 
     return this.apiService.patchUserActivate(request).pipe(
       map(response => {
-        return; // Emitimos un resultado vacío en caso de éxito
+        return;
       }),
       catchError((error: ApiErrorResponse) => {
-        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-        console.error(errorMessage);
-        return throwError(() => new Error(errorMessage)); // Emitimos un error con un mensaje más comprensible
+        return throwError(() => extractGenericError(error));
       })
     );
   }
 
-  requestDelete(email: string): Observable<void> {
-    const request: UserRequestDeleteRequest = new UserRequestDeleteRequest(email, "");
+  requestDelete(email: string, language: string): Observable<void> {
+    const request: UserRequestDeleteRequest = new UserRequestDeleteRequest(email, language);
 
     return this.apiService.patchUserRequestDelete(request).pipe(
       map(response => {
         return; // Emitimos un resultado vacío en caso de éxito
       }),
       catchError((error: ApiErrorResponse) => {
-        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-        console.error(errorMessage);
-        return throwError(() => new Error(errorMessage)); // Emitimos un error con un mensaje más comprensible
+        return throwError(() => extractGenericError(error));
       })
     );
   }
 
   delete(email: string, token: string): Observable<void> {
-      const request: UserConfirmDeleteRequest = new UserRequestDeleteRequest(email, token);
+      const request: UserConfirmDeleteRequest = new UserDeleteRequest(email, token);
 
     return this.apiService.patchUserConfirmDelete(request).pipe(
       map(response => {
         return; // Emitimos un resultado vacío en caso de éxito
       }),
       catchError((error: ApiErrorResponse) => {
-        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-        console.error(errorMessage);
-        return throwError(() => new Error(errorMessage)); // Emitimos un error con un mensaje más comprensible
+        return throwError(() => extractGenericError(error));
       })
     );
   }

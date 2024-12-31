@@ -27,31 +27,10 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .content-wrapper{
   width: 1200px;
   margin: 0 auto;
-}
-
-
-
-@media (min-width: 1200px) and (orientation: landscape) {
-  .only-mobile{
-    display: none;
-  }
-
-  .only-desktop{
-    display: block;
-  }
-}
-
-@media not ((min-width: 1200px) and (orientation: landscape)) {
-  .only-mobile{
-    display: block;
-  }
-
-  .only-desktop{
-    display: none;
-  }
 }

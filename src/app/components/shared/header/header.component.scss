@@ -1,11 +1,18 @@
 @use "sass:math";
 @import '../../../../styles/variables';
 
+nav ul li, nav ul li a {
+  display: flex;
+  align-items: center; // Centra verticalmente el contenido
+  cursor: pointer;
+}
 
 /* Normaliza los estilos de los enlaces */
 nav.functionMenu ul li a {
   color:$theme-header-fg-color-hover; /* Color base */
   text-decoration: none; /* Sin subrayado */
+  display: flex;
+  align-items: center; // Centra íconos y texto verticalmente
 }
 
 nav.functionMenu ul li a:hover {
@@ -48,7 +55,6 @@ nav.functionMenu ul li a:not([routerLink]):hover {
 
 
   @media not ((min-width: 1200px) and (orientation: landscape)) {
-    position: fixed;
     background-image: $theme-header-bg-image;
     background-position: center;
     background-size: cover;
@@ -191,7 +197,6 @@ nav.functionMenu ul li a:not([routerLink]):hover {
 
 
   @media (min-width: 1200px) and (orientation: landscape) {
-    position: sticky;
     height: $desktop-header-height;
     background-image: $theme-header-bg-image;
     background-position: center;

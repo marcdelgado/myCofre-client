@@ -1,16 +1,12 @@
-<div class="home-container">
-  <!-- Componente Browser -->
-  <div class="browser-container">
-    <app-browser (search)="handleSearch($event)"></app-browser>
-  </div>
+<div class="browser-container">
+  <app-browser (search)="handleSearch($event)"></app-browser>
+</div>
 
-  <!-- Contenedor para Category y Credential -->
-  <div class="content-container">
-    <div class="category-list-container">
-      <app-category-list (filterChange)="handleCategoryFilter($event)"></app-category-list>
-    </div>
-    <div class="credential-list-container">
-      <app-credential-list></app-credential-list>
-    </div>
+<div id="split-container">
+  <div class="split top-pane">
+    <app-category-list (filterChange)="handleCategoryFilter($event)"></app-category-list>
+  </div>
+  <div class="split bottom-pane">
+    <app-credential-list></app-credential-list>
   </div>
 </div>

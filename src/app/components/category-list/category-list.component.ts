@@ -11,6 +11,15 @@ import {NavigationStateService} from "../../services/navigation-state.service";
 import {ConfirmDialogComponent} from "../shared/confirm-dialog/confirm-dialog.component";
 import {concatMap, from} from "rxjs";
 import {MatPaginator} from "@angular/material/paginator";
+import {
+  faBorderAll,
+  faBorderNone,
+  faTrashCan,
+  faPenToSquare,
+  faPlus,
+  faCopy,
+  faEye
+} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-category-list',
@@ -223,4 +232,11 @@ export class CategoryListComponent {
     }
   }
 
- }
+  protected readonly faBorderAll = faBorderAll;
+  protected readonly faBorderNone = faBorderNone;
+  protected readonly faTrashCan = faTrashCan;
+  protected readonly faPenToSquare = faPenToSquare;
+  protected readonly faPlus = faPlus;
+  protected readonly faCopy = faCopy;
+  protected readonly faEye = faEye;
+}

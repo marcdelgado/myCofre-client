@@ -1,0 +1,45 @@
+
+
+.actionButton{
+  .innerButton{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+
+
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+  .only-desktop {
+    display: none;
+  }
+
+  .actionButton{
+    .innerButton{
+      font-size: 1.1rem;
+      .label{
+        display: none;
+      }
+    }
+  }
+
+
+  .gutter.gutter-vertical {
+    background-color: #608daf;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+    cursor: row-resize;
+    height: 40px;
+  }
+
+}
+
+
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  .only-mobile{
+    display: none;
+  }
+}
+

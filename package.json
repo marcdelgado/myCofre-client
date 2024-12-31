@@ -27,8 +27,10 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "class-transformer": "^0.5.1",
     "crypto-js": "^4.2.0",
+    "material-design-icons-iconfont": "^6.7.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "~7.8.0",
+    "split.js": "^1.6.5",
     "tslib": "^2.3.0",
     "uuid": "^11.0.2",
     "zone.js": "~0.14.5"

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiErrorResponse} from "../models/api/api-error-response";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {VaultReadResponse} from "../models/api/vault-read-response";
 import {UserSignupRequest} from "../models/api/user-signup-request";
@@ -27,22 +27,20 @@ export class ApiService {
     // VAULT ENDPOINTS
     // --------------------------------------------------------------------------
 
-    putVaultWrite(vaultData: VaultWriteRequest): Observable<void | ApiErrorResponse> {
+    putVaultWrite(vaultData: VaultWriteRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/vault/write`;
         return this.http.put<void>(url, vaultData, { headers: this.getHeaders() }).pipe(
             catchError((error) => {
-                const apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    getVaultRead(): Observable<VaultReadResponse | ApiErrorResponse> {
+    getVaultRead(): Observable<VaultReadResponse | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/vault/read`;
         return this.http.get<VaultReadResponse>(url, { headers: this.getHeaders() }).pipe(
             catchError((error) => {
-                const apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
@@ -53,56 +51,51 @@ export class ApiService {
     //USER ENDPOINTS
     // --------------------------------------------------------------------------
 
-    putUserSignup(signupData: UserSignupRequest): Observable<void | ApiErrorResponse> {
+    putUserSignup(signupData: UserSignupRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/user/signup`;
         return this.http.put<void>(url, signupData).pipe(
             tap((response)=>{
                 console.log("hola");
             }),
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    patchUserRequestDelete(requestData: UserRequestDeleteRequest): Observable<void | ApiErrorResponse> {
+    patchUserRequestDelete(requestData: UserRequestDeleteRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/user/requestDelete`;
         return this.http.patch<void>(url, requestData).pipe(
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    patchUserEdit(editData: UserEditRequest): Observable<void | ApiErrorResponse> {
+    patchUserEdit(editData: UserEditRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/user/edit`;
         return this.http.patch<void>(url, editData, {headers: this.getHeaders()}).pipe(
             tap(() => console.log('Solicitud exitosa: Datos enviados correctamente.')), // Log en caso de éxito
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    patchUserConfirmDelete(confirmData: UserConfirmDeleteRequest): Observable<void | ApiErrorResponse> {
+    patchUserConfirmDelete(confirmData: UserConfirmDeleteRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/user/confirmDelete`;
         return this.http.patch<void>(url, confirmData, {headers: this.getHeaders()}).pipe(
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    patchUserActivate(activateData: UserActivateRequest): Observable<void | ApiErrorResponse> {
+    patchUserActivate(activateData: UserActivateRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/user/activate`;
         return this.http.patch<void>(url, activateData).pipe(
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
@@ -111,67 +104,60 @@ export class ApiService {
         const url = `${environment.apiUrl}/user/view`;
         return this.http.get<UserViewResponse>(url, {headers: this.getHeaders()}).pipe(
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
     //AUTH ENDPOINTS
     // --------------------------------------------------------------------------
-    postAuthLogin(loginData: AuthLoginRequest): Observable<AuthLoginResponse | ApiErrorResponse> {
+    postAuthLogin(loginData: AuthLoginRequest): Observable<AuthLoginResponse | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/auth/login`;
         return this.http.post<AuthLoginResponse>(url, loginData).pipe(
             tap((response: AuthLoginResponse) => {
               this.setSessionToken(response.sessionToken!);
             }),catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    patchChangeRepassword(repasswordData: AuthChangeRepasswordRequest): Observable<void | ApiErrorResponse> {
+    patchChangeRepassword(repasswordData: AuthChangeRepasswordRequest): Observable<void | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/auth/changeRepassword`;
         return this.http.patch<void | ApiErrorResponse>(url, repasswordData, { headers: this.getHeaders() }).pipe(
             tap((response)=>{
                 console.log("hola");
             }),
             catchError((error) => {
-                console.error('Error en la API:', error);
-                const apiError: ApiErrorResponse = {
-                    errorCode: error.status || 'UNKNOWN',
-                    description: error.message || 'Error desconocido en la API'
-                };
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
-    getAuthGetLoginAttempts(): Observable<AuthGetLoginAttemptsResponse | ApiErrorResponse> {
+    getAuthGetLoginAttempts(): Observable<AuthGetLoginAttemptsResponse | ApiErrorResponse | HttpErrorResponse> {
         const url = `${environment.apiUrl}/auth/getLoginAttempts`;
         return this.http.get<AuthGetLoginAttemptsResponse>(url, {headers: this.getHeaders()}).pipe(
             catchError((error) => {
-                let apiError: ApiErrorResponse = this.generateApiError(error);
-                return throwError(() => apiError);
+              return throwError(() => this.extractApiErrorResponse(error));
             })
         );
     }
 
     // Aux functions
     // --------------------------------------------------------------------------
-    private generateApiError(error: any): ApiErrorResponse {
-        let apiError: ApiErrorResponse;
-        if (error.error && typeof error.error === 'object') {
-            apiError = new ApiErrorResponse(error.error, "");
-        } else {
-            apiError = new ApiErrorResponse(
-                error.status || 500,
-                error.statusText || 'An error occurred'
-            );
-        }
-        return apiError;
+  private extractApiErrorResponse(error: HttpErrorResponse): ApiErrorResponse | HttpErrorResponse {
+    if (error.error && typeof error.error === 'object' && 'status' in error.error && 'message' in error.error) {
+      return new ApiErrorResponse({
+        status: error.error.status,
+        message: error.error.message,
+        error: error.error.error || 'Unknown Error',
+        path: error.error.path || error.url || 'Unknown',
+        errors: error.error.errors || []
+      });
+    }else{
+      return error;
     }
+  }
 
     private getHeaders(): HttpHeaders {
         let headers = new HttpHeaders();

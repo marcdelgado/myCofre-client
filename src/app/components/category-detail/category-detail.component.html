@@ -5,27 +5,7 @@
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="name" required />
         </mat-form-field>
-      <!--
-              <mat-label>Credenciales</mat-label>
 
-            <mat-selection-list formControlName="credentials">
-                  <mat-list-option *ngFor="let credential of credentials" [value]="credential.id">
-                      {{ credential.serviceName }}
-                  </mat-list-option>
-              </mat-selection-list>
-              -->
-      <!--
-      <div class="mat-chip-alternative">
-        <button
-          mat-button
-          type="button"
-          *ngFor="let credential of credentials"
-          [class.selected]="selectedCredentials.includes(credential.id)"
-          (click)="toggleCredentialSelection(credential.id)">
-          {{ credential.serviceName }}
-        </button>
-      </div>
-      -->
     <div class="full-width">
       <button mat-raised-button color="primary" type="submit"  [disabled]="categoryForm.invalid">
         Guardar

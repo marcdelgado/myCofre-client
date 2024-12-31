@@ -4,10 +4,10 @@ import {ApiMessage} from "./api-message";
 export class UserRequestDeleteRequest{
 
   email: string;
-  deleteToken: string;
+  language: string;
 
-  constructor(email: string, deleteToken: string) {
+  constructor(email: string, language: string) {
     this.email = email;
-    this.deleteToken = deleteToken;
+    this.language = language;
   }
 }

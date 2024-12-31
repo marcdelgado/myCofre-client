@@ -5,7 +5,7 @@ import {LoginForm} from "../models/forms/login-form";
 import {AuthLoginRequest} from "../models/api/auth-login-request";
 import {AuthLoginResponse} from "../models/api/auth-login-response";
 import {ApiErrorResponse} from "../models/api/api-error-response";
-import {debugLog, SharedService} from "./shared.service";
+import {debugLog, extractGenericError, SharedService} from "./shared.service";
 import * as CryptoJS from "./crypto.service";
 import {Router} from "@angular/router";
 import {ChangePasswordForm} from "../models/forms/change-password-form";
@@ -26,7 +26,7 @@ export class AuthService {
     this.setEmail(form.email);
     this.setPassword(form.password);
     this.setRepassword(CryptoJS.generateRepassword(form.password));
-    const request = new AuthLoginRequest(form.email, this.getRepassword()||"");;
+    const request = new AuthLoginRequest(form.email, this.getRepassword()||"");
     return this.apiService.postAuthLogin(request).pipe(
       tap((response) => {
         this.setSessionToken((response as AuthLoginResponse).sessionToken)
@@ -35,9 +35,7 @@ export class AuthService {
       map(() => undefined),
       catchError((error) => {
         this.reset();
-        const errorMessage = `ERROR ${error.errorCode}:, ${error.description}`;
-        console.error(errorMessage);
-        return throwError(() => new Error(errorMessage));
+        return throwError(() => extractGenericError(error));
       })
     );
   }
@@ -61,9 +59,7 @@ export class AuthService {
           }),
           catchError((error) => {
             this.reset();
-            const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-            console.error(errorMessage);
-            return throwError(() => new Error(errorMessage));
+            return throwError(() => extractGenericError(error));
           })
       );
     } catch (error) {
@@ -122,14 +118,12 @@ export class AuthService {
     if (this.getSessionToken()) {
       return this.apiService.getUserView().pipe(
         map(() => true), // Si la llamada tiene éxito, el token es válido
-        catchError((error:ApiErrorResponse) => {
+        catchError((error) => {
           this.reset();
           if(error.errorCode === '403'){
-            return of(false); // Devuelve false en caso de error
-          }else{
-            const errorMessage = `ERROR ${error.errorCode}:, ${error.description}`;
-            console.error(errorMessage);
             return of(false);
+          }else{
+            return throwError(() => extractGenericError(error));
           }
         })
       );
@@ -142,16 +136,12 @@ export class AuthService {
     if (this.getSessionToken()) {
       return this.apiService.getUserView().pipe(
         map(() => undefined), // Si la llamada tiene éxito, devuelve vacío
-        catchError((error: ApiErrorResponse) => {
+        catchError((error) => {
           this.reset(); // Resetea el estado si ocurre un error
           if (error.errorCode === '403') {
-            // Error específico de autenticación
             return throwError(() => new Error('ERROR 403: Authentication failed: Invalid session token.'));
           } else {
-            // Otros errores
-            const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-            console.error(errorMessage);
-            return throwError(() => new Error(errorMessage));
+            return throwError(() => extractGenericError(error));
           }
         })
       );

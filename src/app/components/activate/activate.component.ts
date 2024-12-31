@@ -15,7 +15,7 @@ export class ActivateComponent {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
