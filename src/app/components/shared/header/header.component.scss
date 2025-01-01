@@ -64,7 +64,6 @@ nav.functionMenu ul li a:not([routerLink]):hover {
     height: calc(60px + 15px);
     padding: 5px;
     font-size: 1.3rem;
-    margin-bottom: 20px;
 
     .content-wrapper {
       display: flex;
@@ -126,7 +125,6 @@ nav.functionMenu ul li a:not([routerLink]):hover {
         width: 100vw;
         order: 5;
         top: $mobile-header-height;
-        background: red;
       }
 
       .functionMenu {

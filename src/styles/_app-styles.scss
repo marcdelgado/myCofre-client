@@ -26,12 +26,20 @@
 
 
   .gutter.gutter-vertical {
-    background-color: #608daf;
+    background-color: map-get($mycofre-palette, 200);
     background-repeat: no-repeat;
     background-position: 50%;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
     cursor: row-resize;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before{
+      content: "::::::::"; /* Carácter especial o texto */
+      display: inline-block; /* Asegura que se renderice correctamente */
+      font-size: 14px; /* Tamaño del carácter */
+      margin: 0;
+    }
   }
 
 }

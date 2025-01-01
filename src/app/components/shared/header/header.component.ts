@@ -11,6 +11,7 @@ import {
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 import {VaultService} from "../../../services/vault.service";
+import {NavigationStateService} from "../../../services/navigation-state.service";
 
 @Component({
   selector: 'app-header',
@@ -21,12 +22,14 @@ import {VaultService} from "../../../services/vault.service";
 export class HeaderComponent  implements OnInit{
   selectedLanguage: string = 'es';
   currentLanguagePlaceholder: string = "Español";
+  currentView :string = "/home";
 
   //https://mugan86.medium.com/internacionalizaci%C3%B3n-en-un-proyecto-angular-ngx-translate-1-3-9331c7509d12
   constructor(private translateService: TranslateService,
               public authService: AuthService,
               private router: Router,
-              private vaultService: VaultService) {
+              private vaultService: VaultService,
+              private navigationStateService: NavigationStateService) {
     this.translateService.setDefaultLang(this.selectedLanguage);
     this.translateService.use(this.selectedLanguage);
     this.currentLanguagePlaceholder = this.translateService.instant('HOME.SPANISH');
@@ -94,6 +97,16 @@ export class HeaderComponent  implements OnInit{
         console.error('Error al sincronizar el vault:', err);
         alert('Error durante la sincronización.');
       }
+    });
+  }
+
+  addCredential() {
+    // Configura la ruta de origen
+    this.navigationStateService.setFromRoute(this.currentView);
+
+    // Navega al formulario para crear una nueva categorías
+    this.router.navigate(['/credential-detail'], {
+      queryParams: { action: 'new' },
     });
   }
 

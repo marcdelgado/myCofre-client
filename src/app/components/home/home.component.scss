@@ -1,45 +1,62 @@
 @import '../../../styles/main';
 
-:host {
-
-}
-
-.browser-container {
-  flex: 0 0 auto;
-  width: 100%;
-}
-
-#split-container {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-
-/* MOBILE ---------------------------------------------------------------- */
-
+/* MOBILE */
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
-
-
-  #split-container {
-    position: relative;
-    height: calc(100%); /* Contenedor ocupa toda la altura del viewport */
+  :host {
     display: flex;
     flex-direction: column;
-  }
+    min-height: 0;
+    max-height: 100%; // Ocupa todo el espacio disponible del contenedor padre
+    overflow: hidden; // Asegura que no haya contenido desbordado
 
-  .split {
-    overflow: auto; /* Permite el desplazamiento si hay mucho contenido */
-  }
+    app-browser {
+      flex: none; // Su altura será limitada por el contenido
+    }
 
+    flex: 1 1 auto;
+
+    #split-container {
+      flex: 1; // Ocupa el resto del espacio disponible en :host
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; // Evita contenido desbordado dentro de split-container
+
+      .split {
+        height: 24px; // Altura fija para el borde controlado por Split.js
+        flex: none; // No se expande en el flujo de flexbox
+      }
+
+      .top-pane {
+        flex: none; // Su altura es controlada dinámicamente por Split.js
+        overflow-y: auto; // Permite scroll si el contenido excede su altura
+      }
+
+      .bottom-pane {
+        flex: none; // Ocupa el espacio restante dinámicamente
+        overflow-y: auto; // Permite scroll si el contenido excede su altura
+        flex: 1 1 auto;
+      }
+    }
+  }
 }
 
-/* DESKTOP --------------------------------------------------------------- */
-
+/* DESKTOP */
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
   :host {
     display: flex;
     flex-direction: column;
+    max-height: 100%;
+    justify-content: space-between;
+
+    app-browser {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
     #split-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
       flex-direction: row;
     }
 
@@ -53,5 +70,4 @@
       flex: 0 0 75%;
     }
   }
-
 }

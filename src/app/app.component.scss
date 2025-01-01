@@ -1,68 +1,80 @@
 @import '../styles/main';
 
-:host {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  flex: 1;
-
-  app-header {
-    z-index: 1;
-    flex: 0;
-  }
-
-  main.fullscreen{
-    z-index: 0;
-  }
-
-  app-footer {
-    z-index: 1;
-    flex: 0;
-  }
-}
-
-
-/* MOBILE ---------------------------------------------------------------- */
-
+/* MOBILE */
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     height: 100vh;
+    overflow: hidden;
+
     app-header {
+      z-index: 1;
       flex: 0 0 auto;
     }
 
-    main{
-      overflow-y: clip;
-      margin: 0 auto;
+    main {
+      z-index:0;
       width: 100%;
-      height: 100%;
-      position: relative;
+      margin: 0 auto;
+
+      display: flex;
+      flex-direction: column;
+      height: 100%; // Ocupa toda la altura disponible dentro de body
+      overflow: hidden;
+
+      &.fullscreen {
+        width: 100%;
+      }
+
+      &:not(.fullscreen) {
+        flex: 1 1 auto;
+        max-height: 100%;
+      }
     }
 
-    app-footer{
+    app-footer {
+      z-index: 1;
       flex: 0 0 auto;
     }
   }
 }
 
-
-/* DESKTOP --------------------------------------------------------------- */
-
+/* DESKTOP */
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     min-height: 100vh;
+
+    & > * {
+      margin: 0;
+      padding: 0;
+    }
+
     app-header {
+      z-index: 1;
       flex: 0 0 auto;
     }
 
-    main{
-      flex: 1 1 auto;
-      max-width: $desktop-window-width;
+    main {
+      width: 100%;
       margin: 0 auto;
+
+      &.fullscreen {
+        width: 100%;
+      }
+
+      &:not(.fullscreen) {
+        flex: 1 1 auto;
+        max-width: $desktop-window-width;
+      }
     }
 
-    app-footer{
+    app-footer {
+      z-index: 0;
       flex: 0 0 auto;
     }
   }

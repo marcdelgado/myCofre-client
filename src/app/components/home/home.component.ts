@@ -35,7 +35,7 @@ export class HomeComponent implements AfterViewInit {
       direction: 'vertical', // División vertical
       gutterSize: 24, // Tamaño del divisor
       minSize: 50, // Tamaño mínimo de cada panel
-      sizes: [33, 67],
+      sizes: [25, 75],
       cursor: 'row-resize' // Icono del cursor para dividir
     });
   }

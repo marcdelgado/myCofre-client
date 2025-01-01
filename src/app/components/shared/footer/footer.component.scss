@@ -1,49 +1,79 @@
 @import '../../../../styles/main';
 
-:host{
-  &.fullscreen {
-
-  }
-
-  &.component{
-    border-top: 2px outset $theme-footer-border;
-    background-color: $theme-footer-bg-color;
-  }
-
-  p{
-    color: $theme-footer-fg-color;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    gap: 3px;
-    .icon {
-      background-size: contain;
-      background-repeat: no-repeat;
-      height: 20px;
-      margin: 0 3px;
-    }
-    a{
-      color: $theme-footer-fg-action;
-      &:hover{
-        color: $theme-footer-fg-action-hover;
-      }
-    }
-  }
-}
-
-
-
 
 /* MOBILE ---------------------------------------------------------------- */
 
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host{
+    &.fullscreen {
 
+    }
+
+    &.component{
+      border-top: 2px outset $theme-footer-border;
+      background-color: $theme-footer-bg-color;
+    }
+
+    p{
+      color: $theme-footer-fg-color;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      gap: 12px;
+      .icon {
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 20px;
+      }
+      a{
+        color: $theme-footer-fg-action;
+        &:hover{
+          color: $theme-footer-fg-action-hover;
+        }
+      }
+    }
+    .about{
+      margin-top: 8px;
+    }
+    .copyright{
+      display: none;
+    }
+  }
 }
 
 
 /* DESKTOP --------------------------------------------------------------- */
 
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host{
+    &.fullscreen {
 
+    }
+
+    &.component{
+      border-top: 2px outset $theme-footer-border;
+      background-color: $theme-footer-bg-color;
+    }
+
+    p{
+      color: $theme-footer-fg-color;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      gap: 3px;
+      .icon {
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 20px;
+        margin: 0 3px;
+      }
+      a{
+        color: $theme-footer-fg-action;
+        &:hover{
+          color: $theme-footer-fg-action-hover;
+        }
+      }
+    }
+  }
 }
 

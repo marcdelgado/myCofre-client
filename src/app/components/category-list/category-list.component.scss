@@ -1,33 +1,68 @@
+@import '../../../styles/main';
 
-:root{
-  width: 100%;
-}
-.category-list{
-  width: 100%;
+/* MOBILE */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :root{
+    width: 100%;
+    background-color: red;
+    h1{
+      display: none;
+    }
 
-  .category-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
 
-    button {
-      padding: 8px 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: #f9f9f9;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      button {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: background-color 0.3s;
 
-      &.selected {
-        background-color: #007bff;
-        color: white;
-      }
+        &.selected {
+          background-color: #007bff;
+          color: white;
+        }
 
-      &:hover {
-        background-color: #e0e0e0;
+        &:hover {
+          background-color: #e0e0e0;
+        }
       }
     }
   }
 }
 
+/* DESKTOP */
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :root{
+    width: 100%;
 
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      button {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &.selected {
+          background-color: #007bff;
+          color: white;
+        }
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
+      }
+    }
+  }
+}
