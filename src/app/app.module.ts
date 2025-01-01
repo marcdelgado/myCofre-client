@@ -11,7 +11,7 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -31,8 +31,7 @@ import {RequestDeleteComponent} from "./components/request-delete/request-delete
 import {DeleteComponent} from "./components/delete/delete.component";
 import {ActivateComponent} from "./components/activate/activate.component";
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         LoginComponent,
         SignupComponent,
@@ -50,12 +49,10 @@ import {ActivateComponent} from "./components/activate/activate.component";
         RequestDeleteComponent,
         DeleteComponent
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -66,13 +63,10 @@ import {ActivateComponent} from "./components/activate/activate.component";
         FontAwesomeModule,
         ReactiveFormsModule,
         MaterialModule,
-        MatChipListbox
-    ],
-    providers: [
-        provideAnimationsAsync()
-    ],
-    bootstrap: [AppComponent]
-})
+        MatChipListbox], providers: [
+        provideAnimationsAsync(),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
 
 export function createTranslateLoader(http: HttpClient) {

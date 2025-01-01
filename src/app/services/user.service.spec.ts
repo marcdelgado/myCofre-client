@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http'; // Usa HttpClientModule para solicitudes reales
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'; // Usa HttpClientModule para solicitudes reales
 import { UserService } from './user.service';
 import { MailSlurpService } from './mail-slurp.service';
 import {SignupForm} from "../models/forms/signup-form";
@@ -18,9 +18,9 @@ describe('UserService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule], // Usa HttpClientModule para solicitudes reales
-      providers: [UserService, MailSlurpService]
-    });
+    imports: [],
+    providers: [UserService, MailSlurpService, provideHttpClient(withInterceptorsFromDi())]
+});
     service = TestBed.inject(UserService);
     mailSlurpService = TestBed.inject(MailSlurpService);
   });

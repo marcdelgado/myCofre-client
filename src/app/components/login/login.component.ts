@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {HttpErrorResponse} from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
 import {finalize, switchMap} from "rxjs";
 import * as fontAwesomeIcons from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from "../../services/auth.service";
