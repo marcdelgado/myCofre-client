@@ -1,9 +1,8 @@
-<div class="signup-content">
-  <header class="header">
+  <div class="header">
     <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
-  </header>
+  </div>
 
-  <main class="main">
+  <div class="signup-wrapper">
     <h1>{{ 'SIGNUP.TITLE' | translate }}</h1>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <!-- Nombre -->
@@ -57,17 +56,17 @@
             </mat-error>
         </mat-form-field>
 
-
-        <!-- Botón de Signup -->
-        <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+        <button mat-raised-button color="primary" type="button" routerLink="/home">
+          Cancelar
+        </button>
+      <!-- Botón de Signup -->
+        <button mat-raised-button color="accent" type="submit" [disabled]="isSubmitting">
           {{ 'SIGNUP.SUBMIT' | translate }}
         </button>
 
         <!-- Error general -->
         <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
     </form>
-  </main>
-  <footer class="footer">
-    <p>Esto es el footer</p>
-  </footer>
-</div>
+  </div>
+
+  <app-footer class="fullscreen"></app-footer>

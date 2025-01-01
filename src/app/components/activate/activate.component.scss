@@ -1,14 +1,90 @@
-.activate-container {
-  text-align: center;
-  margin-top: 50px;
+@import '../../../styles/main';
 
-  h2 {
-    font-size: 24px;
-    color: #4caf50;
+
+/* MOBILE */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+
+  :host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 60px;
+    height: 100vh;
+    background: url('/assets/images/bg-login.webp') no-repeat center center;
+    background-size: cover;
+
+    .activate-wrapper {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 350px;
+      flex: 0 0 auto;
+      width: 100%;
+
+      p {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      p.success {
+        color: #4caf50;
+        font-weight: bold;
+      }
+
+      p.error {
+        color: #f44336;
+        font-weight: bold;
+      }
+      button{
+        display: block;
+        margin: 0 auto;
+      }
+    }
   }
+}
 
-  p {
-    font-size: 18px;
-    color: #757575;
+
+/* DESKTOP */
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 60px;
+    height: 100vh;
+    background: url('/assets/images/bg-login.webp') no-repeat center center;
+    background-size: cover;
+
+    .activate-wrapper {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 350px;
+      flex: 0 0 auto;
+      width: 100%;
+
+      p {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      p.success {
+        color: #4caf50;
+        font-weight: bold;
+      }
+
+      p.error {
+        color: #f44336;
+        font-weight: bold;
+      }
+      button{
+        display: block;
+        margin: 0 auto;
+      }
+    }
   }
 }

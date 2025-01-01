@@ -1,11 +1,8 @@
-
-<div class="login-content">
-
-  <header class="header">
+  <div class="header">
     <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
-  </header>
+  </div>
 
-  <main class="main">
+  <div class="login-wrapper">
     <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
     <!-- FORMULARIO DE LOGIN -->
     <form (ngSubmit)="onLogin()" [formGroup]="loginForm" class="login-form">
@@ -39,7 +36,7 @@
       <!-- Botón de login -->
       <button
               mat-raised-button
-              color="primary"
+              color="accent"
               [disabled]="!loginForm.valid"
               type="submit"
               class="full-width"
@@ -58,8 +55,7 @@
       <a routerLink="/request-delete">{{ 'LOGIN.LINK_DELETE' | translate }}</a>
       {{ 'LOGIN.FORGOTTEN_2' | translate }}
     </p>
-  </main>
+  </div>
 
   <app-footer class="fullscreen"></app-footer>
 
-</div>
