@@ -12,7 +12,7 @@ import {decrypt, encrypt} from "./crypto.service";
 import {VaultWriteRequest} from "../models/api/vault-write-request";
 import sampleData from '../../test/sample1.json';
 import {AuthService} from "./auth.service";
-import { HttpErrorResponse } from "@angular/common/http";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'

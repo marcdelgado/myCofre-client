@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiErrorResponse} from "../models/api/api-error-response";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {VaultReadResponse} from "../models/api/vault-read-response";
 import {UserSignupRequest} from "../models/api/user-signup-request";
