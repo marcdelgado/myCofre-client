@@ -19,6 +19,8 @@ export class SignupComponent {
   signupForm: FormGroup;
   isSubmitting: boolean = false;
   errorMessage: string | null = null;
+  hidePassword_password: boolean = true;
+  hidePassword_confirmPassword: boolean = true;
 
   constructor(
       private fb: FormBuilder,

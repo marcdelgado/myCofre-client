@@ -15,6 +15,7 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      padding: 0 6px;
     }
 
     .logo-wrapper {
@@ -63,7 +64,7 @@
     z-index: 1;
     display: block; /* Asegura que el host ocupe el espacio necesario */
     width: 100%;
-    height: calc(60px + 15px);
+    height: 70px;
     padding: 5px;
     font-size: 1rem;
 
@@ -139,7 +140,6 @@
         width: 100vw;
         order: 4;
         padding: 10px;
-        top: 10px;
       }
 
 

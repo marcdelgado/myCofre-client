@@ -1,4 +1,4 @@
-<h1>Categorías</h1>
+<h1>{{'CATEGORY_LIST.TITLE' | translate}}</h1>
 
 <div class="category-buttons" *ngIf="currentView === 'home'">
   <button mat-stroked-button type="button"
@@ -22,17 +22,17 @@
     </ng-container>
 
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Servicio </th>
+      <th mat-header-cell *matHeaderCellDef>{{'CATEGORY_LIST.NAME' | translate}}</th>
       <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <th mat-header-cell *matHeaderCellDef>{{'CRUD.ACTIONS' | translate}}</th>
       <td mat-cell *matCellDef="let row">
         <button class="actionButton" mat-stroked-button (click)="viewDetails(row.id)">
           <span class="innerButton">
             <fa-icon [icon]="faEye"></fa-icon>
-            <span class="label">Ver Detalle</span>
+            <span class="label">{{'CRUD.VIEW_DETAIL' | translate}}</span>
           </span>
         </button>
       </td>
@@ -46,30 +46,30 @@
     <button class="actionButton" mat-raised-button color="primary" (click)="selectAll()">
     <span class="innerButton">
       <fa-icon [icon]="faBorderAll"></fa-icon>
-      <span class="label">Selec. Todos</span>
+      <span class="label">{{'CRUD.SELECT_ALL' | translate}}</span>
     </span>    </button>
     <button class="actionButton" mat-raised-button color="primary" (click)="deselectAll()">
     <span class="innerButton">
       <fa-icon [icon]="faBorderNone"></fa-icon>
-      <span class="label">Selec. Ninguno</span>
+      <span class="label">{{'CRUD.SELECT_NONE' | translate}}</span>
     </span>
     </button>
     <button class="actionButton" mat-raised-button color="warn" (click)="deleteSelected()">
     <span class="innerButton">
       <fa-icon [icon]="faTrashCan"></fa-icon>
-      <span class="label">Eliminar</span>
+      <span class="label">{{'CRUD.DELETE' | translate}}</span>
     </span>
     </button>
     <button class="actionButton" mat-raised-button color="accent" (click)="editSelected()" [disabled]="selectedCategories.size !== 1">
     <span class="innerButton">
       <fa-icon [icon]="faPenToSquare"></fa-icon>
-      <span class="label">Editar</span>
+      <span class="label">{{'CRUD.EDIT' | translate}}</span>
     </span>
     </button>
     <button class="actionButton" mat-raised-button color="accent" (click)="addCredential()">
     <span class="innerButton">
       <fa-icon [icon]="faPlus"></fa-icon>
-      <span class="label">Añadir Nuevo</span>
+      <span class="label">{{'CRUD.ADD_NEW' | translate}}</span>
     </span>
     </button>
   </div>

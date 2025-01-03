@@ -2,16 +2,22 @@
   "HTML":{
     "TITLE": "myCofre - Gestor de Credenciales"
   },
-
-  "HOME": {
-    "TITLE": "myCofre - Gestor de Credenciales"
-  },
-
   "LANGUAGE": {
     "ENGLISH": "English",
     "SPANISH": "Español",
     "CATALAN": "Català"
   },
+
+
+
+  "HOME": {
+    "TITLE": "myCofre - Gestor de Credenciales"
+  },
+  "BROWSER": {
+    "FIND": "Buscar"
+  },
+
+
 
   "HEADER": {
     "HOME": "Inicio",
@@ -23,10 +29,11 @@
     "PROFILE": "Perfil de usuario",
     "LOGOUT": "Cerrar sesión"
   },
+  "FOOTER": {},
+  "NOTIFY_DIALOG": {},
+  "CONFIRM_DIALOG": {},
 
-  "FOOTER": {
 
-  },
 
   "LOGIN": {
     "TITLE": "Iniciar sesión",
@@ -40,6 +47,8 @@
     "FORGOTTEN_2": "tu cuenta y empezar de nuevo."
   },
 
+
+
   "SIGNUP": {
     "TITLE": "Crear cuenta",
     "USER" : "E-mail",
@@ -49,17 +58,73 @@
     "PASSWORD_CONFIRM": "Repetir contraseña",
     "SUBMIT": "Registrarse"
   },
+  "ACTIVATE": {},
+
+
+
+  "USER_PROFILE": {
+    "TITLE": "Perfil de Usuario",
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
+    "EMAIL": "Correo electrónico"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Cambiar contraseña",
+    "PASSWORD": "Contraseña Antigua",
+    "NEW_PASSWORD": "Nueva Contraseña",
+    "CONFIRM_NEW_PASSWORD": "Repetir Nueva Contraseña"
+  },
+
+
+
+  "REQUEST_DELETE": {},
+  "DELETE": {},
+
+
+  "CREDENTIAL_DETAIL": {
+    "TITLE": "Detalle de credencial",
+    "NAME": "Nombre",
+    "URL": "URL",
+    "USERNAME": "Usuario",
+    "PASSWORD": "Contraseña",
+    "CATEGORIES": "Categorías"
+  },
+  "CREDENTIAL_LIST":{
+    "TITLE": "Credenciales",
+    "SERVICE_NAME": "Servicio",
+    "ACTIONS": "Actions",
+    "COPY_PASS": "Copiar contraseña",
+    "VIEW_DETAIL": "Ver detalle"
+  },
+  "CATEGORY_DETAIL": {
+    "TITLE": "Detalle de categoría",
+    "NAME": "Nombre"
+  },
+  "CATEGORY_LIST":{
+    "TITLE": "Categorías",
+    "NAME": "Nombre"
+  },
+
+
 
   "WARNS": {
     "FIELD_REQUIRED": "Campo obligatorio.",
-    "FIELD_EMAIL_FORMAT": "Campo obligatorio.",
+    "FIELD_EMAIL_FORMAT": "El texto no tiene formato de email.",
+    "FIELD_CHARS_2_XX": "Se admiten entre 6 y 64 caracteres",
     "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres",
     "PASSWORD_NOT_MATCH": "Las contraseñas no coinciden."
   },
 
-  "BROWSER": {
-    "FIND": "Buscar"
+  "CRUD": {
+    "ACCEPT": "Aceptar",
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "SELECT_ALL": "Selec. todos",
+    "SELECT_NONE": "Selec. ninguno",
+    "DELETE": "Eliminar",
+    "EDIT": "Editar",
+    "ADD_NEW": "Añadir nuevo",
+    "ACTIONS": "Actions",
+    "VIEW_DETAIL": "Ver detalle"
   }
-
-
 }

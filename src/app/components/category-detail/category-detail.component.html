@@ -1,12 +1,14 @@
-  <h1>Detalle de categoría</h1>
+  <h1>{{'CATEGORY_DETAIL.TITLE' | translate}}</h1>
   <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill" class="full-width" >
-            <mat-label>Nombre</mat-label>
+            <mat-label>{{'CATEGORY_DETAIL.NAME' | translate}}</mat-label>
             <input matInput formControlName="name" required />
+            <mat-error *ngIf="categoryForm.get('name')?.invalid">
+              <span *ngIf="categoryForm.get('name')?.hasError('required')">{{'WARNS.FIELD_REQUIRED' | translate}}</span>
+            </mat-error>
         </mat-form-field>
-
-    <div class="actions">
-      <button mat-raised-button color="primary" (click)="onCancel()">Cancelar</button>
-      <button mat-raised-button color="accent" type="submit" [disabled]="categoryForm.invalid">Guardar</button>
+     <div class="actions">
+      <button mat-raised-button color="primary" type="button" (click)="onCancel()">{{'CRUD.CANCEL' | translate}}</button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="categoryForm.invalid">{{'CRUD.ACCEPT' | translate}}</button>
     </div>
   </form>

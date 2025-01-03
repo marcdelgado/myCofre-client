@@ -5,6 +5,8 @@ import {MatFormField} from "@angular/material/form-field";
 import {catchError, concatMap, forkJoin, of} from "rxjs";
 import {VaultService} from "../../services/vault.service";
 import {AuthService} from "../../services/auth.service";
+import {NavigationStateService} from "../../services/navigation-state.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-change-password',
@@ -13,14 +15,23 @@ import {AuthService} from "../../services/auth.service";
 })
 export class ChangePasswordComponent implements OnInit {
   changePasswordForm: FormGroup = new FormGroup({});
+  from: string = 'list';
+  errorMessage: string | null = null;
+  hidePassword_oldPassword = true;
+  hidePassword_newPassword = true;
+  hidePassword_confirmNewPassword = true;
+
 
   constructor(private fb: FormBuilder,
               private vaultService: VaultService,
-              private authService: AuthService
+              private authService: AuthService,
+              private router: Router,
+              private navigationStateService: NavigationStateService
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.from = this.navigationStateService.getFromRoute();
   }
 
   private initializeForm(): void {
@@ -47,14 +58,15 @@ export class ChangePasswordComponent implements OnInit {
             return this.vaultService.changePassword(formData.newPassword);
           }),
           catchError(err => {
-            console.error('Error durante el cambio de contraseña:', err.message);
-            alert('Hubo un problema al cambiar la contraseña. Por favor, inténtalo de nuevo.');
+            console.error('La contraseña no es correcta.', err.message);
+            this.errorMessage = 'La contraseña no es correcta.';
             return of();
           })
       ).subscribe({
         next: () => {
           console.log('Contraseña actualizada y vault re-encriptado correctamente.');
           alert('¡Contraseña cambiada con éxito!');
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           console.error('Error inesperado durante el flujo:', err.message);
@@ -64,5 +76,18 @@ export class ChangePasswordComponent implements OnInit {
       console.error('El formulario es inválido. Corrige los errores antes de enviar.');
       alert('El formulario contiene errores. Por favor, corrígelos antes de enviar.');
     }
+  }
+
+  onCancel(): void {
+    // Redirigir a la ruta de origen
+    const targetRoute = this.from === 'category-list' ? '/category-list' : '/home';
+    this.router.navigate([targetRoute]).then(() => {});
+
+    // Limpia el estado si no quieres que persista
+    this.navigationStateService.clearFromRoute();
+  }
+
+  onInputChange() {
+    this.errorMessage = null;
   }
 }

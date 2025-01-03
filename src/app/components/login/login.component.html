@@ -21,7 +21,8 @@
       <!-- Campo 'password' -->
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
-        <input matInput formControlName="password" id="password" type="password" (input)="onInputChange()"/>
+        <input matInput formControlName="password" id="password" [type]="hidePassword ? 'password' : 'text'" (input)="onInputChange()"/>
+        <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
           {{ 'WARNS.FIELD_REQUIRED' | translate }}
         </mat-error>

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {UserProfileForm} from "../../models/forms/user-profile-form";
 import {Router} from "@angular/router";
+import {NavigationStateService} from "../../services/navigation-state.service";
 
 
 @Component({
@@ -12,11 +13,16 @@ import {Router} from "@angular/router";
 })
 export class UserProfileComponent implements OnInit {
   profileForm: FormGroup = this.fb.group({});
+  from: string = 'list';
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {}
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private router: Router,
+              private navigationStateService: NavigationStateService) {}
 
   ngOnInit(): void {
     this.initializeForm();
+    this.from = this.navigationStateService.getFromRoute();
 
     // Cargar datos del usuario
     this.userService.getUserProfile().subscribe({
@@ -60,5 +66,14 @@ export class UserProfileComponent implements OnInit {
     } else {
       alert('El formulario contiene errores.');
     }
+  }
+
+  onCancel(): void {
+    // Redirigir a la ruta de origen
+    const targetRoute = this.from === 'category-list' ? '/category-list' : '/home';
+    this.router.navigate([targetRoute]).then(() => {});
+
+    // Limpia el estado si no quieres que persista
+    this.navigationStateService.clearFromRoute();
   }
 }

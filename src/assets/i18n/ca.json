@@ -1,26 +1,100 @@
 {
+  "HTML": {
+    "TITLE": "myCofre - Gestor de Credencials"
+  },
   "HOME": {
-    "TITLE": "Ejemplo de Proyecto Angular con i18n (Internacionalizatión)"
+    "TITLE": "myCofre - Gestor de Credencials"
   },
-
-  "LANGUAGE": {
-    "ENGLISH": "English",
-    "SPANISH": "Español",
-    "CATALAN": "Català"
+  "BROWSER": {
+    "FIND": "Cerca"
   },
-
   "HEADER": {
-    "CREDENTIALS": "Credenciales",
-    "CATEGORIES": "Categorías",
-    "SYNC": "Sincronizar ahora",
+    "HOME": "Inici",
+    "CREDENTIALS": "Credencials",
+    "CATEGORIES": "Categories",
+    "SYNC": "Sincronitzar ara",
     "USER_PROFILE": "Perfil d'usuari",
     "CHANGE_PASSWORD": "Canviar contrasenya",
     "PROFILE": "Perfil d'usuari",
     "LOGOUT": "Tancar sessió"
   },
-
   "LOGIN": {
-    "USER" : "Usuari",
-    "PASSWORD": "Contrasenya"
+    "TITLE": "Inicia sessió",
+    "USER": "E-mail",
+    "PASSWORD": "Contrasenya mestra",
+    "BUT_LOGIN": "Inicia sessió",
+    "NO_SIGNED": "Encara no estàs registrat?",
+    "LINK_SIGNUP": "Dona't d'alta",
+    "LINK_DELETE": "eliminar",
+    "FORGOTTEN_1": "Has oblidat la teva contrasenya? Pots",
+    "FORGOTTEN_2": "el teu compte i començar de nou."
+  },
+  "SIGNUP": {
+    "TITLE": "Crea compte",
+    "USER": "E-mail",
+    "NAME": "Nom",
+    "SURNAME": "Cognom",
+    "PASSWORD": "Contrasenya mestra",
+    "PASSWORD_CONFIRM": "Repetir contrasenya",
+    "SUBMIT": "Registra't"
+  },
+  "USER_PROFILE": {
+    "TITLE": "Perfil d'Usuari",
+    "NAME": "Nom",
+    "SURNAME": "Cognom",
+    "EMAIL": "Correu electrònic"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Canviar contrasenya",
+    "PASSWORD": "Contrasenya antiga",
+    "NEW_PASSWORD": "Nova contrasenya",
+    "CONFIRM_NEW_PASSWORD": "Repetir nova contrasenya"
+  },
+  "CREDENTIAL_DETAIL": {
+    "TITLE": "Detall de credencial",
+    "NAME": "Nom",
+    "URL": "URL",
+    "USERNAME": "Usuari",
+    "PASSWORD": "Contrasenya",
+    "CATEGORIES": "Categories"
+  },
+  "CREDENTIAL_LIST": {
+    "TITLE": "Credencials",
+    "SERVICE_NAME": "Servei",
+    "ACTIONS": "Accions",
+    "COPY_PASS": "Copiar contrasenya",
+    "VIEW_DETAIL": "Veure detall"
+  },
+  "CATEGORY_DETAIL": {
+    "TITLE": "Detall de categoria",
+    "NAME": "Nom"
+  },
+  "CATEGORY_LIST": {
+    "TITLE": "Categories",
+    "NAME": "Nom"
+  },
+  "WARNS": {
+    "FIELD_REQUIRED": "Camp obligatori.",
+    "FIELD_EMAIL_FORMAT": "El text no té format de correu electrònic.",
+    "FIELD_CHARS_2_XX": "Es permeten entre 6 i 64 caràcters.",
+    "FIELD_CHARS_6_64": "Es permeten entre 6 i 64 caràcters.",
+    "PASSWORD_NOT_MATCH": "Les contrasenyes no coincideixen."
+  },
+  "CRUD": {
+    "ACCEPT": "Acceptar",
+    "SAVE": "Desar",
+    "CANCEL": "Cancel·lar",
+    "SELECT_ALL": "Seleccionar tot",
+    "SELECT_NONE": "Seleccionar cap",
+    "DELETE": "Eliminar",
+    "EDIT": "Editar",
+    "ADD_NEW": "Afegir nou",
+    "ACTIONS": "Accions",
+    "VIEW_DETAIL": "Veure detall"
+  },
+  "LANGUAGE": {
+    "ENGLISH": "English",
+    "SPANISH": "Español",
+    "CATALAN": "Català"
   }
 }

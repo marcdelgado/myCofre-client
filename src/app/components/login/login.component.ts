@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   icons = fontAwesomeIcons;
   loginForm: UntypedFormGroup;
   errorMessage: string | null = null;
+  hidePassword = true;
 
   constructor(
       private formBuilder: UntypedFormBuilder,

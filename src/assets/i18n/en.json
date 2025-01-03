@@ -1,26 +1,100 @@
 {
-  "HOME": {
-    "TITLE": "Ejemplo de Proyecto Angular con i18n (Internacionalizatión)"
+  "HTML": {
+    "TITLE": "myCofre - Credential Manager"
   },
-
+  "HOME": {
+    "TITLE": "myCofre - Credential Manager"
+  },
+  "BROWSER": {
+    "FIND": "Search"
+  },
+  "HEADER": {
+    "HOME": "Home",
+    "CREDENTIALS": "Credentials",
+    "CATEGORIES": "Categories",
+    "SYNC": "Sync Now",
+    "USER_PROFILE": "User Profile",
+    "CHANGE_PASSWORD": "Change Password",
+    "PROFILE": "User Profile",
+    "LOGOUT": "Log Out"
+  },
+  "LOGIN": {
+    "TITLE": "Log In",
+    "USER": "E-mail",
+    "PASSWORD": "Master Password",
+    "BUT_LOGIN": "Log In",
+    "NO_SIGNED": "Not registered yet?",
+    "LINK_SIGNUP": "Sign Up",
+    "LINK_DELETE": "delete",
+    "FORGOTTEN_1": "Forgot your password? You can",
+    "FORGOTTEN_2": "your account and start over."
+  },
+  "SIGNUP": {
+    "TITLE": "Sign Up",
+    "USER": "E-mail",
+    "NAME": "Name",
+    "SURNAME": "Surname",
+    "PASSWORD": "Master Password",
+    "PASSWORD_CONFIRM": "Repeat Password",
+    "SUBMIT": "Register"
+  },
+  "USER_PROFILE": {
+    "TITLE": "User Profile",
+    "NAME": "Name",
+    "SURNAME": "Surname",
+    "EMAIL": "E-mail"
+  },
+  "CHANGE_PASSWORD": {
+    "TITLE": "Change Password",
+    "PASSWORD": "Old Password",
+    "NEW_PASSWORD": "New Password",
+    "CONFIRM_NEW_PASSWORD": "Repeat New Password"
+  },
+  "CREDENTIAL_DETAIL": {
+    "TITLE": "Credential Detail",
+    "NAME": "Name",
+    "URL": "URL",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "CATEGORIES": "Categories"
+  },
+  "CREDENTIAL_LIST": {
+    "TITLE": "Credentials",
+    "SERVICE_NAME": "Service",
+    "ACTIONS": "Actions",
+    "COPY_PASS": "Copy Password",
+    "VIEW_DETAIL": "View Detail"
+  },
+  "CATEGORY_DETAIL": {
+    "TITLE": "Category Detail",
+    "NAME": "Name"
+  },
+  "CATEGORY_LIST": {
+    "TITLE": "Categories",
+    "NAME": "Name"
+  },
+  "WARNS": {
+    "FIELD_REQUIRED": "Field is required.",
+    "FIELD_EMAIL_FORMAT": "The text is not in email format.",
+    "FIELD_CHARS_2_XX": "Between 6 and 64 characters are allowed.",
+    "FIELD_CHARS_6_64": "Between 6 and 64 characters are allowed.",
+    "PASSWORD_NOT_MATCH": "Passwords do not match."
+  },
+  "CRUD": {
+    "ACCEPT": "Accept",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "SELECT_ALL": "Select All",
+    "SELECT_NONE": "Select None",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "ADD_NEW": "Add New",
+    "ACTIONS": "Actions",
+    "VIEW_DETAIL": "View Detail"
+  },
   "LANGUAGE": {
     "ENGLISH": "English",
     "SPANISH": "Español",
     "CATALAN": "Català"
-  },
-
-  "HEADER": {
-    "CREDENTIALS": "Credentials",
-    "CATEGORIES": "Categories",
-    "SYNC": "Sync now",
-    "USER_PROFILE": "User profile",
-    "CHANGE_PASSWORD": "Change password",
-    "PROFILE": "Profile",
-    "LOGOUT": "Logout"
-  },
-
-  "LOGIN": {
-    "USER" : "User",
-    "PASSWORD": "Password"
   }
 }

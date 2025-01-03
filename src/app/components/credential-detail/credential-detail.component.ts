@@ -32,7 +32,7 @@ export class CredentialDetailComponent implements OnInit {
       serviceName: ['', Validators.required],
       serviceUrl: [''],
       username: [''],
-      password: ['', Validators.required],
+      password: [''],
       categories: [[]]
     });
     this.route.queryParams.subscribe(params => {

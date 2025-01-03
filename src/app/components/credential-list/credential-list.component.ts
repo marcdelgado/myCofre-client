@@ -37,6 +37,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
   displayedColumns: string[] = ['select', 'serviceName', 'actions'];
   dataSource = new MatTableDataSource<any>([]);
   currentView :string = "";
+  currentFilterWord: string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -91,7 +92,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
   }
 
   filter(categoryIds: string[]): void {
-    this.vaultService.findCredentials(categoryIds,"").subscribe({
+    this.vaultService.findCredentials(categoryIds,this.currentFilterWord || "").subscribe({
       next: (filteredCredentials) => {
         this.dataSource.data = filteredCredentials;
       },
@@ -233,6 +234,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
 
 
   filterByWord(keyword: string): void {
+    this.currentFilterWord = keyword;
     if (keyword && keyword.length>0) {
       this.vaultService.findCredentials([], keyword).subscribe({
         next: (filteredCredentials) => {

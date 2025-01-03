@@ -28,6 +28,7 @@
     "class-transformer": "^0.5.1",
     "crypto-js": "^4.2.0",
     "material-design-icons-iconfont": "^6.7.0",
+    "ngx-color-picker": "^17.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "~7.8.0",
     "split.js": "^1.6.5",

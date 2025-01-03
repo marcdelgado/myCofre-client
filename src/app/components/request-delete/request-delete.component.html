@@ -2,8 +2,8 @@
     <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
   </header>
 
-  <main class="main">
-    <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+  <div class="request-delete-wrapper">
+    <h1>Eliminar cuenta</h1>
     <!-- FORMULARIO DE LOGIN -->
   <form (ngSubmit)="onSubmit()" #deleteForm="ngForm" class="login-form">
     <mat-form-field appearance="fill" class="full-width">
@@ -14,13 +14,14 @@
       </mat-error>
     </mat-form-field>
     <div class="actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="deleteForm.invalid">
+      <button mat-raised-button color="primary" type="button" routerLink="/home">
+        Cancelar
+      </button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="deleteForm.invalid">
         Enviar
       </button>
     </div>
   </form>
-  </main>
+  </div>
 
-  <footer class="footer">
-    <p>Esto es el footer</p>
-  </footer>
+  <app-footer class="fullscreen"></app-footer>

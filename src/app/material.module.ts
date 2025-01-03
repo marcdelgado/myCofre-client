@@ -10,6 +10,7 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardActions, MatCardContent, MatCardModule, MatCardTitle} from "@angular/material/card";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ColorPickerModule} from "ngx-color-picker";
 
 @NgModule({
   exports: [
@@ -26,7 +27,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatInputModule,
     MatButtonModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ColorPickerModule
   ],
   imports: []
 })

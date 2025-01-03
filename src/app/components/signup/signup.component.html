@@ -38,8 +38,9 @@
         <!-- Contraseña -->
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>{{ 'SIGNUP.PASSWORD' | translate }}</mat-label>
-            <input matInput type="password" formControlName="password" />
-            <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+            <input matInput [type]="hidePassword_password ? 'password' : 'text'" formControlName="password" />
+          <mat-icon matSuffix (click)="hidePassword_password = !hidePassword_password">{{hidePassword_password ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
               {{ 'WARNS.FIELD_REQUIRED' | translate }}
             </mat-error>
             <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
@@ -50,8 +51,9 @@
         <!-- Confirmar Contraseña -->
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>{{ 'SIGNUP.PASSWORD_CONFIRM' | translate }}</mat-label>
-            <input matInput type="password" formControlName="confirmPassword" />
-            <mat-error *ngIf="signupForm.hasError('passwordsMismatch') && signupForm.get('confirmPassword')?.touched">
+            <input matInput [type]="hidePassword_confirmPassword ? 'password' : 'text'" formControlName="confirmPassword" />
+          <mat-icon matSuffix (click)="hidePassword_confirmPassword = !hidePassword_confirmPassword">{{hidePassword_confirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="signupForm.hasError('passwordsMismatch') && signupForm.get('confirmPassword')?.touched">
               {{ 'WARNS.PASSWORD_NOT_MATCH' | translate }}
             </mat-error>
         </mat-form-field>
