@@ -56,13 +56,16 @@
             </mat-error>
         </mat-form-field>
 
+      <div class="actions">
         <button mat-raised-button color="primary" type="button" routerLink="/home">
           Cancelar
         </button>
-      <!-- Botón de Signup -->
+        <!-- Botón de Signup -->
         <button mat-raised-button color="accent" type="submit" [disabled]="isSubmitting">
           {{ 'SIGNUP.SUBMIT' | translate }}
         </button>
+      </div>
+
 
         <!-- Error general -->
         <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>

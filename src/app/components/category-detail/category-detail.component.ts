@@ -5,6 +5,7 @@ import {VaultService} from "../../services/vault.service";
 import {NavigationStateService} from "../../services/navigation-state.service";
 import {CredentialDto} from "../../models/vault/credential-dto";
 import {CategoryDto} from "../../models/vault/category-dto";
+import {debugLog} from "../../services/shared.service";
 
 @Component({
   selector: 'app-category-detail',
@@ -63,6 +64,8 @@ export class CategoryDetailComponent {
             name: category.name,
             credentials: category.credentials
           });
+
+          debugLog(category.id);
         } else {
           console.warn('No se encontró ninguna categoría con el ID proporcionado:', id);
         }
@@ -78,7 +81,7 @@ export class CategoryDetailComponent {
       const categoryData: CategoryDto = new CategoryDto(
           this.categoryForm.value.name,
           this.categoryForm.value.categories || [],
-          this.categoryForm.value.id || ""
+        this.categoryId || ""
       );
       let actionObservable;
 
@@ -86,6 +89,8 @@ export class CategoryDetailComponent {
         actionObservable = this.vaultService.addCategory(categoryData);
       } else if (this.action === 'edit' && this.categoryId) {
         console.log('Editando categoría...');
+
+        debugLog(categoryData);
         actionObservable = this.vaultService.updateCategory(categoryData);
       }
 

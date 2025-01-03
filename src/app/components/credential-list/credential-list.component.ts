@@ -20,6 +20,7 @@ import {Router} from "@angular/router";
 import {NavigationStateService} from "../../services/navigation-state.service";
 import {concatMap, from} from "rxjs";
 import {Fontawesome} from "../shared/fontawesome";
+import {debugLog} from "../../services/shared.service";
 
 @Component({
   selector: 'app-credential-list',
@@ -57,7 +58,9 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
     // Cargar credenciales desde VaultService
     this.vaultService.listAllCredentials().subscribe({
       next: (credentials: any[]) => {
-        this.dataSource.data = credentials; // Asignar las credenciales al dataSource
+        this.credentials = credentials;
+        this.dataSource.data = this.credentials;
+        debugLog(credentials);// Asignar las credenciales al dataSource
       },
       complete: () => {
         if (this.homeComponent) {
@@ -170,7 +173,9 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
   copyPassword(id: string): void {
     // Busca la credencial por ID
     const credential = this.credentials.find(c => c.id === id);
-
+    debugLog(id);
+    debugLog(this.credentials);
+    debugLog(credential);
     if (credential && credential.password) {
       // Copia al portapapeles
       navigator.clipboard.writeText(credential.password).then(() => {
@@ -228,7 +233,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
 
 
   filterByWord(keyword: string): void {
-    if (keyword) {
+    if (keyword && keyword.length>0) {
       this.vaultService.findCredentials([], keyword).subscribe({
         next: (filteredCredentials) => {
           this.dataSource.data = filteredCredentials; // Actualizamos el dataSource con los resultados
@@ -240,8 +245,16 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
         }
       });
     } else {
-      // Si no hay palabra clave, podrías resetear la tabla a su estado original
-      this.dataSource.data = [];
+      this.vaultService.listAllCredentials().subscribe({
+        next: (filteredCredentials) => {
+          this.dataSource.data = filteredCredentials; // Actualizamos el dataSource con los resultados
+          console.log('Credenciales filtradas:', filteredCredentials);
+        },
+        error: (err) => {
+          console.error('Error al filtrar credenciales:', err);
+          alert('Ocurrió un error al buscar las credenciales.');
+        }
+      });
     }
   }
 }

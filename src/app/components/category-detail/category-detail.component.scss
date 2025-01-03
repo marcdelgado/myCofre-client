@@ -1,12 +1,56 @@
-.category-list .badge {
-  cursor: pointer;
-  padding: 8px 12px;
-  margin: 5px;
-  border-radius: 5px;
-  background-color: #f0f0f0;
+@import '../../../styles/main';
+
+
+/* MOBILE */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host{
+      width: 100%;
+      padding: 10px;
+      h1{
+        margin-bottom: 20px;
+      }
+      .full-width {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+      .actions {
+        flex: none;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        & > * {
+          width: 100%;
+        }
+      }
+  }
 }
 
-.category-list .badge.selected {
-  background-color: #007bff;
-  color: white;
+
+
+
+/* DESKTOP */
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host {
+      float: left;
+      width: 50%;
+      h1{
+        margin-bottom: 20px;
+      }
+
+      .full-width {
+        width: 100%;
+        margin-bottom: 16px;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: left;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 20px;
+      }
+  }
 }
+
+

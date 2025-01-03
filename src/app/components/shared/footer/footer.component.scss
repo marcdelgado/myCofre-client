@@ -5,9 +5,7 @@
 
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
   :host{
-    &.fullscreen {
 
-    }
 
     &.component{
       border-top: 2px outset $theme-footer-border;
@@ -46,9 +44,10 @@
 
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
   :host{
-    &.fullscreen {
-
+    &:not(.fullscreen){
+      padding: 10px;
     }
+
 
     &.component{
       border-top: 2px outset $theme-footer-border;

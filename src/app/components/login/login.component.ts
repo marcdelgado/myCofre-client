@@ -5,7 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {finalize, switchMap} from "rxjs";
 import * as fontAwesomeIcons from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from "../../services/auth.service";
-import {SharedService} from "../../services/shared.service";
+import {debugLog, SharedService} from "../../services/shared.service";
 import {LoginForm} from "../../models/forms/login-form";
 import {VaultService} from "../../services/vault.service";
 
@@ -17,6 +17,7 @@ import {VaultService} from "../../services/vault.service";
 export class LoginComponent implements OnInit {
   icons = fontAwesomeIcons;
   loginForm: UntypedFormGroup;
+  errorMessage: string | null = null;
 
   constructor(
       private formBuilder: UntypedFormBuilder,
@@ -62,7 +63,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe(
         () => {
-          console.log('VaultService inicializado correctamente.');
+          debugLog('VaultService inicializado correctamente.');
         },
         (error: HttpErrorResponse) => {
           responseOK = false;
@@ -71,7 +72,12 @@ export class LoginComponent implements OnInit {
           } else {
             this.sharedService.errorLog(error);
           }
+          this.errorMessage = 'El email o la contraseña no es correcto.';
         }
       );
+  }
+
+  onInputChange() {
+    this.errorMessage = null;
   }
 }

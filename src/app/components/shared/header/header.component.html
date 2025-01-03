@@ -45,24 +45,24 @@
 
   <nav class="functionMenu">
     <ul class="vault">
-      <li><a routerLink="/home" routerLinkActive="active">
+      <li><a routerLink="/home" routerLinkActive="active" (click)="closeHamburger()">
         <fa-icon [icon]="faHouse"></fa-icon><span>{{ 'HEADER.HOME' | translate }}</span>
       </a></li>
-      <li><a routerLink="/credential-list" routerLinkActive="active">
+      <li><a routerLink="/credential-list" routerLinkActive="active" (click)="closeHamburger()">
         <fa-icon [icon]="faAddressCard"></fa-icon><span>{{ 'HEADER.CREDENTIALS' | translate }}</span>
       </a></li>
-      <li><a routerLink="/category-list" routerLinkActive="active">
+      <li><a routerLink="/category-list" routerLinkActive="active" (click)="closeHamburger()">
         <fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CATEGORIES' | translate }}</span>
       </a></li>
-      <li><a (click)="syncVault()">
+      <li><a (click)="closeHamburger(); syncVault();">
         <fa-icon [icon]="faArrowsRotate"></fa-icon><span>{{ 'HEADER.SYNC' | translate }}</span>
       </a></li>
     </ul>
     <ul class="profile">
-      <li><a routerLink="/profile" routerLinkActive="active">
+      <li><a routerLink="/profile" routerLinkActive="active" (click)="closeHamburger()">
         <fa-icon [icon]="faUser"></fa-icon><span>{{ 'HEADER.USER_PROFILE' | translate }}</span>
       </a></li>
-      <li><a routerLink="/change-password" routerLinkActive="active">
+      <li><a routerLink="/change-password" routerLinkActive="active" (click)="closeHamburger()">
         <fa-icon [icon]="faTags"></fa-icon><span>{{ 'HEADER.CHANGE_PASSWORD' | translate }}</span>
       </a></li>
     </ul>

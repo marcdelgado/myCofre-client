@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {VaultService} from "../../services/vault.service";
 import {NavigationStateService} from "../../services/navigation-state.service";
 import {CredentialDto} from "../../models/vault/credential-dto";
+import {debugLog} from "../../services/shared.service";
 
 @Component({
   selector: 'app-credential-detail',
@@ -16,6 +17,7 @@ export class CredentialDetailComponent implements OnInit {
   action: 'edit' | 'new' = 'new';
   credentialId?: string;
   from: string = 'list';
+  hidePassword = true;
 
   constructor(
     private fb: FormBuilder,
@@ -39,6 +41,7 @@ export class CredentialDetailComponent implements OnInit {
       if (this.action === 'edit' && this.credentialId) {
         this.loadCredential(this.credentialId);
       }
+
     });
     this.loadCategories();
     this.selectedCategories = [...this.credentialForm.value.categories];
@@ -68,6 +71,7 @@ export class CredentialDetailComponent implements OnInit {
             password: credential.password,
             categories: credential.categories
           });
+          debugLog(credential.id)
         } else {
           console.warn('No se encontró ninguna credencial con el ID proporcionado:', id);
         }

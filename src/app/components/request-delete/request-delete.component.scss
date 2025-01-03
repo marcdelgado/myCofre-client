@@ -1,5 +1,10 @@
-@media not ((min-width: 1200px) and (orientation: landscape)){
-  .request-delete-content {
+@import '../../../styles/main';
+
+
+/* MOBILE */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+
+  .request-delete-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,9 +51,13 @@
   }
 }
 
+@import '../../../styles/main';
 
-@media (min-width: 1000px) {
-  .request-delete-content {
+
+/* DESKTOP */
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+
+  .request-delete-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;

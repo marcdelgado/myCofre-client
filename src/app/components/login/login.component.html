@@ -9,7 +9,7 @@
       <!-- Campo 'email' -->
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>{{ 'LOGIN.USER' | translate }}</mat-label>
-        <input matInput formControlName="email" id="email" type="email" />
+        <input matInput formControlName="email" id="email" type="email" (input)="onInputChange()"/>
         <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
           {{ 'WARNS.FIELD_REQUIRED' | translate }}
         </mat-error>
@@ -21,7 +21,7 @@
       <!-- Campo 'password' -->
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
-        <input matInput formControlName="password" id="password" type="password" />
+        <input matInput formControlName="password" id="password" type="password" (input)="onInputChange()"/>
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
           {{ 'WARNS.FIELD_REQUIRED' | translate }}
         </mat-error>
@@ -44,6 +44,10 @@
         {{ 'LOGIN.BUT_LOGIN' | translate }}
       </button>
     </form>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
 
     <!-- Enlace de registro -->
     <p class="signup-link">

@@ -1,15 +1,46 @@
-.browser-container form {
-  display: flex;
-  width: 100%;
+
+@import '../../../styles/main';
+
+
+/* MOBILE */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host {
+    form {
+      display: flex;
+      width: 100%;
+    }
+    mat-form-field {
+      flex: 1; // El input ocupa todo el espacio disponible
+      margin: 0; // Elimina márgenes
+    }
+
+    button {
+      flex: 0 0 120px; // Ancho fijo del botón
+      margin: 0; // Elimina márgenes
+      height: 56px;
+    }
+  }
 }
 
-mat-form-field {
-  flex: 1; // El input ocupa todo el espacio disponible
-  margin: 0; // Elimina márgenes
+
+/* DESKTOP */
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host {
+
+    form {
+      display: flex;
+      width: 100%;
+    }
+    mat-form-field {
+      flex: 1; // El input ocupa todo el espacio disponible
+      margin: 0; // Elimina márgenes
+    }
+
+    button {
+      flex: 0 0 120px; // Ancho fijo del botón
+      margin: 0; // Elimina márgenes
+      height: 56px;
+    }
+  }
 }
 
-button {
-  flex: 0 0 120px; // Ancho fijo del botón
-  margin: 0; // Elimina márgenes
-  height: 56px;
-}

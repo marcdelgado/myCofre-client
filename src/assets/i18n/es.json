@@ -55,6 +55,10 @@
     "FIELD_EMAIL_FORMAT": "Campo obligatorio.",
     "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres",
     "PASSWORD_NOT_MATCH": "Las contraseñas no coinciden."
+  },
+
+  "BROWSER": {
+    "FIND": "Buscar"
   }
 
 

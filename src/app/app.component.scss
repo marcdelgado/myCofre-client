@@ -15,6 +15,7 @@
     }
 
     main {
+
       z-index:0;
       width: 100%;
       margin: 0 auto;
@@ -61,7 +62,7 @@
 
     main {
       width: 100%;
-      margin: 0 auto;
+      padding-bottom: 50px;
 
       &.fullscreen {
         width: 100%;
@@ -70,6 +71,7 @@
       &:not(.fullscreen) {
         flex: 1 1 auto;
         max-width: $desktop-window-width;
+        margin: 20px auto;
       }
     }
 

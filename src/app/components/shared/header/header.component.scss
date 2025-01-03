@@ -1,60 +1,62 @@
 @use "sass:math";
-@import '../../../../styles/variables';
-
-nav ul li, nav ul li a {
-  display: flex;
-  align-items: center; // Centra verticalmente el contenido
-  cursor: pointer;
-}
-
-/* Normaliza los estilos de los enlaces */
-nav.functionMenu ul li a {
-  color:$theme-header-fg-color-hover; /* Color base */
-  text-decoration: none; /* Sin subrayado */
-  display: flex;
-  align-items: center; // Centra íconos y texto verticalmente
-}
-
-nav.functionMenu ul li a:hover {
-  color: $theme-header-fg-color-hover; /* Color al hacer hover */
-}
-
-/* Aplica los mismos estilos al enlace de syncVault */
-nav.functionMenu ul li a[routerLink],
-nav.functionMenu ul li a:not([routerLink]) {
-  color: inherit; /* Usa el color definido en los estilos base */
-}
-
-nav.functionMenu ul li a[routerLink]:hover,
-nav.functionMenu ul li a:not([routerLink]):hover {
-  color: $theme-header-fg-color-hover;
-}
+@import '../../../../styles/main';
 
 
-:host{
 
-  color: $theme-header-fg-color;
-  font-family: $theme-header-font-family;
+/* MOBILE */
+@media not ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host{
 
-  .content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
+    color: $theme-header-fg-color;
+    font-family: $theme-header-font-family;
 
-  .logo-wrapper {
-    display: flex; /* Usamos flex para que el contenedor se ajuste al contenido */
-    align-items: center; /* Alineamos el contenido verticalmente */
-    overflow: hidden;
-    img {
-      height: 60px;
-      width: auto;
-      max-width: 100%;
+
+    .content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-  }
+
+    .logo-wrapper {
+      display: flex; /* Usamos flex para que el contenedor se ajuste al contenido */
+      align-items: center; /* Alineamos el contenido verticalmente */
+      overflow: hidden;
+      img {
+        height: 60px;
+        width: auto;
+        max-width: 100%;
+      }
+    }
+
+    nav ul li, nav ul li a {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
 
 
-  @media not ((min-width: 1200px) and (orientation: landscape)) {
+    nav.functionMenu ul li a {
+      color:$theme-header-fg-color-hover;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav.functionMenu ul li a:hover {
+      color: $theme-header-fg-color-hover;
+    }
+
+
+    nav.functionMenu ul li a[routerLink],
+    nav.functionMenu ul li a:not([routerLink]) {
+      color: inherit;
+    }
+
+    nav.functionMenu ul li a[routerLink]:hover,
+    nav.functionMenu ul li a:not([routerLink]):hover {
+      color: $theme-header-fg-color-hover;
+    }
+
     background-image: $theme-header-bg-image;
     background-position: center;
     background-size: cover;
@@ -63,7 +65,7 @@ nav.functionMenu ul li a:not([routerLink]):hover {
     width: 100%;
     height: calc(60px + 15px);
     padding: 5px;
-    font-size: 1.3rem;
+    font-size: 1rem;
 
     .content-wrapper {
       display: flex;
@@ -75,7 +77,11 @@ nav.functionMenu ul li a:not([routerLink]):hover {
       width: 100%;
       box-sizing: border-box;
 
-      fa-icon{
+      nav.functionMenu fa-icon{
+        font-size: 30px;
+      }
+
+      nav.add-button fa-icon{
         font-size: 60px;
       }
 
@@ -125,16 +131,15 @@ nav.functionMenu ul li a:not([routerLink]):hover {
         width: 100vw;
         order: 5;
         top: $mobile-header-height;
+        padding: 10px;
       }
 
       .functionMenu {
         position: relative;
         width: 100vw;
         order: 4;
-        .vault{
-        }
-        .profile{
-        }
+        padding: 10px;
+        top: 10px;
       }
 
 
@@ -144,9 +149,9 @@ nav.functionMenu ul li a:not([routerLink]):hover {
         ul{
           display: flex;
           flex-direction: column;
-          margin-lefT: 40px;
+          margin-left: 20px;
           li{
-            margin: 5px 0;
+            margin: 20px 0;
             display: flex;
             align-items: center;
             fa-icon{
@@ -171,7 +176,7 @@ nav.functionMenu ul li a:not([routerLink]):hover {
           border-radius: 0;
           border: 1px solid $theme-header-fg-color;
           background-color: #ffffff00;
-          font-size: 1.3rem;
+          font-size: 1rem;
         }
         select:hover, select:focus{
 
@@ -188,13 +193,64 @@ nav.functionMenu ul li a:not([routerLink]):hover {
 
     }
 
-
-
-
   }
+}
 
 
-  @media (min-width: 1200px) and (orientation: landscape) {
+/* DESKTOP */
+@media ((min-width: $media-width-transition) and (orientation: landscape)) {
+  :host{
+
+    color: $theme-header-fg-color;
+    font-family: $theme-header-font-family;
+
+
+    .content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-wrapper {
+      display: flex; /* Usamos flex para que el contenedor se ajuste al contenido */
+      align-items: center; /* Alineamos el contenido verticalmente */
+      overflow: hidden;
+      img {
+        height: 60px;
+        width: auto;
+        max-width: 100%;
+      }
+    }
+
+    nav ul li, nav ul li a {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+
+    nav.functionMenu ul li a {
+      color:$theme-header-fg-color-hover;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav.functionMenu ul li a:hover {
+      color: $theme-header-fg-color-hover;
+    }
+
+
+    nav.functionMenu ul li a[routerLink],
+    nav.functionMenu ul li a:not([routerLink]) {
+      color: inherit;
+    }
+
+    nav.functionMenu ul li a[routerLink]:hover,
+    nav.functionMenu ul li a:not([routerLink]):hover {
+      color: $theme-header-fg-color-hover;
+    }
+
     height: $desktop-header-height;
     background-image: $theme-header-bg-image;
     background-position: center;
@@ -287,15 +343,6 @@ nav.functionMenu ul li a:not([routerLink]):hover {
         padding-right: 10px;
         font-size: 1.25rem;
       }
-
-
     }
-
   }
-
-
-
-
-
-
 }

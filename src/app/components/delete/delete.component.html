@@ -2,7 +2,9 @@
 <div class="request-delete-wrapper">
   <p *ngIf="!loading">Procesando solicitud...</p>
   <p *ngIf="message">{{ message }}</p>
-  <button mat-raised-button color="primary" type="button" routerLink="/home">
-    Volver al inicio
-  </button>
+  <div class="actions">
+    <button mat-raised-button color="primary" type="button" routerLink="/home">
+      Volver al inicio
+    </button>
+  </div>
 </div>

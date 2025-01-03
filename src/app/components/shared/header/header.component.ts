@@ -82,6 +82,15 @@ export class HeaderComponent  implements OnInit{
     });
   }
 
+  closeHamburger(): void {
+    const menuIcon = document.querySelector('.hamburger-button');
+    menuIcon?.classList.remove('deployed');
+    const sessionLanguageOptions = document.querySelector('.sessionLanguageOptions');
+    sessionLanguageOptions?.classList.remove('deployed');
+    const functionMenu = document.querySelector('.functionMenu');
+    functionMenu?.classList.remove('deployed');
+  }
+
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);

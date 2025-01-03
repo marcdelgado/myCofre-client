@@ -1,6 +1,3 @@
-
-<div class="request-delete-content">
-
   <header class="header">
     <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
   </header>
@@ -16,14 +13,14 @@
         {{ 'WARNS.FIELD_REQUIRED' | translate }}
       </mat-error>
     </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit" [disabled]="deleteForm.invalid">
-      Enviar
-    </button>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="deleteForm.invalid">
+        Enviar
+      </button>
+    </div>
   </form>
   </main>
 
   <footer class="footer">
     <p>Esto es el footer</p>
   </footer>
-</div>
