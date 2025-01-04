@@ -6,34 +6,34 @@
     display: flex;
     flex-direction: column;
     min-height: 0;
-    max-height: 100%; // Ocupa todo el espacio disponible del contenedor padre
-    overflow: hidden; // Asegura que no haya contenido desbordado
+    max-height: 100%;
+    overflow: hidden;
 
     app-browser {
-      flex: none; // Su altura será limitada por el contenido
+      flex: none;
     }
 
     flex: 1 1 auto;
 
     #split-container {
-      flex: 1; // Ocupa el resto del espacio disponible en :host
+      flex: 1;
       display: flex;
       flex-direction: column;
-      overflow: hidden; // Evita contenido desbordado dentro de split-container
+      overflow: hidden;
 
       .split {
-        height: 24px; // Altura fija para el borde controlado por Split.js
-        flex: none; // No se expande en el flujo de flexbox
+        height: 24px;
+        flex: none;
       }
 
       .top-pane {
-        flex: none; // Su altura es controlada dinámicamente por Split.js
-        overflow-y: auto; // Permite scroll si el contenido excede su altura
+        flex: none;
+        overflow-y: auto;
       }
 
       .bottom-pane {
-        flex: none; // Ocupa el espacio restante dinámicamente
-        overflow-y: auto; // Permite scroll si el contenido excede su altura
+        flex: none;
+        overflow-y: auto;
         flex: 1 1 auto;
       }
     }

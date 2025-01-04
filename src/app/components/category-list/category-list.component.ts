@@ -215,11 +215,11 @@ export class CategoryListComponent implements OnInit, AfterViewInit  {
   toggleSelectAll(event: any): void {
     const isChecked = event.checked;
     this.dataSource.data.forEach((row: any) => {
-      row.selected = isChecked; // Marca o desmarca cada fila
+      row.selected = isChecked;
       if (isChecked) {
-        this.selectedCategories.add(row.id); // Agrega el ID al conjunto de seleccionados
+        this.selectedCategories.add(row.id);
       } else {
-        this.selectedCategories.clear(); // Limpia el conjunto si se desmarca todo
+        this.selectedCategories.clear();
       }
     });
   }

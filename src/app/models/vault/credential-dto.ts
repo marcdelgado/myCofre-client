@@ -1,4 +1,3 @@
-import { CategoryDto } from "./category-dto";
 import { v4 as uuidv4 } from 'uuid';
 import { Type, Expose } from 'class-transformer';
 

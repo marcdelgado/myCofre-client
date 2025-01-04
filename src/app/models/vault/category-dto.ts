@@ -1,4 +1,3 @@
-import { CredentialDto } from "./credential-dto";
 import { v4 as uuidv4 } from 'uuid';
 import { Type, Expose } from 'class-transformer';
 

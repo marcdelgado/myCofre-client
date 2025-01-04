@@ -1,3 +1,4 @@
+
 export class ApiMessage<T> {
   constructor(json: Partial<T>) {
     Object.assign(this, json);

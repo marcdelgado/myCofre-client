@@ -10,13 +10,13 @@
       width: 100%;
     }
     mat-form-field {
-      flex: 1; // El input ocupa todo el espacio disponible
-      margin: 0; // Elimina márgenes
+      flex: 1;
+      margin: 0;
     }
 
     button {
-      flex: 0 0 120px; // Ancho fijo del botón
-      margin: 0; // Elimina márgenes
+      flex: 0 0 120px;
+      margin: 0;
       height: 56px;
     }
   }

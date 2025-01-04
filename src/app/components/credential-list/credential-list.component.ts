@@ -79,7 +79,6 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
   }
 
   ngAfterViewInit() {
-    console.log('MatSort:', this.sort); // Confirma que MatSort no es undefined
     this.dataSource.sort = this.sort;
   }
 

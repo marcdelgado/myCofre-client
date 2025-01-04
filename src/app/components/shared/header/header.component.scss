@@ -19,8 +19,8 @@
     }
 
     .logo-wrapper {
-      display: flex; /* Usamos flex para que el contenedor se ajuste al contenido */
-      align-items: center; /* Alineamos el contenido verticalmente */
+      display: flex;
+      align-items: center;
       overflow: hidden;
       img {
         height: 60px;
@@ -62,7 +62,7 @@
     background-position: center;
     background-size: cover;
     z-index: 1;
-    display: block; /* Asegura que el host ocupe el espacio necesario */
+    display: block;
     width: 100%;
     height: 70px;
     padding: 5px;
@@ -212,8 +212,8 @@
     }
 
     .logo-wrapper {
-      display: flex; /* Usamos flex para que el contenedor se ajuste al contenido */
-      align-items: center; /* Alineamos el contenido verticalmente */
+      display: flex;
+      align-items: center;
       overflow: hidden;
       img {
         height: 60px;

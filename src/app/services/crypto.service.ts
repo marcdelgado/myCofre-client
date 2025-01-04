@@ -1,7 +1,5 @@
 import * as CryptoJS from 'crypto-js';
 
-
-
 export function encrypt(data: any, password: string): string {
   if (data === "") return "";
   return CryptoJS.AES.encrypt(data, password).toString();

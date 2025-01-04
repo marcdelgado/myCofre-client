@@ -1,5 +1,3 @@
-import {ApiMessage} from "./api-message";
-
 
 export class UserEditRequest{
 

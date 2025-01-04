@@ -95,10 +95,10 @@ export class CredentialDetailComponent implements OnInit {
       let actionObservable;
 
       if (this.action === 'new') {
-        actionObservable = this.vaultService.addCredential(credentialData); // Retorna un observable
+        actionObservable = this.vaultService.addCredential(credentialData);
       } else if (this.action === 'edit' && this.credentialId) {
         console.log('Editando credencial...');
-        actionObservable = this.vaultService.updateCredential(credentialData); // Retorna un observable
+        actionObservable = this.vaultService.updateCredential(credentialData);
       }
 
       if (actionObservable) {
