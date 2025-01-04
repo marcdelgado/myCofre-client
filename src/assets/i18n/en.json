@@ -1,12 +1,17 @@
 {
   "HTML": {
-    "TITLE": "myCofre - Credential Manager"
+    "TITLE": "myCofre - Gestor de Credenciales"
+  },
+  "LANGUAGE": {
+    "ENGLISH": "English",
+    "SPANISH": "Español",
+    "CATALAN": "Català"
   },
   "HOME": {
-    "TITLE": "myCofre - Credential Manager"
+    "TITLE": "myCofre - Gestor de Credenciales"
   },
   "BROWSER": {
-    "FIND": "Search"
+    "FIND": "Buscar"
   },
   "HEADER": {
     "HOME": "Home",
@@ -14,87 +19,109 @@
     "CATEGORIES": "Categories",
     "SYNC": "Sync Now",
     "USER_PROFILE": "User Profile",
-    "CHANGE_PASSWORD": "Change Password",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
     "PROFILE": "User Profile",
     "LOGOUT": "Log Out"
   },
+  "FOOTER": {
+    "AUTHOR": "2024 Marc Delgado Bonet.",
+    "LICENSE": "This software is licensed under the"
+  },
+  "NOTIFY_DIALOG": {
+    "TITLE": "Notificación",
+    "ACCEPT": "Accept"
+  },
+  "CONFIRM_DIALOG": {
+    "TITLE": "Confirmación",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete"
+  },
   "LOGIN": {
-    "TITLE": "Log In",
+    "TITLE": "Iniciar sesión",
     "USER": "E-mail",
-    "PASSWORD": "Master Password",
-    "BUT_LOGIN": "Log In",
-    "NO_SIGNED": "Not registered yet?",
-    "LINK_SIGNUP": "Sign Up",
-    "LINK_DELETE": "delete",
-    "FORGOTTEN_1": "Forgot your password? You can",
-    "FORGOTTEN_2": "your account and start over."
+    "PASSWORD": "Contraseña maestra",
+    "BUT_LOGIN": "Iniciar sesión",
+    "NO_SIGNED": "¿Todavía no estás registrado?",
+    "LINK_SIGNUP": "Date de alta",
+    "LINK_DELETE": "eliminar",
+    "FORGOTTEN_1": "¿Olvidaste tu contraseña? Puedes",
+    "FORGOTTEN_2": "tu cuenta y empezar de nuevo."
   },
   "SIGNUP": {
-    "TITLE": "Sign Up",
+    "TITLE": "Crear cuenta",
     "USER": "E-mail",
-    "NAME": "Name",
-    "SURNAME": "Surname",
-    "PASSWORD": "Master Password",
-    "PASSWORD_CONFIRM": "Repeat Password",
-    "SUBMIT": "Register"
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
+    "PASSWORD": "Contraseña maestra",
+    "PASSWORD_CONFIRM": "Repetir contraseña",
+    "SUBMIT": "Registrarse"
+  },
+  "ACTIVATE": {
+    "TITLE": "Activación de cuenta",
+    "RESULT_OK": "Tu cuenta ha sido activada.",
+    "START_SESSION": "Iniciar sesión"
   },
   "USER_PROFILE": {
-    "TITLE": "User Profile",
-    "NAME": "Name",
-    "SURNAME": "Surname",
-    "EMAIL": "E-mail"
+    "TITLE": "Perfil de Usuario",
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
+    "EMAIL": "Correo electrónico"
   },
   "CHANGE_PASSWORD": {
-    "TITLE": "Change Password",
-    "PASSWORD": "Old Password",
-    "NEW_PASSWORD": "New Password",
-    "CONFIRM_NEW_PASSWORD": "Repeat New Password"
+    "TITLE": "Cambiar contraseña",
+    "PASSWORD": "Contraseña Antigua",
+    "NEW_PASSWORD": "Nueva Contraseña",
+    "CONFIRM_NEW_PASSWORD": "Repetir Nueva Contraseña"
+  },
+  "REQUEST_DELETE": {
+    "TITLE": "Eliminar cuenta",
+    "EMAIL": "Email",
+    "SUBMIT": "Confirmar"
+  },
+  "DELETE": {
+    "TITLE": "Eliminación de cuenta",
+    "RESULT_OK": "Tu cuenta ha sido eliminada.",
+    "BACK": "Volver al inicio"
   },
   "CREDENTIAL_DETAIL": {
-    "TITLE": "Credential Detail",
-    "NAME": "Name",
+    "TITLE": "Detalle de credencial",
+    "NAME": "Nombre",
     "URL": "URL",
-    "USERNAME": "Username",
-    "PASSWORD": "Password",
+    "USERNAME": "Usuario",
+    "PASSWORD": "Contraseña",
     "CATEGORIES": "Categories"
   },
   "CREDENTIAL_LIST": {
     "TITLE": "Credentials",
-    "SERVICE_NAME": "Service",
-    "ACTIONS": "Actions",
-    "COPY_PASS": "Copy Password",
-    "VIEW_DETAIL": "View Detail"
+    "SERVICE_NAME": "Servicio",
+    "COPY_PASS": "Copiar contraseña",
+    "VIEW_DETAIL": "Ver detalle"
   },
   "CATEGORY_DETAIL": {
-    "TITLE": "Category Detail",
-    "NAME": "Name"
+    "TITLE": "Detalle de categoría",
+    "NAME": "Nombre"
   },
   "CATEGORY_LIST": {
     "TITLE": "Categories",
-    "NAME": "Name"
+    "NAME": "Nombre"
   },
   "WARNS": {
-    "FIELD_REQUIRED": "Field is required.",
-    "FIELD_EMAIL_FORMAT": "The text is not in email format.",
-    "FIELD_CHARS_2_XX": "Between 6 and 64 characters are allowed.",
-    "FIELD_CHARS_6_64": "Between 6 and 64 characters are allowed.",
-    "PASSWORD_NOT_MATCH": "Passwords do not match."
+    "FIELD_REQUIRED": "Campo obligatorio.",
+    "FIELD_EMAIL_FORMAT": "El texto no tiene formato de email.",
+    "FIELD_CHARS_2_XX": "Se admiten entre 6 y 64 caracteres",
+    "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres",
+    "PASSWORD_NOT_MATCH": "Las contraseñas no coinciden."
   },
   "CRUD": {
     "ACCEPT": "Accept",
-    "SAVE": "Save",
+    "SAVE": "Guardar",
     "CANCEL": "Cancel",
-    "SELECT_ALL": "Select All",
-    "SELECT_NONE": "Select None",
+    "SELECT_ALL": "Selec. todos",
+    "SELECT_NONE": "Selec. ninguno",
     "DELETE": "Delete",
-    "EDIT": "Edit",
-    "ADD_NEW": "Add New",
-    "ACTIONS": "Actions",
-    "VIEW_DETAIL": "View Detail"
-  },
-  "LANGUAGE": {
-    "ENGLISH": "English",
-    "SPANISH": "Español",
-    "CATALAN": "Català"
+    "EDIT": "Editar",
+    "ADD_NEW": "Añadir nuevo",
+    "ACTIONS": "Acciones",
+    "VIEW_DETAIL": "Ver detalle"
   }
 }

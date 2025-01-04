@@ -1,10 +1,16 @@
+<div class="header">
+  <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
+</div>
 
 <div class="request-delete-wrapper">
-  <p *ngIf="!loading">Procesando solicitud...</p>
-  <p *ngIf="message">{{ message }}</p>
+  <h1>{{'DELETE.TITLE' | translate}}</h1>
+  <p>{{'DELETE.RESULT_OK' | translate}}</p>
   <div class="actions">
     <button mat-raised-button color="primary" type="button" routerLink="/home">
-      Volver al inicio
+      {{'DELETE.BACK' | translate}}
     </button>
   </div>
+
 </div>
+
+<app-footer class="fullscreen"></app-footer>

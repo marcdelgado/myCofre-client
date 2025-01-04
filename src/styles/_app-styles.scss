@@ -37,6 +37,9 @@
     }
   }
 
+  .mdc-data-table__cell, .mdc-data-table__header-cell{
+    padding: 0;
+  }
 
   .gutter.gutter-vertical {
     background-color: map-get($mycofre-palette, 200);

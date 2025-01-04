@@ -1,4 +1,14 @@
-import {ChangeDetectorRef, Component, EventEmitter, Optional, Output, SkipSelf, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnInit,
+  Optional,
+  Output,
+  SkipSelf,
+  ViewChild
+} from '@angular/core';
 import {VaultService} from "../../services/vault.service";
 import {CategoryDto} from "../../models/vault/category-dto";
 import {MatTableDataSource} from "@angular/material/table";
@@ -20,13 +30,15 @@ import {
   faCopy,
   faEye
 } from "@fortawesome/free-solid-svg-icons";
+import {MatSort} from "@angular/material/sort";
+import {Fontawesome} from "../shared/fontawesome";
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })
-export class CategoryListComponent {
+export class CategoryListComponent implements OnInit, AfterViewInit  {
 
   form: FormGroup;
   selectedCategories: Set<string> = new Set();
@@ -35,7 +47,7 @@ export class CategoryListComponent {
   currentView :string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  @ViewChild(MatSort) sort!: MatSort;
   @Output() filterChange: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   constructor(private vaultService: VaultService,
@@ -50,9 +62,7 @@ export class CategoryListComponent {
     });
   }
 
-
   ngOnInit(): void {
-
     this.vaultService.listAllCategories().subscribe({
       next: (categories: any[]) => {
         this.dataSource.data = categories;
@@ -69,6 +79,10 @@ export class CategoryListComponent {
         alert('Ocurrió un error al cargar las categorías. Por favor, intenta nuevamente.');
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
   }
 
 

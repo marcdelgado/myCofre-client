@@ -3,11 +3,11 @@
   </header>
 
   <div class="request-delete-wrapper">
-    <h1>Eliminar cuenta</h1>
+    <h1>{{'REQUEST_DELETE.TITLE' | translate}}</h1>
     <!-- FORMULARIO DE LOGIN -->
   <form (ngSubmit)="onSubmit()" #deleteForm="ngForm" class="login-form">
     <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Email</mat-label>
+      <mat-label>{{'REQUEST_DELETE.EMAIL' | translate}}</mat-label>
       <input matInput type="email" [(ngModel)]="email" name="email" required />
       <mat-error *ngIf="true">
         {{ 'WARNS.FIELD_REQUIRED' | translate }}
@@ -15,10 +15,10 @@
     </mat-form-field>
     <div class="actions">
       <button mat-raised-button color="primary" type="button" routerLink="/home">
-        Cancelar
+        {{'CRUD.CANCEL' | translate}}
       </button>
       <button mat-raised-button color="accent" type="submit" [disabled]="deleteForm.invalid">
-        Enviar
+        {{'REQUEST_DELETE.SUBMIT' | translate}}
       </button>
     </div>
   </form>

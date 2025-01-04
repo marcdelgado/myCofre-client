@@ -11,6 +11,7 @@ import {MatCardActions, MatCardContent, MatCardModule, MatCardTitle} from "@angu
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {ColorPickerModule} from "ngx-color-picker";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   exports: [
@@ -28,7 +29,9 @@ import {ColorPickerModule} from "ngx-color-picker";
     MatButtonModule,
     MatChipsModule,
     MatSnackBarModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatSortModule,
+    MatTableModule,
   ],
   imports: []
 })

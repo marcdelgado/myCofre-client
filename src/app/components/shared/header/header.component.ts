@@ -38,6 +38,7 @@ export class HeaderComponent  implements OnInit{
   selectLanguage(lang: string) {
     this.translateService.use(lang);
     this.updatePlaceholder();
+    this.closeHamburger();
   }
 
   updatePlaceholder() {

@@ -1,12 +1,17 @@
 {
   "HTML": {
-    "TITLE": "myCofre - Gestor de Credencials"
+    "TITLE": "myCofre - Gestor de Credenciales"
+  },
+  "LANGUAGE": {
+    "ENGLISH": "English",
+    "SPANISH": "Español",
+    "CATALAN": "Català"
   },
   "HOME": {
-    "TITLE": "myCofre - Gestor de Credencials"
+    "TITLE": "myCofre - Gestor de Credenciales"
   },
   "BROWSER": {
-    "FIND": "Cerca"
+    "FIND": "Buscar"
   },
   "HEADER": {
     "HOME": "Inici",
@@ -14,87 +19,109 @@
     "CATEGORIES": "Categories",
     "SYNC": "Sincronitzar ara",
     "USER_PROFILE": "Perfil d'usuari",
-    "CHANGE_PASSWORD": "Canviar contrasenya",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
     "PROFILE": "Perfil d'usuari",
     "LOGOUT": "Tancar sessió"
   },
+  "FOOTER": {
+    "AUTHOR": "2024 Marc Delgado Bonet.",
+    "LICENSE": "This software is licensed under the"
+  },
+  "NOTIFY_DIALOG": {
+    "TITLE": "Notificación",
+    "ACCEPT": "Acceptar"
+  },
+  "CONFIRM_DIALOG": {
+    "TITLE": "Confirmación",
+    "CANCEL": "Cancel·lar",
+    "DELETE": "Eliminar"
+  },
   "LOGIN": {
-    "TITLE": "Inicia sessió",
+    "TITLE": "Iniciar sesión",
     "USER": "E-mail",
-    "PASSWORD": "Contrasenya mestra",
-    "BUT_LOGIN": "Inicia sessió",
-    "NO_SIGNED": "Encara no estàs registrat?",
-    "LINK_SIGNUP": "Dona't d'alta",
+    "PASSWORD": "Contraseña maestra",
+    "BUT_LOGIN": "Iniciar sesión",
+    "NO_SIGNED": "¿Todavía no estás registrado?",
+    "LINK_SIGNUP": "Date de alta",
     "LINK_DELETE": "eliminar",
-    "FORGOTTEN_1": "Has oblidat la teva contrasenya? Pots",
-    "FORGOTTEN_2": "el teu compte i començar de nou."
+    "FORGOTTEN_1": "¿Olvidaste tu contraseña? Puedes",
+    "FORGOTTEN_2": "tu cuenta y empezar de nuevo."
   },
   "SIGNUP": {
-    "TITLE": "Crea compte",
+    "TITLE": "Crear cuenta",
     "USER": "E-mail",
-    "NAME": "Nom",
-    "SURNAME": "Cognom",
-    "PASSWORD": "Contrasenya mestra",
-    "PASSWORD_CONFIRM": "Repetir contrasenya",
-    "SUBMIT": "Registra't"
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
+    "PASSWORD": "Contraseña maestra",
+    "PASSWORD_CONFIRM": "Repetir contraseña",
+    "SUBMIT": "Registrarse"
+  },
+  "ACTIVATE": {
+    "TITLE": "Activación de cuenta",
+    "RESULT_OK": "Tu cuenta ha sido activada.",
+    "START_SESSION": "Iniciar sesión"
   },
   "USER_PROFILE": {
-    "TITLE": "Perfil d'Usuari",
-    "NAME": "Nom",
-    "SURNAME": "Cognom",
-    "EMAIL": "Correu electrònic"
+    "TITLE": "Perfil de Usuario",
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
+    "EMAIL": "Correo electrónico"
   },
   "CHANGE_PASSWORD": {
-    "TITLE": "Canviar contrasenya",
-    "PASSWORD": "Contrasenya antiga",
-    "NEW_PASSWORD": "Nova contrasenya",
-    "CONFIRM_NEW_PASSWORD": "Repetir nova contrasenya"
+    "TITLE": "Cambiar contraseña",
+    "PASSWORD": "Contraseña Antigua",
+    "NEW_PASSWORD": "Nueva Contraseña",
+    "CONFIRM_NEW_PASSWORD": "Repetir Nueva Contraseña"
+  },
+  "REQUEST_DELETE": {
+    "TITLE": "Eliminar cuenta",
+    "EMAIL": "Email",
+    "SUBMIT": "Confirmar"
+  },
+  "DELETE": {
+    "TITLE": "Eliminación de cuenta",
+    "RESULT_OK": "Tu cuenta ha sido eliminada.",
+    "BACK": "Volver al inicio"
   },
   "CREDENTIAL_DETAIL": {
-    "TITLE": "Detall de credencial",
-    "NAME": "Nom",
+    "TITLE": "Detalle de credencial",
+    "NAME": "Nombre",
     "URL": "URL",
-    "USERNAME": "Usuari",
-    "PASSWORD": "Contrasenya",
+    "USERNAME": "Usuario",
+    "PASSWORD": "Contraseña",
     "CATEGORIES": "Categories"
   },
   "CREDENTIAL_LIST": {
     "TITLE": "Credencials",
-    "SERVICE_NAME": "Servei",
-    "ACTIONS": "Accions",
-    "COPY_PASS": "Copiar contrasenya",
-    "VIEW_DETAIL": "Veure detall"
+    "SERVICE_NAME": "Servicio",
+    "COPY_PASS": "Copiar contraseña",
+    "VIEW_DETAIL": "Ver detalle"
   },
   "CATEGORY_DETAIL": {
-    "TITLE": "Detall de categoria",
-    "NAME": "Nom"
+    "TITLE": "Detalle de categoría",
+    "NAME": "Nombre"
   },
   "CATEGORY_LIST": {
     "TITLE": "Categories",
-    "NAME": "Nom"
+    "NAME": "Nombre"
   },
   "WARNS": {
-    "FIELD_REQUIRED": "Camp obligatori.",
-    "FIELD_EMAIL_FORMAT": "El text no té format de correu electrònic.",
-    "FIELD_CHARS_2_XX": "Es permeten entre 6 i 64 caràcters.",
-    "FIELD_CHARS_6_64": "Es permeten entre 6 i 64 caràcters.",
-    "PASSWORD_NOT_MATCH": "Les contrasenyes no coincideixen."
+    "FIELD_REQUIRED": "Campo obligatorio.",
+    "FIELD_EMAIL_FORMAT": "El texto no tiene formato de email.",
+    "FIELD_CHARS_2_XX": "Se admiten entre 6 y 64 caracteres",
+    "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres",
+    "PASSWORD_NOT_MATCH": "Las contraseñas no coinciden."
   },
   "CRUD": {
     "ACCEPT": "Acceptar",
-    "SAVE": "Desar",
+    "SAVE": "Guardar",
     "CANCEL": "Cancel·lar",
-    "SELECT_ALL": "Seleccionar tot",
-    "SELECT_NONE": "Seleccionar cap",
+    "SELECT_ALL": "Selec. todos",
+    "SELECT_NONE": "Selec. ninguno",
     "DELETE": "Eliminar",
     "EDIT": "Editar",
-    "ADD_NEW": "Afegir nou",
-    "ACTIONS": "Accions",
-    "VIEW_DETAIL": "Veure detall"
-  },
-  "LANGUAGE": {
-    "ENGLISH": "English",
-    "SPANISH": "Español",
-    "CATALAN": "Català"
+    "ADD_NEW": "Añadir nuevo",
+    "ACTIONS": "Acciones",
+    "VIEW_DETAIL": "Ver detalle"
   }
 }

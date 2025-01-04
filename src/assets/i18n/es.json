@@ -29,9 +29,19 @@
     "PROFILE": "Perfil de usuario",
     "LOGOUT": "Cerrar sesión"
   },
-  "FOOTER": {},
-  "NOTIFY_DIALOG": {},
-  "CONFIRM_DIALOG": {},
+  "FOOTER": {
+    "AUTHOR": "2024 Marc Delgado Bonet.",
+    "LICENSE": "This software is licensed under the"
+  },
+  "NOTIFY_DIALOG": {
+    "TITLE": "Notificación",
+    "ACCEPT": "Aceptar"
+  },
+  "CONFIRM_DIALOG": {
+    "TITLE": "Confirmación",
+    "CANCEL": "Cancelar",
+    "DELETE": "Eliminar"
+  },
 
 
 
@@ -58,7 +68,11 @@
     "PASSWORD_CONFIRM": "Repetir contraseña",
     "SUBMIT": "Registrarse"
   },
-  "ACTIVATE": {},
+  "ACTIVATE": {
+    "TITLE": "Activación de cuenta",
+    "RESULT_OK": "Tu cuenta ha sido activada.",
+    "START_SESSION": "Iniciar sesión"
+  },
 
 
 
@@ -77,8 +91,16 @@
 
 
 
-  "REQUEST_DELETE": {},
-  "DELETE": {},
+  "REQUEST_DELETE": {
+    "TITLE": "Eliminar cuenta",
+    "EMAIL": "Email",
+    "SUBMIT": "Confirmar"
+  },
+  "DELETE": {
+    "TITLE": "Eliminación de cuenta",
+    "RESULT_OK": "Tu cuenta ha sido eliminada.",
+    "BACK": "Volver al inicio"
+  },
 
 
   "CREDENTIAL_DETAIL": {
@@ -92,7 +114,6 @@
   "CREDENTIAL_LIST":{
     "TITLE": "Credenciales",
     "SERVICE_NAME": "Servicio",
-    "ACTIONS": "Actions",
     "COPY_PASS": "Copiar contraseña",
     "VIEW_DETAIL": "Ver detalle"
   },
@@ -124,7 +145,7 @@
     "DELETE": "Eliminar",
     "EDIT": "Editar",
     "ADD_NEW": "Añadir nuevo",
-    "ACTIONS": "Actions",
+    "ACTIONS": "Acciones",
     "VIEW_DETAIL": "Ver detalle"
   }
 }

@@ -50,7 +50,7 @@
       "id": "1f4d7b23-7ef6-48e5-89cb-a3d7b2f9c1e2",
       "username": "pedropicapiedra@domain.test",
       "password": "securePass123",
-      "serviceName": "Facebook",
+      "serviceName": "Demo Facebook",
       "serviceUrl": "https://facebook.com",
       "categories": [
         "c1c72d83-6d9f-4b3b-8df9-e5e8a4d7f9a1",
@@ -61,7 +61,7 @@
       "id": "6e8a2b9d-15d2-4e39-bc5e-d9f7a3c5e8b4",
       "username": "ppiedra.social",
       "password": "StrongPass456!",
-      "serviceName": "Twitter",
+      "serviceName": "Demo Twitter",
       "serviceUrl": "https://twitter.com",
       "categories": [
         "c1c72d83-6d9f-4b3b-8df9-e5e8a4d7f9a1",
@@ -72,7 +72,7 @@
       "id": "7a3e2d19-2f7e-4c2b-b3c4-a5d8f6e7c9a5",
       "username": "pedro.cloud",
       "password": "CloudSecure789!",
-      "serviceName": "Dropbox",
+      "serviceName": "Demo Dropbox",
       "serviceUrl": "https://dropbox.com",
       "categories": [
         "e3b9d2c8-2f7c-48e4-a9c6-f2a7e8b6d9a3",
@@ -83,7 +83,7 @@
       "id": "5e4f9a7d-29b3-48b6-a9e5-d1c8a6f7b2d3",
       "username": "ppicapiedra@correomail.com",
       "password": "MailPass876!",
-      "serviceName": "Gmail",
+      "serviceName": "Demo Gmail",
       "serviceUrl": "https://gmail.com",
       "categories": [
         "f5d9a3e7-9c3d-4b8a-a6f5-e2d7f8b4c1a9"
@@ -93,7 +93,7 @@
       "id": "2f5b7c9d-8d4e-4e2a-bc7d-a3f6d8e5b7c9",
       "username": "pedro.nube123",
       "password": "NubeSecure2022*",
-      "serviceName": "Google Drive",
+      "serviceName": "Demo Google Drive",
       "serviceUrl": "https://drive.google.com",
       "categories": [
         "e3b9d2c8-2f7c-48e4-a9c6-f2a7e8b6d9a3"
@@ -103,7 +103,7 @@
       "id": "7a5c8e6d-3b9a-4f2d-b6e7-f3a8d9c5e4f2",
       "username": "pedropicapiedra@streamservice.com",
       "password": "StreamSafe2022*",
-      "serviceName": "Netflix",
+      "serviceName": "Demo Netflix",
       "serviceUrl": "https://netflix.com",
       "categories": [
         "e3b9d2c8-2f7c-48e4-a9c6-f2a7e8b6d9a3",
@@ -114,7 +114,7 @@
       "id": "b9f8d3c2-6a5d-49c7-b3a5-e8c7d5f9a6e4",
       "username": "p.picapiedra.webhost",
       "password": "HostingPass!456",
-      "serviceName": "Bluehost",
+      "serviceName": "Demo Bluehost",
       "serviceUrl": "https://bluehost.com",
       "categories": [
         "e3b9d2c8-2f7c-48e4-a9c6-f2a7e8b6d9a3",
@@ -125,7 +125,7 @@
       "id": "4a6f7e3d-9b8c-4d5e-a2f9-d3e8a5c7f6b3",
       "username": "ppicapiedra@securemail.com",
       "password": "MailSafe123",
-      "serviceName": "Outlook",
+      "serviceName": "Demo Outlook",
       "serviceUrl": "https://outlook.com",
       "categories": [
         "f5d9a3e7-9c3d-4b8a-a6f5-e2d7f8b4c1a9"
@@ -135,7 +135,7 @@
       "id": "6f7a9d2e-4d3b-4e6c-a5b7-d3e9f8a2b4c6",
       "username": "picapiedra2023",
       "password": "NewSecurePass!",
-      "serviceName": "Yahoo Mail",
+      "serviceName": "Demo Yahoo Mail",
       "serviceUrl": "https://mail.yahoo.com",
       "categories": [
         "f5d9a3e7-9c3d-4b8a-a6f5-e2d7f8b4c1a9"
@@ -145,7 +145,7 @@
       "id": "5c7e4b9d-8f3a-42d6-bc7f-e5a9f8d4b6e2",
       "username": "pedro.profileservice",
       "password": "ProSecurePass",
-      "serviceName": "LinkedIn",
+      "serviceName": "Demo LinkedIn",
       "serviceUrl": "https://linkedin.com",
       "categories": [
         "7b8d9c4e-2a5f-48b6-a7f9-d4c3e6f8a5b2"

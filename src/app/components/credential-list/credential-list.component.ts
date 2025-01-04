@@ -5,7 +5,7 @@ import {
   Optional,
   SkipSelf,
   ChangeDetectorRef,
-  ChangeDetectionStrategy, ViewChild
+  ChangeDetectionStrategy, ViewChild, AfterViewInit
 } from '@angular/core';
 import {CredentialDto} from "../../models/vault/credential-dto";
 import {CategoryDto} from "../../models/vault/category-dto";
@@ -21,13 +21,14 @@ import {NavigationStateService} from "../../services/navigation-state.service";
 import {concatMap, from} from "rxjs";
 import {Fontawesome} from "../shared/fontawesome";
 import {debugLog} from "../../services/shared.service";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-credential-list',
   templateUrl: './credential-list.component.html',
   styleUrls: ['./credential-list.component.scss']
 })
-export class CredentialListComponent extends Fontawesome implements OnInit {
+export class CredentialListComponent extends Fontawesome implements OnInit, AfterViewInit  {
 
   categories: CategoryDto[] = [];
   credentials: CredentialDto[] = [];
@@ -40,6 +41,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
   currentFilterWord: string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private vaultService: VaultService,
               @Optional() @SkipSelf() private homeComponent: HomeComponent,
@@ -61,7 +63,6 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
       next: (credentials: any[]) => {
         this.credentials = credentials;
         this.dataSource.data = this.credentials;
-        debugLog(credentials);// Asignar las credenciales al dataSource
       },
       complete: () => {
         if (this.homeComponent) {
@@ -75,6 +76,11 @@ export class CredentialListComponent extends Fontawesome implements OnInit {
         alert('Ocurrió un error al cargar las credenciales. Por favor, intenta nuevamente.');
       }
     });
+  }
+
+  ngAfterViewInit() {
+    console.log('MatSort:', this.sort); // Confirma que MatSort no es undefined
+    this.dataSource.sort = this.sort;
   }
 
 

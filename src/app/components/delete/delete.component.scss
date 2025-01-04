@@ -22,7 +22,9 @@
       max-width: 350px;
       flex: 0 0 auto;
       width: 100%;
-
+      h1{
+        margin-bottom: 20px;
+      }
       p {
         font-size: 18px;
         margin: 10px 0;
@@ -40,6 +42,10 @@
       .actions{
         display: flex;
         justify-content: space-around;
+        button{
+          display: block;
+          margin: 24px auto 0 auto;
+        }
       }
     }
   }
@@ -66,7 +72,9 @@
       max-width: 350px;
       flex: 0 0 auto;
       width: 100%;
-
+      h1{
+        margin-bottom: 20px;
+      }
       p {
         font-size: 18px;
         margin: 10px 0;
@@ -84,6 +92,10 @@
       .actions{
         display: flex;
         justify-content: space-around;
+        button{
+          display: block;
+          margin: 24px auto 0 auto;
+        }
       }
     }
   }

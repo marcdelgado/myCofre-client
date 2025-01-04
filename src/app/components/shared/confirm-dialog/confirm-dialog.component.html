@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Confirmación</h2>
+<h2 mat-dialog-title>{{'CONFIRM_DIALOG.TITLE' | translate}}</h2>
 <mat-dialog-content>
   <p>{{ data.message }}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">Cancelar</button>
-  <button mat-button color="warn" (click)="onConfirm()">Eliminar</button>
+  <button mat-button (click)="onCancel()">{{'CONFIRM_DIALOG.CANCEL' | translate}}</button>
+  <button mat-button color="warn" (click)="onConfirm()">{{'CRUD.DELETE' | translate}}</button>
 </mat-dialog-actions>
