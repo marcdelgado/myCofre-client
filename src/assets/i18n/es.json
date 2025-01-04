@@ -1,5 +1,5 @@
 {
-  "HTML":{
+  "HTML": {
     "TITLE": "myCofre - Gestor de Credenciales"
   },
   "LANGUAGE": {
@@ -7,18 +7,12 @@
     "SPANISH": "Español",
     "CATALAN": "Català"
   },
-
-
-
   "HOME": {
     "TITLE": "myCofre - Gestor de Credenciales"
   },
   "BROWSER": {
     "FIND": "Buscar"
   },
-
-
-
   "HEADER": {
     "HOME": "Inicio",
     "CREDENTIALS": "Credenciales",
@@ -42,12 +36,9 @@
     "CANCEL": "Cancelar",
     "DELETE": "Eliminar"
   },
-
-
-
   "LOGIN": {
     "TITLE": "Iniciar sesión",
-    "USER" : "E-mail",
+    "USER": "E-mail",
     "PASSWORD": "Contraseña maestra",
     "BUT_LOGIN": "Iniciar sesión",
     "NO_SIGNED": "¿Todavía no estás registrado?",
@@ -56,14 +47,11 @@
     "FORGOTTEN_1": "¿Olvidaste tu contraseña? Puedes",
     "FORGOTTEN_2": "tu cuenta y empezar de nuevo."
   },
-
-
-
   "SIGNUP": {
     "TITLE": "Crear cuenta",
-    "USER" : "E-mail",
-    "NAME" : "Nombre",
-    "SURNAME" : "Apellido",
+    "USER": "E-mail",
+    "NAME": "Nombre",
+    "SURNAME": "Apellido",
     "PASSWORD": "Contraseña maestra",
     "PASSWORD_CONFIRM": "Repetir contraseña",
     "SUBMIT": "Registrarse"
@@ -73,9 +61,6 @@
     "RESULT_OK": "Tu cuenta ha sido activada.",
     "START_SESSION": "Iniciar sesión"
   },
-
-
-
   "USER_PROFILE": {
     "TITLE": "Perfil de Usuario",
     "NAME": "Nombre",
@@ -88,9 +73,6 @@
     "NEW_PASSWORD": "Nueva Contraseña",
     "CONFIRM_NEW_PASSWORD": "Repetir Nueva Contraseña"
   },
-
-
-
   "REQUEST_DELETE": {
     "TITLE": "Eliminar cuenta",
     "EMAIL": "Email",
@@ -101,8 +83,6 @@
     "RESULT_OK": "Tu cuenta ha sido eliminada.",
     "BACK": "Volver al inicio"
   },
-
-
   "CREDENTIAL_DETAIL": {
     "TITLE": "Detalle de credencial",
     "NAME": "Nombre",
@@ -111,7 +91,7 @@
     "PASSWORD": "Contraseña",
     "CATEGORIES": "Categorías"
   },
-  "CREDENTIAL_LIST":{
+  "CREDENTIAL_LIST": {
     "TITLE": "Credenciales",
     "SERVICE_NAME": "Servicio",
     "COPY_PASS": "Copiar contraseña",
@@ -121,13 +101,10 @@
     "TITLE": "Detalle de categoría",
     "NAME": "Nombre"
   },
-  "CATEGORY_LIST":{
+  "CATEGORY_LIST": {
     "TITLE": "Categorías",
     "NAME": "Nombre"
   },
-
-
-
   "WARNS": {
     "FIELD_REQUIRED": "Campo obligatorio.",
     "FIELD_EMAIL_FORMAT": "El texto no tiene formato de email.",
@@ -135,7 +112,6 @@
     "FIELD_CHARS_6_64": "Se admiten entre 6 y 64 caracteres",
     "PASSWORD_NOT_MATCH": "Las contraseñas no coinciden."
   },
-
   "CRUD": {
     "ACCEPT": "Aceptar",
     "SAVE": "Guardar",

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VaultService} from "../../services/vault.service";
@@ -20,12 +20,13 @@ export class CategoryDetailComponent {
   from: string = 'list';
 
   constructor(
-      private fb: FormBuilder,
-      private route: ActivatedRoute,
-      private vaultService: VaultService,
-      private router: Router,
-      private navigationStateService: NavigationStateService
-  ) {}
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private vaultService: VaultService,
+    private router: Router,
+    private navigationStateService: NavigationStateService
+  ) {
+  }
 
   ngOnInit(): void {
     // Inicialización del formulario
@@ -76,11 +77,12 @@ export class CategoryDetailComponent {
       }
     });
   }
+
   onSubmit(): void {
     if (this.categoryForm.valid) {
       const categoryData: CategoryDto = new CategoryDto(
-          this.categoryForm.value.name,
-          this.categoryForm.value.categories || [],
+        this.categoryForm.value.name,
+        this.categoryForm.value.categories || [],
         this.categoryId || ""
       );
       let actionObservable;
@@ -115,7 +117,8 @@ export class CategoryDetailComponent {
   onCancel(): void {
     // Redirigir a la ruta de origen
     const targetRoute = this.from === 'category-list' ? '/category-list' : '/home';
-    this.router.navigate([targetRoute]).then(() => {});
+    this.router.navigate([targetRoute]).then(() => {
+    });
 
     // Limpia el estado si no quieres que persista
     this.navigationStateService.clearFromRoute();

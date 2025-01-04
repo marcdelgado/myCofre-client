@@ -1,7 +1,7 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http'; // Usa HttpClientModule para solicitudes reales
-import { UserService } from './user.service';
-import { MailSlurpService } from './mail-slurp.service';
+import {TestBed} from '@angular/core/testing';
+import {HttpClientModule} from '@angular/common/http'; // Usa HttpClientModule para solicitudes reales
+import {UserService} from './user.service';
+import {MailSlurpService} from './mail-slurp.service';
 import {SignupForm} from "../models/forms/signup-form";
 import {timeout} from "rxjs";
 
@@ -15,7 +15,6 @@ describe('UserService', () => {
   let mailSlurpService: MailSlurpService;
 
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule], // Usa HttpClientModule para solicitudes reales
@@ -25,7 +24,7 @@ describe('UserService', () => {
     mailSlurpService = TestBed.inject(MailSlurpService);
   });
 
-  it("crear cuenta",(done) => {
+  it("crear cuenta", (done) => {
 
     const userData = new SignupForm(
       "Testname",
@@ -58,7 +57,7 @@ describe('UserService', () => {
           const extractedToken = url.searchParams.get('token') || "";
           console.log(extractedEmail + " " + extractedToken);
           // Paso 4: Activar la cuenta utilizando el correo y el token extraídos
-          const activationRequestBody = { email: extractedEmail, token: extractedToken };
+          const activationRequestBody = {email: extractedEmail, token: extractedToken};
           service.activate(extractedEmail, extractedToken).subscribe(response => {
             expect(response).toBeUndefined(); // Se espera void
             done(); // Marca la prueba como completada
@@ -97,7 +96,7 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  it("eliminar cuenta" , (done) => {
+  it("eliminar cuenta", (done) => {
 
     const userData = new SignupForm(
       "Testname",
@@ -130,7 +129,7 @@ describe('UserService', () => {
           const extractedToken = url.searchParams.get('token') || "";
           console.log(extractedEmail + " " + extractedToken);
           // Paso 4: Activar la cuenta utilizando el correo y el token extraídos
-          const activationRequestBody = { email: extractedEmail, token: extractedToken };
+          const activationRequestBody = {email: extractedEmail, token: extractedToken};
           service.delete(extractedEmail, extractedToken).subscribe(response => {
             expect(response).toBeUndefined(); // Se espera void
             done(); // Marca la prueba como completada

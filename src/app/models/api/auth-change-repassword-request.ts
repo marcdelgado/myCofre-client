@@ -1,5 +1,4 @@
-
-export class AuthChangeRepasswordRequest{
+export class AuthChangeRepasswordRequest {
 
   public oldRepassword: string;
   public newRepassword: string;

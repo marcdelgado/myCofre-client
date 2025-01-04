@@ -4,36 +4,41 @@
 /* MOBILE ---------------------------------------------------------------- */
 
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
 
 
-    &.component{
+    &.component {
       border-top: 2px outset $theme-footer-border;
       background-color: $theme-footer-bg-color;
     }
 
-    p{
+    p {
       color: $theme-footer-fg-color;
       display: flex;
       justify-content: center;
       align-content: center;
       gap: 12px;
+
       .icon {
         background-size: contain;
         background-repeat: no-repeat;
         height: 20px;
       }
-      a{
+
+      a {
         color: $theme-footer-fg-action;
-        &:hover{
+
+        &:hover {
           color: $theme-footer-fg-action-hover;
         }
       }
     }
-    .about{
+
+    .about {
       margin-top: 8px;
     }
-    .copyright{
+
+    .copyright {
       display: none;
     }
   }
@@ -43,32 +48,35 @@
 /* DESKTOP --------------------------------------------------------------- */
 
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
-    &:not(.fullscreen){
+  :host {
+    &:not(.fullscreen) {
       padding: 10px;
     }
 
 
-    &.component{
+    &.component {
       border-top: 2px outset $theme-footer-border;
       background-color: $theme-footer-bg-color;
     }
 
-    p{
+    p {
       color: $theme-footer-fg-color;
       display: flex;
       justify-content: center;
       align-content: center;
       gap: 3px;
+
       .icon {
         background-size: contain;
         background-repeat: no-repeat;
         height: 20px;
         margin: 0 3px;
       }
-      a{
+
+      a {
         color: $theme-footer-fg-action;
-        &:hover{
+
+        &:hover {
           color: $theme-footer-fg-action-hover;
         }
       }

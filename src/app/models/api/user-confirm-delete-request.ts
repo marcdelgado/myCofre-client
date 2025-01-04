@@ -1,5 +1,4 @@
-
-export class UserConfirmDeleteRequest{
+export class UserConfirmDeleteRequest {
 
   public email: string;
   public deleteToken: string;

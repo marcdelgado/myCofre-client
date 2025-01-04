@@ -1,5 +1,4 @@
-
-export class VaultWriteRequest{
+export class VaultWriteRequest {
 
   public vaultContent: string;
   public lastUpdateTimestamp: string;

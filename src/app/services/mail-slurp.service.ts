@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -11,7 +11,8 @@ export class MailSlurpService {
   private apiMail = 'user-25c43018-484b-43bf-abe8-721eb2951315@mailslurp.biz'; // Usa una variable de entorno para esta API KEY
   private apiToken = '51cb566d1551dbdc4a57cb70cf88f89b622d2ffb57d41ea651701e7fabb9c808'; // Usa una variable de entorno para esta API KEY
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   checkEmailInbox(email: string): Observable<any> {
     const url = `${this.apiUrl}/inboxes/${email}/emails?apiKey=${this.apiToken}`;

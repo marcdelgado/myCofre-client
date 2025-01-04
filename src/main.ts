@@ -1,6 +1,6 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import 'reflect-metadata';
-import { AppModule } from './app/app.module';
+import {AppModule} from './app/app.module';
 
 
 platformBrowserDynamic().bootstrapModule(AppModule)
@@ -8,8 +8,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
 
 function adjustHeight() {
-  const dynamicHeightElement = document.getElementsByClassName('fullscreen')[0] as HTMLElement;;
-  if(dynamicHeightElement!=null){
+  const dynamicHeightElement = document.getElementsByClassName('fullscreen')[0] as HTMLElement;
+  if (dynamicHeightElement != null) {
     if (window.visualViewport) {
       dynamicHeightElement.style.height = `${window.visualViewport.height}px`;
     } else {

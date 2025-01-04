@@ -2,10 +2,9 @@
 @import '../../../../styles/main';
 
 
-
 /* MOBILE */
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
 
     color: $theme-header-fg-color;
     font-family: $theme-header-font-family;
@@ -22,6 +21,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
+
       img {
         height: 60px;
         width: auto;
@@ -37,7 +37,7 @@
 
 
     nav.functionMenu ul li a {
-      color:$theme-header-fg-color-hover;
+      color: $theme-header-fg-color-hover;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -78,11 +78,11 @@
       width: 100%;
       box-sizing: border-box;
 
-      nav.functionMenu fa-icon{
+      nav.functionMenu fa-icon {
         font-size: 30px;
       }
 
-      nav.add-button fa-icon{
+      nav.add-button fa-icon {
         font-size: 60px;
       }
 
@@ -115,20 +115,21 @@
         }
       }
 
-      .add-button{
+      .add-button {
         order: 3;
       }
 
       .logo-wrapper {
         width: 50%;
         order: 2;
-        img{
+
+        img {
           height: 40px;
           margin: 0 auto;
         }
       }
 
-      .sessionLanguageOptions{
+      .sessionLanguageOptions {
         width: 100vw;
         order: 5;
         top: $mobile-header-height;
@@ -143,33 +144,39 @@
       }
 
 
-      .sessionLanguageOptions, .functionMenu{
+      .sessionLanguageOptions, .functionMenu {
         display: none;
         background-color: black;
-        ul{
+
+        ul {
           display: flex;
           flex-direction: column;
           margin-left: 20px;
-          li{
+
+          li {
             margin: 20px 0;
             display: flex;
             align-items: center;
-            fa-icon{
+
+            fa-icon {
               //margin-right: 20px;
               width: 100px;
               text-align: center;
             }
           }
-          li:hover, active{
+
+          li:hover, active {
             color: $theme-header-fg-color-hover;
           }
         }
-        span{
+
+        span {
 
         }
+
         select {
           cursor: pointer;
-          outline:0;
+          outline: 0;
           color: #ffffff;
           padding: 0 10px;
           min-width: 120px;
@@ -178,13 +185,15 @@
           background-color: #ffffff00;
           font-size: 1rem;
         }
-        select:hover, select:focus{
+
+        select:hover, select:focus {
 
           background-color: $theme-header-bg-color;
           color: $theme-header-fg-color-hover;
           border: 1px solid $theme-header-fg-color;
         }
-        &.deployed{
+
+        &.deployed {
           display: block;
         }
 
@@ -199,7 +208,7 @@
 
 /* DESKTOP */
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
 
     color: $theme-header-fg-color;
     font-family: $theme-header-font-family;
@@ -215,6 +224,7 @@
       display: flex;
       align-items: center;
       overflow: hidden;
+
       img {
         height: 60px;
         width: auto;
@@ -230,7 +240,7 @@
 
 
     nav.functionMenu ul li a {
-      color:$theme-header-fg-color-hover;
+      color: $theme-header-fg-color-hover;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -262,7 +272,7 @@
     margin-bottom: 50px;
 
     /* Translucid lower menu background */
-    &::before, &::after{
+    &::before, &::after {
       position: absolute;
       height: $desktop-header-menu-height;
       top: 80px;
@@ -274,27 +284,30 @@
 
     .content-wrapper {
 
-      .hamburger-button{
+      .hamburger-button {
         display: none;
       }
 
 
-      &>*{
+      & > * {
         padding: 10px 0 10px 0;
       }
-      nav{
+
+      nav {
         height: 40px;
-        ul{
+
+        ul {
           height: 100%;
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 40px;
 
-          li{
+          li {
             display: flex;
             align-items: center;
-            &:hover{
+
+            &:hover {
               color: $theme-header-fg-color-hover;
             }
           }
@@ -307,12 +320,13 @@
       }
 
       .sessionLanguageOptions {
-        li:focus{
+        li:focus {
           color: $theme-header-fg-color-hover;
         }
+
         select {
           cursor: pointer;
-          outline:0;
+          outline: 0;
           color: #ffffff;
           padding: 0 10px;
           min-width: 120px;
@@ -321,7 +335,8 @@
           background-color: #ffffff00;
           font-size: 0.9rem;
         }
-        select:hover, select:focus{
+
+        select:hover, select:focus {
 
           background-color: $theme-header-bg-color;
           color: $theme-header-fg-color-hover;
@@ -331,15 +346,17 @@
 
       .functionMenu {
         width: 100%;
-        .vault{
+
+        .vault {
           float: left;
         }
-        .profile{
+
+        .profile {
           float: right;
         }
       }
 
-      fa-icon{
+      fa-icon {
         padding-right: 10px;
         font-size: 1.25rem;
       }

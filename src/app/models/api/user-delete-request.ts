@@ -1,5 +1,4 @@
-
-export class UserDeleteRequest{
+export class UserDeleteRequest {
 
   email: string;
   deleteToken: string;

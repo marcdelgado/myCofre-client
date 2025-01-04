@@ -14,18 +14,18 @@
     background: url('/assets/images/bg-login.webp') no-repeat center center;
     background-size: cover;
 
-    .header{
+    .header {
       flex: 0 0 auto;
-      .logo-image{
+
+      .logo-image {
         width: 350px;
         max-width: 100%;
       }
     }
 
-    .footer{
+    .footer {
       flex: 0 0 auto;
     }
-
 
 
     .activate-wrapper {
@@ -36,9 +36,11 @@
       max-width: 350px;
       flex: 0 0 auto;
       width: 100%;
-      h1{
+
+      h1 {
         margin-bottom: 20px;
       }
+
       p {
         font-size: 18px;
         margin: 10px 0;
@@ -53,10 +55,12 @@
         color: #f44336;
         font-weight: bold;
       }
-      .actions{
+
+      .actions {
         display: flex;
         justify-content: space-around;
-        button{
+
+        button {
           display: block;
           margin: 24px auto 0 auto;
         }
@@ -78,18 +82,18 @@
     background: url('/assets/images/bg-login.webp') no-repeat center center;
     background-size: cover;
 
-    .header{
+    .header {
       flex: 0 0 auto;
-      .logo-image{
+
+      .logo-image {
         width: 350px;
         max-width: 100%;
       }
     }
 
-    .footer{
+    .footer {
       flex: 0 0 auto;
     }
-
 
 
     .activate-wrapper {
@@ -100,9 +104,11 @@
       max-width: 350px;
       flex: 0 0 auto;
       width: 100%;
-      h1{
+
+      h1 {
         margin-bottom: 20px;
       }
+
       p {
         font-size: 18px;
         margin: 10px 0;
@@ -117,10 +123,12 @@
         color: #f44336;
         font-weight: bold;
       }
-      .actions{
+
+      .actions {
         display: flex;
         justify-content: space-around;
-        button{
+
+        button {
           display: block;
           margin: 24px auto 0 auto;
         }

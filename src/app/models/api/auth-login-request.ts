@@ -1,5 +1,4 @@
-
-export class AuthLoginRequest{
+export class AuthLoginRequest {
 
   public email: string;
   public repassword: string;

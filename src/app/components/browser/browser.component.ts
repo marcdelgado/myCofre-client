@@ -7,7 +7,7 @@ import {Fontawesome} from "../shared/fontawesome";
   templateUrl: './browser.component.html',
   styleUrl: './browser.component.scss'
 })
-export class BrowserComponent extends Fontawesome{
+export class BrowserComponent extends Fontawesome {
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
   searchTerm: string = '';
 

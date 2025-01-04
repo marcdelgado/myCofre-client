@@ -1,5 +1,4 @@
-
-export class AuthLoginResponse{
+export class AuthLoginResponse {
 
   sessionToken: string;
 

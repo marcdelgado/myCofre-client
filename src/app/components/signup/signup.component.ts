@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SignupForm} from "../../models/forms/signup-form";
 import {UserService} from "../../services/user.service";
@@ -23,21 +23,21 @@ export class SignupComponent {
   hidePassword_confirmPassword: boolean = true;
 
   constructor(
-      private fb: FormBuilder,
-      private userService: UserService,
-      private dialog: MatDialog,
-      private router: Router,
-      private translateService: TranslateService
+    private fb: FormBuilder,
+    private userService: UserService,
+    private dialog: MatDialog,
+    private router: Router,
+    private translateService: TranslateService
   ) {
     // Inicializar el formulario con validaciones
     this.signupForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      surname: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]],
-    },
-        { validators: this.passwordsMatchValidator } );
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        surname: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required]],
+      },
+      {validators: this.passwordsMatchValidator});
   }
 
 
@@ -45,40 +45,40 @@ export class SignupComponent {
     if (!this.signupForm.invalid) {
 
 
-    this.isSubmitting = true;
-    this.errorMessage = null;
+      this.isSubmitting = true;
+      this.errorMessage = null;
 
-    const formValue = this.signupForm.value;
-    const language = this.translateService.currentLang;
-    const signupData = new SignupForm(formValue.name,formValue.surname, formValue.email, formValue.password, language);
-    this.userService.signup(signupData).subscribe({
-      next: () => {
-        this.isSubmitting = false;
-        this.afterSignup();
-      },
-      error: (err: Error) => {
-        this.errorMessage = `Error al guarerdar los datos: ${err.message}`;
-      }
-    });
-  } else {
+      const formValue = this.signupForm.value;
+      const language = this.translateService.currentLang;
+      const signupData = new SignupForm(formValue.name, formValue.surname, formValue.email, formValue.password, language);
+      this.userService.signup(signupData).subscribe({
+        next: () => {
+          this.isSubmitting = false;
+          this.afterSignup();
+        },
+        error: (err: Error) => {
+          this.errorMessage = `Error al guarerdar los datos: ${err.message}`;
+        }
+      });
+    } else {
       console.log(this.signupForm.errors);
       console.log(this.signupForm.get('confirmPassword')?.errors);
 
       console.error('El formulario es inválido. Corrige los errores antes de enviar.');
-  alert('El formulario contiene errores. Por favor, corrígelos antes de enviar.');
-}
+      alert('El formulario contiene errores. Por favor, corrígelos antes de enviar.');
+    }
   }
 
   private passwordsMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const newPassword = group.get('password')?.value;
     const confirmNewPassword = group.get('confirmPassword')?.value;
     console.log(newPassword + " " + confirmNewPassword);
-    return newPassword === confirmNewPassword ? null : { passwordsDoNotMatch: true };
+    return newPassword === confirmNewPassword ? null : {passwordsDoNotMatch: true};
   }
 
-  private afterSignup():void{
+  private afterSignup(): void {
     const dialogRef = this.dialog.open(NotifyDialogComponent, {
-      data: { message: 'En breves minutos recibirá por email un enlace de activación. Gracias.' }
+      data: {message: 'En breves minutos recibirá por email un enlace de activación. Gracias.'}
     });
 
     dialogRef.afterClosed().subscribe(result => {

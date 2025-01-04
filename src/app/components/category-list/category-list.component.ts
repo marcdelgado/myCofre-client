@@ -38,13 +38,13 @@ import {Fontawesome} from "../shared/fontawesome";
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })
-export class CategoryListComponent implements OnInit, AfterViewInit  {
+export class CategoryListComponent implements OnInit, AfterViewInit {
 
   form: FormGroup;
   selectedCategories: Set<string> = new Set();
   displayedColumns: string[] = ['select', 'name', 'actions'];
   dataSource = new MatTableDataSource<any>([]);
-  currentView :string = "";
+  currentView: string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -102,8 +102,6 @@ export class CategoryListComponent implements OnInit, AfterViewInit  {
   }
 
 
-
-
   get selectAllControl() {
     return this.form.get('selectAll') as FormControl;
   }
@@ -118,7 +116,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit  {
   }
 
   filter(categoryIds: string[]): void {
-    this.vaultService.findCategories(categoryIds,"").subscribe({
+    this.vaultService.findCategories(categoryIds, "").subscribe({
       next: (filteredCategories) => {
         this.dataSource.data = filteredCategories;
       },
@@ -141,7 +139,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit  {
 
   deleteSelected(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { message: '¿Estás seguro de que deseas eliminar los elementos seleccionados?' }
+      data: {message: '¿Estás seguro de que deseas eliminar los elementos seleccionados?'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -158,12 +156,12 @@ export class CategoryListComponent implements OnInit, AfterViewInit  {
         console.log('IDs a eliminar:', idsToDelete);
 
         from(idsToDelete).pipe(
-            concatMap(id => this.vaultService.removeCategory(id))
+          concatMap(id => this.vaultService.removeCategory(id))
         ).subscribe({
           next: () => {
             // Actualizamos la tabla después de cada eliminación
             this.dataSource.data = this.dataSource.data.filter(
-                (item: any) => !idsToDelete.includes(item.id)
+              (item: any) => !idsToDelete.includes(item.id)
             );
             this.cdr.detectChanges();
           },
@@ -195,7 +193,7 @@ export class CategoryListComponent implements OnInit, AfterViewInit  {
 
     // Navega al formulario para crear una nueva categorías
     this.router.navigate(['/category-detail'], {
-      queryParams: { action: 'new' },
+      queryParams: {action: 'new'},
     });
   }
 

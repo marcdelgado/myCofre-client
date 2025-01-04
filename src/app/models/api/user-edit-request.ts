@@ -1,5 +1,4 @@
-
-export class UserEditRequest{
+export class UserEditRequest {
 
   name: string;
   surname: string;

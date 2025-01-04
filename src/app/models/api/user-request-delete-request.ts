@@ -1,5 +1,4 @@
-
-export class UserRequestDeleteRequest{
+export class UserRequestDeleteRequest {
 
   email: string;
   language: string;

@@ -1,77 +1,79 @@
-  <div class="header">
-    <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
-  </div>
+<div class="header">
+  <img class="logo-image" src="assets/images/logo-desktop.webp" alt="Logo"/>
+</div>
 
-  <div class="signup-wrapper">
-    <h1>{{ 'SIGNUP.TITLE' | translate }}</h1>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <!-- Nombre -->
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>{{ 'SIGNUP.NAME' | translate }}</mat-label>
-            <input matInput formControlName="name" />
-            <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
-              {{ 'WARNS.FIELD_REQUIRED' | translate }}
-            </mat-error>
-        </mat-form-field>
+<div class="signup-wrapper">
+  <h1>{{ 'SIGNUP.TITLE' | translate }}</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <!-- Nombre -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>{{ 'SIGNUP.NAME' | translate }}</mat-label>
+      <input matInput formControlName="name"/>
+      <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
+        {{ 'WARNS.FIELD_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-        <!-- Apellido -->
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>{{ 'SIGNUP.SURNAME' | translate }}</mat-label>
-            <input matInput formControlName="surname" />
-            <mat-error *ngIf="signupForm.get('surname')?.hasError('required')">
-              {{ 'WARNS.FIELD_REQUIRED' | translate }}
-            </mat-error>
-        </mat-form-field>
+    <!-- Apellido -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>{{ 'SIGNUP.SURNAME' | translate }}</mat-label>
+      <input matInput formControlName="surname"/>
+      <mat-error *ngIf="signupForm.get('surname')?.hasError('required')">
+        {{ 'WARNS.FIELD_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-        <!-- Correo electrónico -->
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>{{ 'SIGNUP.USER' | translate }}</mat-label>
-            <input matInput type="email" formControlName="email" />
-            <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
-              {{ 'WARNS.FIELD_REQUIRED' | translate }}
-            </mat-error>
-            <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
-              {{ 'WARNS.FIELD_REQUIRED' | translate }}
-            </mat-error>
-        </mat-form-field>
+    <!-- Correo electrónico -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>{{ 'SIGNUP.USER' | translate }}</mat-label>
+      <input matInput type="email" formControlName="email"/>
+      <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+        {{ 'WARNS.FIELD_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+        {{ 'WARNS.FIELD_REQUIRED' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-        <!-- Contraseña -->
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>{{ 'SIGNUP.PASSWORD' | translate }}</mat-label>
-            <input matInput [type]="hidePassword_password ? 'password' : 'text'" formControlName="password" />
-          <mat-icon matSuffix (click)="hidePassword_password = !hidePassword_password">{{hidePassword_password ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
-              {{ 'WARNS.FIELD_REQUIRED' | translate }}
-            </mat-error>
-            <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
-              {{ 'WARNS.FIELD_CHARS_6_64' | translate }}
-            </mat-error>
-        </mat-form-field>
+    <!-- Contraseña -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>{{ 'SIGNUP.PASSWORD' | translate }}</mat-label>
+      <input matInput [type]="hidePassword_password ? 'password' : 'text'" formControlName="password"/>
+      <mat-icon matSuffix
+                (click)="hidePassword_password = !hidePassword_password">{{hidePassword_password ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+        {{ 'WARNS.FIELD_REQUIRED' | translate }}
+      </mat-error>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
+        {{ 'WARNS.FIELD_CHARS_6_64' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-        <!-- Confirmar Contraseña -->
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>{{ 'SIGNUP.PASSWORD_CONFIRM' | translate }}</mat-label>
-            <input matInput [type]="hidePassword_confirmPassword ? 'password' : 'text'" formControlName="confirmPassword" />
-          <mat-icon matSuffix (click)="hidePassword_confirmPassword = !hidePassword_confirmPassword">{{hidePassword_confirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error *ngIf="signupForm.hasError('passwordsMismatch') && signupForm.get('confirmPassword')?.touched">
-              {{ 'WARNS.PASSWORD_NOT_MATCH' | translate }}
-            </mat-error>
-        </mat-form-field>
+    <!-- Confirmar Contraseña -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>{{ 'SIGNUP.PASSWORD_CONFIRM' | translate }}</mat-label>
+      <input matInput [type]="hidePassword_confirmPassword ? 'password' : 'text'" formControlName="confirmPassword"/>
+      <mat-icon matSuffix
+                (click)="hidePassword_confirmPassword = !hidePassword_confirmPassword">{{hidePassword_confirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="signupForm.hasError('passwordsMismatch') && signupForm.get('confirmPassword')?.touched">
+        {{ 'WARNS.PASSWORD_NOT_MATCH' | translate }}
+      </mat-error>
+    </mat-form-field>
 
-      <div class="actions">
-        <button mat-raised-button color="primary" type="button" routerLink="/home">
-          Cancelar
-        </button>
-        <!-- Botón de Signup -->
-        <button mat-raised-button color="accent" type="submit" [disabled]="isSubmitting">
-          {{ 'SIGNUP.SUBMIT' | translate }}
-        </button>
-      </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" type="button" routerLink="/home">
+        Cancelar
+      </button>
+      <!-- Botón de Signup -->
+      <button mat-raised-button color="accent" type="submit" [disabled]="isSubmitting">
+        {{ 'SIGNUP.SUBMIT' | translate }}
+      </button>
+    </div>
 
 
-        <!-- Error general -->
-        <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
-    </form>
-  </div>
+    <!-- Error general -->
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  </form>
+</div>
 
-  <app-footer class="fullscreen"></app-footer>
+<app-footer class="fullscreen"></app-footer>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {catchError, map, Observable, throwError} from "rxjs";
 import {UserProfileForm} from "../models/forms/user-profile-form";
@@ -18,52 +18,53 @@ import {UserDeleteRequest} from "../models/api/user-delete-request";
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+  }
 
   getUserProfile(): Observable<UserProfileForm> {
     return this.apiService.getUserView().pipe(
-        map(response => {
-          if (this.isUserViewResponse(response)) {
-            return new UserProfileForm(response.name, response.surname, response.email);
-          } else {
-            throw new Error('La respuesta no tiene el formato esperado.');
-          }
-        }),
-        catchError(error => {
-          const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-          console.error(errorMessage);
-          return throwError(() => new Error(errorMessage));
-        })
+      map(response => {
+        if (this.isUserViewResponse(response)) {
+          return new UserProfileForm(response.name, response.surname, response.email);
+        } else {
+          throw new Error('La respuesta no tiene el formato esperado.');
+        }
+      }),
+      catchError(error => {
+        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
+        console.error(errorMessage);
+        return throwError(() => new Error(errorMessage));
+      })
     );
   }
 
   saveUserProfile(form: UserProfileForm): Observable<void> {
-    const request = new UserEditRequest(form.name,form.surname, form.email);
+    const request = new UserEditRequest(form.name, form.surname, form.email);
 
     return this.apiService.patchUserEdit(request).pipe(
-        map(response => {
-          return;
-        }),
-        catchError(error => {
-          const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
-          console.error(errorMessage);
-          return throwError(() => new Error(errorMessage));
-        })
+      map(response => {
+        return;
+      }),
+      catchError(error => {
+        const errorMessage = `ERROR ${error.errorCode}: ${error.description}`;
+        console.error(errorMessage);
+        return throwError(() => new Error(errorMessage));
+      })
     );
   }
 
-    signup(form: SignupForm): Observable<void> {
-        const repassword = CryptoJS.generateRepassword(form.password)
-        const request: UserSignupRequest = new UserSignupRequest(form.name, form.surname, form.email, repassword, form.language);
-        return this.apiService.putUserSignup(request).pipe(
-            map(response => {
-                return;
-            }),
-            catchError((error: ApiErrorResponse) => {
-              return throwError(() => extractGenericError(error));
-            })
-        );
-    }
+  signup(form: SignupForm): Observable<void> {
+    const repassword = CryptoJS.generateRepassword(form.password)
+    const request: UserSignupRequest = new UserSignupRequest(form.name, form.surname, form.email, repassword, form.language);
+    return this.apiService.putUserSignup(request).pipe(
+      map(response => {
+        return;
+      }),
+      catchError((error: ApiErrorResponse) => {
+        return throwError(() => extractGenericError(error));
+      })
+    );
+  }
 
   activate(email: string, token: string): Observable<void> {
     const request: UserActivateRequest = new UserActivateRequest(email, token);
@@ -92,7 +93,7 @@ export class UserService {
   }
 
   delete(email: string, token: string): Observable<void> {
-      const request: UserConfirmDeleteRequest = new UserDeleteRequest(email, token);
+    const request: UserConfirmDeleteRequest = new UserDeleteRequest(email, token);
 
     return this.apiService.patchUserConfirmDelete(request).pipe(
       map(response => {

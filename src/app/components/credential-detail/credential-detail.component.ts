@@ -25,7 +25,8 @@ export class CredentialDetailComponent implements OnInit {
     private vaultService: VaultService,
     private router: Router,
     private navigationStateService: NavigationStateService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.credentialForm = this.fb.group({
@@ -82,6 +83,7 @@ export class CredentialDetailComponent implements OnInit {
       }
     });
   }
+
   onSubmit(): void {
     if (this.credentialForm.valid) {
       const credentialData: CredentialDto = new CredentialDto(
@@ -120,7 +122,8 @@ export class CredentialDetailComponent implements OnInit {
 
   onCancel(): void {
     const targetRoute = this.from === 'credential-list' ? '/credential-list' : '/home';
-    this.router.navigate([targetRoute]).then(() => {});
+    this.router.navigate([targetRoute]).then(() => {
+    });
     this.navigationStateService.clearFromRoute();
   }
 

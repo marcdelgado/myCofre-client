@@ -29,6 +29,7 @@
 
   <div class="actions">
     <button mat-raised-button color="primary" type="button" (click)="onCancel()">{{'CRUD.CANCEL' | translate}}</button>
-    <button mat-raised-button color="accent" type="submit" [disabled]="profileForm.invalid">{{'CRUD.ACCEPT' | translate}}</button>
+    <button mat-raised-button color="accent" type="submit"
+            [disabled]="profileForm.invalid">{{'CRUD.ACCEPT' | translate}}</button>
   </div>
 </form>

@@ -1,5 +1,4 @@
-
-export class VaultReadResponse{
+export class VaultReadResponse {
 
   vaultContent: string;
   lastUpdateTimestamp: string;

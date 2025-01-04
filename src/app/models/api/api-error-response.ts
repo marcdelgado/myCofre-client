@@ -1,4 +1,3 @@
-
 export class ApiErrorResponse {
 
   timestamp: string;

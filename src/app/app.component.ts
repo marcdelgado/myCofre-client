@@ -12,9 +12,9 @@ export class AppComponent {
   title = 'myCofre-client';
   currentRoute: string = '';
 
-  header_excludeRoutes = ['/login','/signup','/request-delete','/delete','/activate'];
+  header_excludeRoutes = ['/login', '/signup', '/request-delete', '/delete', '/activate'];
 
-  footer_excludeRoutes = ['/login','/signup','/request-delete','/delete','/activate'];
+  footer_excludeRoutes = ['/login', '/signup', '/request-delete', '/delete', '/activate'];
 
   constructor(private router: Router, private translate: TranslateService) {
     const supportedLanguages = ['en', 'es', 'ca'];
@@ -38,11 +38,11 @@ export class AppComponent {
     this.currentRoute = this.router.url;
 
     this.router.events
-        .pipe(filter(event => event instanceof NavigationEnd))
-        .subscribe((event) => {
-          const navEndEvent = event as NavigationEnd;
-          this.currentRoute = navEndEvent.urlAfterRedirects;
-        });
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        const navEndEvent = event as NavigationEnd;
+        this.currentRoute = navEndEvent.urlAfterRedirects;
+      });
 
   }
 
@@ -56,7 +56,7 @@ export class AppComponent {
       route => this.currentRoute.includes(route));
   }
 
-  isComponentFullScreen(): boolean{
+  isComponentFullScreen(): boolean {
     return this.isHeaderExcluded() && this.isFooterExcluded();
   }
 }

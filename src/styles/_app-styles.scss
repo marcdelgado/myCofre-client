@@ -1,7 +1,6 @@
 
-
-.actionButton{
-  .innerButton{
+.actionButton {
+  .innerButton {
     display: flex;
     align-items: center;
     gap: 4px;
@@ -28,16 +27,17 @@
     display: none;
   }
 
-  .actionButton{
-    .innerButton{
+  .actionButton {
+    .innerButton {
       font-size: 1.1rem;
-      .label{
+
+      .label {
         display: none;
       }
     }
   }
 
-  .mdc-data-table__cell, .mdc-data-table__header-cell{
+  .mdc-data-table__cell, .mdc-data-table__header-cell {
     padding: 0;
   }
 
@@ -50,7 +50,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &::before{
+
+    &::before {
       content: "::::::::"; /* Carácter especial o texto */
       display: inline-block; /* Asegura que se renderice correctamente */
       font-size: 14px; /* Tamaño del carácter */
@@ -62,7 +63,7 @@
 
 /* DESKTOP */
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
-  .only-mobile{
+  .only-mobile {
     display: none;
   }
 }

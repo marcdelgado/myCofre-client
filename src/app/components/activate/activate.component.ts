@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -16,7 +16,8 @@ export class ActivateComponent {
     private route: ActivatedRoute,
     private userService: UserService,
     private snackBar: MatSnackBar,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.email = this.route.snapshot.queryParamMap.get('email');
@@ -28,7 +29,7 @@ export class ActivateComponent {
     }
   }
 
-  activateAccount(email:string, token: string): void {
+  activateAccount(email: string, token: string): void {
     this.userService.activate(email, token).subscribe({
       next: () => this.showMessage('OK, cuenta activada.', 'success'),
       error: () => this.showMessage('Hubo un problema al activar.', 'error')

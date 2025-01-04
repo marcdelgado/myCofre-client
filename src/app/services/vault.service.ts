@@ -15,7 +15,7 @@ import {AuthService} from "./auth.service";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class VaultService {
 
@@ -24,7 +24,6 @@ export class VaultService {
 
     this.setDirty(false);
   }
-
 
 
   //---------------------------------------------------------------------------
@@ -50,16 +49,16 @@ export class VaultService {
   public sync(): Observable<void> {
     if (this.isDirty()) {
       return this.write().pipe(
-          concatMap(() => this.read()), // Encadena read() después de un write exitoso
-          tap((vaultDTO) => {
-            if (vaultDTO) {
-              this.setVault(vaultDTO); // Actualiza el estado interno con los datos del VaultDTO
-              console.log('Vault sincronizado con éxito.');
-            }
-          }),
-          map(() => {
-            return;
-          })
+        concatMap(() => this.read()), // Encadena read() después de un write exitoso
+        tap((vaultDTO) => {
+          if (vaultDTO) {
+            this.setVault(vaultDTO); // Actualiza el estado interno con los datos del VaultDTO
+            console.log('Vault sincronizado con éxito.');
+          }
+        }),
+        map(() => {
+          return;
+        })
       );
     } else {
       return new Observable<void>((observer) => {
@@ -81,7 +80,7 @@ export class VaultService {
   //CRUD functions
   //---------------------------------------------------------------------------
 
-  public findCredentials(categoryIds:string[], filterText: string): Observable<CredentialDto[]>{
+  public findCredentials(categoryIds: string[], filterText: string): Observable<CredentialDto[]> {
     return new Observable<CredentialDto[]>((observer) => {
       // Obtén el vault desde sessionStorage
       const vault = this.getVault();
@@ -115,7 +114,7 @@ export class VaultService {
   }
 
 
-  public findCategories(credentialIds:string[], filterText: string): Observable<CategoryDto[]>{
+  public findCategories(credentialIds: string[], filterText: string): Observable<CategoryDto[]> {
     return new Observable<CategoryDto[]>((observer) => {
       // Obtén el vault desde sessionStorage
       const vault = this.getVault();
@@ -152,7 +151,7 @@ export class VaultService {
   }
 
 
-  public getCredential(id: string): Observable<CredentialDto>{
+  public getCredential(id: string): Observable<CredentialDto> {
     return new Observable<CredentialDto>((observer) => {
       // Obtén el vault desde sessionStorage
       const vault = this.getVault();
@@ -176,7 +175,7 @@ export class VaultService {
   }
 
 
-  public getCategory(id: string): Observable<CategoryDto>{
+  public getCategory(id: string): Observable<CategoryDto> {
     return new Observable<CategoryDto>((observer) => {
       // Obtén el vault desde sessionStorage
       const vault = this.getVault();
@@ -374,23 +373,22 @@ export class VaultService {
   }
 
 
-
   public updateCredential(credentialData: any): Observable<void> {
     if (!credentialData.id) {
-    throw new Error('El ID de la credencial es obligatorio para actualizarla.');
-  }
+      throw new Error('El ID de la credencial es obligatorio para actualizarla.');
+    }
 
-  // Paso 1: Eliminar la credencial existente
-  return this.removeCredential(credentialData.id).pipe(
-    switchMap(() =>
-      // Paso 2: Añadir la nueva credencial (actualizada)
-      this.addCredential(credentialData)
-    ),
-    catchError((error) => {
-      console.error('Error al actualizar la credencial:', error);
-      throw error; // Propaga el error para que pueda ser manejado externamente
-    })
-  );
+    // Paso 1: Eliminar la credencial existente
+    return this.removeCredential(credentialData.id).pipe(
+      switchMap(() =>
+        // Paso 2: Añadir la nueva credencial (actualizada)
+        this.addCredential(credentialData)
+      ),
+      catchError((error) => {
+        console.error('Error al actualizar la credencial:', error);
+        throw error; // Propaga el error para que pueda ser manejado externamente
+      })
+    );
   }
 
   public updateCategory(categoryData: any): Observable<void> {
@@ -400,17 +398,16 @@ export class VaultService {
 
     // Paso 1: Eliminar la categoría existente
     return this.removeCategory(categoryData.id).pipe(
-        switchMap(() =>
-            // Paso 2: Añadir la nueva categoría (actualizada)
-            this.addCategory(categoryData)
-        ),
-        catchError((error) => {
-          console.error('Error al actualizar la categoría:', error);
-          throw error; // Propaga el error para que pueda ser manejado externamente
-        })
+      switchMap(() =>
+        // Paso 2: Añadir la nueva categoría (actualizada)
+        this.addCategory(categoryData)
+      ),
+      catchError((error) => {
+        console.error('Error al actualizar la categoría:', error);
+        throw error; // Propaga el error para que pueda ser manejado externamente
+      })
     );
   }
-
 
 
   //---------------------------------------------------------------------------
@@ -465,37 +462,37 @@ export class VaultService {
   //---------------------------------------------------------------------------
 
 
-  private setDirty(b: boolean){
+  private setDirty(b: boolean) {
     sessionStorage.setItem('vaultService__dirty', b.toString());
   }
 
-  private isDirty(): boolean{
+  private isDirty(): boolean {
     const value = sessionStorage.getItem('vaultService__dirty');
     return value === 'true';
   }
 
-  private setVault(vault?: VaultDto): void{
-    if(vault && vault.name){
+  private setVault(vault?: VaultDto): void {
+    if (vault && vault.name) {
       sessionStorage.setItem('vaultService__vault', serialize(vault));
-    }else{
+    } else {
       //For test purposes
-      const newVault:VaultDto = Object.assign(new VaultDto("default vault"), sampleData);
+      const newVault: VaultDto = Object.assign(new VaultDto("default vault"), sampleData);
       //const newVault:VaultDto = new VaultDto("default");
       sessionStorage.setItem('vaultService__vault', serialize(newVault));
     }
   }
 
-  private getVault(): VaultDto|null {
+  private getVault(): VaultDto | null {
     const vaultString = sessionStorage.getItem('vaultService__vault');
     return vaultString ? deserialize(VaultDto, vaultString) : null;
   }
 
-  private setPassword(password: string){
+  private setPassword(password: string) {
     sessionStorage.setItem('vaultService__password', password);
   }
 
-  private getPassword(): string{
-    return sessionStorage.getItem('vaultService__password')||"";
+  private getPassword(): string {
+    return sessionStorage.getItem('vaultService__password') || "";
   }
 
   private normalizeString(value: string): string {
@@ -503,22 +500,22 @@ export class VaultService {
   }
 
 
-  private isContained(from: string, to:string ): boolean {
+  private isContained(from: string, to: string): boolean {
     const cleanedFrom = this.normalizeString(from);
     const cleanedTo = this.normalizeString(to);
     return cleanedTo.includes(cleanedFrom);
   }
 
 
-  private setLastRead(timestamp: string): void{
+  private setLastRead(timestamp: string): void {
     sessionStorage.setItem('vaultService__lastUpdateTimestamp', timestamp);
   }
 
   private getLastRead(): string {
-    return sessionStorage.getItem('vaultService__lastUpdateTimestamp')||"";
+    return sessionStorage.getItem('vaultService__lastUpdateTimestamp') || "";
   }
 
-  private reset(): void{
+  private reset(): void {
     sessionStorage.removeItem('vaultService__dirty');
     sessionStorage.removeItem('vaultService__vault');
     sessionStorage.removeItem('vaultService__lastUpdateTimestamp');

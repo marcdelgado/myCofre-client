@@ -12,6 +12,6 @@ import {NavigationStateService} from "../../../services/navigation-state.service
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent{
+export class FooterComponent {
 
 }

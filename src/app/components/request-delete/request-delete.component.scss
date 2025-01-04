@@ -3,7 +3,7 @@
 
 /* MOBILE */
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,18 +15,18 @@
     overflow-y: scroll;
   }
 
-  .header{
+  .header {
     flex: 0 0 auto;
     justify-content: center;
     align-items: flex-end;
 
-    .logo-image{
+    .logo-image {
       width: 300px;
       max-width: 100%;
     }
   }
 
-  .footer{
+  .footer {
     flex: 0 0 auto;
   }
 
@@ -40,14 +40,17 @@
     max-width: 350px; /* Esto asegura que no exceda 300px */
     text-align: center;
     flex: 0 0 auto;
+
     .full-width {
       width: 100%;
       margin-bottom: 16px;
     }
-    h1{
+
+    h1 {
       margin-bottom: 20px;
     }
-    .actions{
+
+    .actions {
       display: flex;
       justify-content: space-around;
     }
@@ -57,7 +60,7 @@
 
 /* DESKTOP */
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,16 +71,16 @@
     background-size: cover;
     overflow-y: scroll;
 
-    .header{
+    .header {
       flex: 0 0 auto;
 
-      .logo-image{
+      .logo-image {
         width: 350px;
         max-width: 100%;
       }
     }
 
-    .footer{
+    .footer {
       flex: 0 0 auto;
     }
 
@@ -90,14 +93,17 @@
       text-align: center;
       flex: 0 0 auto;
       width: 100%;
+
       .full-width {
         width: 100%;
         margin-bottom: 16px;
       }
-      h1{
+
+      h1 {
         margin-bottom: 20px;
       }
-      .actions{
+
+      .actions {
         display: flex;
         justify-content: space-around;
       }

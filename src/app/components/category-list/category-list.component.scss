@@ -2,21 +2,23 @@
 
 /* MOBILE */
 @media not ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
+  :host {
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
     justify-content: space-between;
+
     h1 {
       flex: none;
       display: none;
     }
 
-    .category-buttons{
-      button{
+    .category-buttons {
+      button {
         margin: 2px;
-        &.selected{
+
+        &.selected {
           background-color: $theme-main-button-selected;
         }
       }
@@ -26,7 +28,7 @@
       flex: 1;
       overflow-y: auto;
 
-      .mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row{
+      .mat-mdc-header-row.mdc-data-table__header-row.cdk-header-row {
         display: none !important;
       }
     }
@@ -50,13 +52,14 @@
       justify-content: space-between;
       gap: 10px;
       background-color: map-get($mycofre-palette, 100);
+
       & > * {
         width: 100%;
       }
     }
 
-    table{
-      .actionButton{
+    table {
+      .actionButton {
         margin: 0 10px;
       }
     }
@@ -65,15 +68,16 @@
 
 /* DESKTOP */
 @media ((min-width: $media-width-transition) and (orientation: landscape)) {
-  :host{
-    h1{
+  :host {
+    h1 {
       margin-bottom: 20px;
     }
 
-    .category-buttons{
-      button{
+    .category-buttons {
+      button {
         margin: 10px;
-        &.selected{
+
+        &.selected {
           background-color: $theme-main-button-selected;
         }
       }
@@ -88,8 +92,8 @@
     }
 
 
-    table{
-      .actionButton{
+    table {
+      .actionButton {
         margin: 0 5px;
       }
     }

@@ -1,5 +1,4 @@
-
-export class AuthGetLoginAttemptsResponse{
+export class AuthGetLoginAttemptsResponse {
 
   public createdAt: string;
   public success: boolean;

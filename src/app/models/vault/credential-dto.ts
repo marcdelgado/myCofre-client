@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Type, Expose } from 'class-transformer';
+import {v4 as uuidv4} from 'uuid';
+import {Type, Expose} from 'class-transformer';
 
 export class CredentialDto {
   @Expose()
@@ -21,12 +21,12 @@ export class CredentialDto {
   id: string;
 
   constructor(
-      serviceName: string,
-      serviceUrl: string,
-      username: string,
-      password: string,
-      categories: string[] = [],
-      id?: string
+    serviceName: string,
+    serviceUrl: string,
+    username: string,
+    password: string,
+    categories: string[] = [],
+    id?: string
   ) {
     this.serviceName = serviceName;
     this.serviceUrl = serviceUrl;

@@ -1,7 +1,7 @@
-import { CategoryDto } from "./category-dto";
-import { CredentialDto } from "./credential-dto";
-import { v4 as uuidv4 } from 'uuid';
-import { Type, Expose } from 'class-transformer';
+import {CategoryDto} from "./category-dto";
+import {CredentialDto} from "./credential-dto";
+import {v4 as uuidv4} from 'uuid';
+import {Type, Expose} from 'class-transformer';
 
 export class VaultDto {
   @Expose()
@@ -19,10 +19,10 @@ export class VaultDto {
   credentials: CredentialDto[] = [];
 
   constructor(
-      name: string,
-      categories: CategoryDto[] = [],
-      credentials: CredentialDto[] = [],
-      id?: string
+    name: string,
+    categories: CategoryDto[] = [],
+    credentials: CredentialDto[] = [],
+    id?: string
   ) {
     this.name = name;
     this.categories = categories.map(category => new CategoryDto(category.name, [], category.id));

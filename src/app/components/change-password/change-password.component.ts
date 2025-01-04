@@ -27,7 +27,8 @@ export class ChangePasswordComponent implements OnInit {
               private authService: AuthService,
               private router: Router,
               private navigationStateService: NavigationStateService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -39,13 +40,13 @@ export class ChangePasswordComponent implements OnInit {
       oldPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmNewPassword: ['', [Validators.required]]
-    }, { validator: this.passwordsMatchValidator });
+    }, {validator: this.passwordsMatchValidator});
   }
 
   private passwordsMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const newPassword = group.get('newPassword')?.value;
     const confirmNewPassword = group.get('confirmNewPassword')?.value;
-    return newPassword === confirmNewPassword ? null : { passwordsMismatch: true };
+    return newPassword === confirmNewPassword ? null : {passwordsMismatch: true};
   }
 
   onSubmit(): void {
@@ -53,15 +54,15 @@ export class ChangePasswordComponent implements OnInit {
       const formData: ChangePasswordForm = this.changePasswordForm.value;
 
       this.authService.changeRepassword(formData).pipe(
-          concatMap(() => {
-            console.log('Cambio de contraseña en AuthService exitoso, llamando a VaultService...');
-            return this.vaultService.changePassword(formData.newPassword);
-          }),
-          catchError(err => {
-            console.error('La contraseña no es correcta.', err.message);
-            this.errorMessage = 'La contraseña no es correcta.';
-            return of();
-          })
+        concatMap(() => {
+          console.log('Cambio de contraseña en AuthService exitoso, llamando a VaultService...');
+          return this.vaultService.changePassword(formData.newPassword);
+        }),
+        catchError(err => {
+          console.error('La contraseña no es correcta.', err.message);
+          this.errorMessage = 'La contraseña no es correcta.';
+          return of();
+        })
       ).subscribe({
         next: () => {
           console.log('Contraseña actualizada y vault re-encriptado correctamente.');
@@ -81,7 +82,8 @@ export class ChangePasswordComponent implements OnInit {
   onCancel(): void {
     // Redirigir a la ruta de origen
     const targetRoute = this.from === 'category-list' ? '/category-list' : '/home';
-    this.router.navigate([targetRoute]).then(() => {});
+    this.router.navigate([targetRoute]).then(() => {
+    });
 
     // Limpia el estado si no quieres que persista
     this.navigationStateService.clearFromRoute();

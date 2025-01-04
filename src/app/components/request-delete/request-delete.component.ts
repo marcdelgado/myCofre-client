@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -14,8 +14,8 @@ export class RequestDeleteComponent {
 
   constructor(private userService: UserService,
               private snackBar: MatSnackBar,
-              private translateService: TranslateService) {}
-
+              private translateService: TranslateService) {
+  }
 
 
   onSubmit(): void {

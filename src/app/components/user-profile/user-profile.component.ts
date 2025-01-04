@@ -18,7 +18,8 @@ export class UserProfileComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private router: Router,
-              private navigationStateService: NavigationStateService) {}
+              private navigationStateService: NavigationStateService) {
+  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -48,9 +49,9 @@ export class UserProfileComponent implements OnInit {
   onSubmit(): void {
     if (this.profileForm.valid) {
       const formData = new UserProfileForm(
-          this.profileForm.value.name,
-          this.profileForm.value.surname,
-          this.profileForm.value.email
+        this.profileForm.value.name,
+        this.profileForm.value.surname,
+        this.profileForm.value.email
       );
 
       this.userService.saveUserProfile(formData).subscribe({
@@ -71,7 +72,8 @@ export class UserProfileComponent implements OnInit {
   onCancel(): void {
     // Redirigir a la ruta de origen
     const targetRoute = this.from === 'category-list' ? '/category-list' : '/home';
-    this.router.navigate([targetRoute]).then(() => {});
+    this.router.navigate([targetRoute]).then(() => {
+    });
 
     // Limpia el estado si no quieres que persista
     this.navigationStateService.clearFromRoute();

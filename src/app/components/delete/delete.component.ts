@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ActivatedRoute} from "@angular/router";
@@ -18,7 +18,8 @@ export class DeleteComponent {
     private route: ActivatedRoute,
     private userService: UserService,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.email = this.route.snapshot.queryParamMap.get('email') || '';

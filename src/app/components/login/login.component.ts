@@ -21,11 +21,11 @@ export class LoginComponent implements OnInit {
   hidePassword = true;
 
   constructor(
-      private formBuilder: UntypedFormBuilder,
-      private authService: AuthService,
-      private sharedService: SharedService,
-      private router: Router,
-      private vaultService: VaultService
+    private formBuilder: UntypedFormBuilder,
+    private authService: AuthService,
+    private sharedService: SharedService,
+    private router: Router,
+    private vaultService: VaultService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [
@@ -40,28 +40,29 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onLogin(): void {
     let responseOK: boolean = false;
     let errorResponse: any;
 
     const loginForm: LoginForm = new LoginForm(
-        this.loginForm.get('email')?.value,
-        this.loginForm.get('password')?.value);
+      this.loginForm.get('email')?.value,
+      this.loginForm.get('password')?.value);
 
     this.authService.login(loginForm).pipe(
-        switchMap(() => {
-          responseOK = true;
-          return this.vaultService.init(loginForm.password);
-        }),
-        finalize(async () => {
-          await this.sharedService.managementToast('loginFeedback', responseOK, errorResponse);
-          if (responseOK) {
-            this.router.navigateByUrl('home');
-          }
-        })
-      )
+      switchMap(() => {
+        responseOK = true;
+        return this.vaultService.init(loginForm.password);
+      }),
+      finalize(async () => {
+        await this.sharedService.managementToast('loginFeedback', responseOK, errorResponse);
+        if (responseOK) {
+          this.router.navigateByUrl('home');
+        }
+      })
+    )
       .subscribe(
         () => {
           debugLog('VaultService inicializado correctamente.');

@@ -19,10 +19,10 @@ import {NavigationStateService} from "../../../services/navigation-state.service
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent  implements OnInit{
+export class HeaderComponent implements OnInit {
   selectedLanguage: string = 'es';
   currentLanguagePlaceholder: string = "Español";
-  currentView :string = "/home";
+  currentView: string = "/home";
 
   //https://mugan86.medium.com/internacionalizaci%C3%B3n-en-un-proyecto-angular-ngx-translate-1-3-9331c7509d12
   constructor(private translateService: TranslateService,
@@ -116,7 +116,7 @@ export class HeaderComponent  implements OnInit{
 
     // Navega al formulario para crear una nueva categorías
     this.router.navigate(['/credential-detail'], {
-      queryParams: { action: 'new' },
+      queryParams: {action: 'new'},
     });
   }
 

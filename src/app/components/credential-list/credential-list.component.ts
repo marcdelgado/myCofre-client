@@ -28,7 +28,7 @@ import {MatSort} from "@angular/material/sort";
   templateUrl: './credential-list.component.html',
   styleUrls: ['./credential-list.component.scss']
 })
-export class CredentialListComponent extends Fontawesome implements OnInit, AfterViewInit  {
+export class CredentialListComponent extends Fontawesome implements OnInit, AfterViewInit {
 
   categories: CategoryDto[] = [];
   credentials: CredentialDto[] = [];
@@ -37,7 +37,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
   selectedCredentials: Set<string> = new Set();
   displayedColumns: string[] = ['select', 'serviceName', 'actions'];
   dataSource = new MatTableDataSource<any>([]);
-  currentView :string = "";
+  currentView: string = "";
   currentFilterWord: string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -97,7 +97,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
   }
 
   filter(categoryIds: string[]): void {
-    this.vaultService.findCredentials(categoryIds,this.currentFilterWord || "").subscribe({
+    this.vaultService.findCredentials(categoryIds, this.currentFilterWord || "").subscribe({
       next: (filteredCredentials) => {
         this.dataSource.data = filteredCredentials;
       },
@@ -107,7 +107,6 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
       },
     });
   }
-
 
 
   selectAll() {
@@ -120,7 +119,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
 
   deleteSelected(): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { message: '¿Estás seguro de que deseas eliminar los elementos seleccionados?' }
+      data: {message: '¿Estás seguro de que deseas eliminar los elementos seleccionados?'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -172,7 +171,7 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
 
     // Navega al formulario para crear una nueva credencial
     this.router.navigate(['/credential-detail'], {
-      queryParams: { action: 'new' },
+      queryParams: {action: 'new'},
     });
   }
 
@@ -204,16 +203,9 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
 
     // Navega al detalle de la credencial
     this.router.navigate(['/credential-detail'], {
-      queryParams: { action: 'edit', id: id },
+      queryParams: {action: 'edit', id: id},
     });
   }
-
-
-
-
-
-
-
 
 
   toggleSelectAll(event: any): void {
@@ -237,10 +229,9 @@ export class CredentialListComponent extends Fontawesome implements OnInit, Afte
   }
 
 
-
   filterByWord(keyword: string): void {
     this.currentFilterWord = keyword;
-    if (keyword && keyword.length>0) {
+    if (keyword && keyword.length > 0) {
       this.vaultService.findCredentials([], keyword).subscribe({
         next: (filteredCredentials) => {
           this.dataSource.data = filteredCredentials; // Actualizamos el dataSource con los resultados

@@ -1,7 +1,7 @@
 <app-header *ngIf="!isHeaderExcluded()"></app-header>
 
 <main [ngClass]="{'fullscreen': isComponentFullScreen()}">
-  <router-outlet ></router-outlet>
+  <router-outlet></router-outlet>
 </main>
 
 <app-footer class="component" *ngIf="!isFooterExcluded()"></app-footer>

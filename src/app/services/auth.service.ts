@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {catchError, firstValueFrom, map, Observable, of, tap, throwError} from "rxjs";
 import {ApiService} from "./api.service";
 import {LoginForm} from "../models/forms/login-form";
@@ -18,7 +18,8 @@ export class AuthService {
 
   constructor(
     private apiService: ApiService,
-    private router: Router) {}
+    private router: Router) {
+  }
 
 
   public login(form: LoginForm): Observable<void> {
@@ -26,7 +27,7 @@ export class AuthService {
     this.setEmail(form.email);
     this.setPassword(form.password);
     this.setRepassword(CryptoJS.generateRepassword(form.password));
-    const request = new AuthLoginRequest(form.email, this.getRepassword()||"");
+    const request = new AuthLoginRequest(form.email, this.getRepassword() || "");
     return this.apiService.postAuthLogin(request).pipe(
       tap((response) => {
         this.setSessionToken((response as AuthLoginResponse).sessionToken)
@@ -52,15 +53,15 @@ export class AuthService {
       const request = new AuthChangeRepasswordRequest(oldPassword, newPassword)
 
       return this.apiService.patchChangeRepassword(request).pipe(
-          map((response) => {
-            if (response) {
-              throw new Error('La API devolvió un objeto inesperado en lugar de void.');
-            }
-          }),
-          catchError((error) => {
-            this.reset();
-            return throwError(() => extractGenericError(error));
-          })
+        map((response) => {
+          if (response) {
+            throw new Error('La API devolvió un objeto inesperado en lugar de void.');
+          }
+        }),
+        catchError((error) => {
+          this.reset();
+          return throwError(() => extractGenericError(error));
+        })
       );
     } catch (error) {
       console.error('Error durante el cambio de contraseña:', error);
@@ -73,45 +74,44 @@ export class AuthService {
   // Getter/setter functions
   //---------------------------------------------------------------------------
 
-  public getEmail(): string|null {
+  public getEmail(): string | null {
     return sessionStorage.getItem('authService__email');
   }
 
-  public setEmail(email:string):void{
-    sessionStorage.setItem('authService__email',email);
+  public setEmail(email: string): void {
+    sessionStorage.setItem('authService__email', email);
   }
 
-  public getPassword(): string|null {
+  public getPassword(): string | null {
     return sessionStorage.getItem('authService__password');
   }
 
-  public setPassword(email:string):void{
-    sessionStorage.setItem('authService__password',email);
+  public setPassword(email: string): void {
+    sessionStorage.setItem('authService__password', email);
   }
 
-  public getRepassword(): string|null {
+  public getRepassword(): string | null {
     return sessionStorage.getItem('authService__repassword');
   }
 
-  public setRepassword(email:string):void{
-    sessionStorage.setItem('authService__repassword',email);
+  public setRepassword(email: string): void {
+    sessionStorage.setItem('authService__repassword', email);
   }
 
-  public getSessionToken(): string|null {
+  public getSessionToken(): string | null {
     return sessionStorage.getItem('authService__sessionToken');
   }
 
-  public setSessionToken(email:string):void{
-    sessionStorage.setItem('authService__sessionToken',email);
+  public setSessionToken(email: string): void {
+    sessionStorage.setItem('authService__sessionToken', email);
   }
 
-  public reset():void{
+  public reset(): void {
     sessionStorage.removeItem('authService__email');
     sessionStorage.removeItem('authService__password');
     sessionStorage.removeItem('authService__repassword');
     sessionStorage.removeItem('authService__sessionToken');
   }
-
 
 
   public isAuthenticated(): Observable<boolean> {
@@ -120,14 +120,14 @@ export class AuthService {
         map(() => true), // Si la llamada tiene éxito, el token es válido
         catchError((error) => {
           this.reset();
-          if(error.errorCode === '403'){
+          if (error.errorCode === '403') {
             return of(false);
-          }else{
+          } else {
             return throwError(() => extractGenericError(error));
           }
         })
       );
-    }else{
+    } else {
       return of(false);
     }
   }
@@ -152,7 +152,7 @@ export class AuthService {
   }
 
   private isAuthLoginResponse(response: AuthLoginResponse | ApiErrorResponse): response is AuthLoginResponse {
-      return (response as AuthLoginResponse).sessionToken !== undefined;
+    return (response as AuthLoginResponse).sessionToken !== undefined;
   }
 
   /*

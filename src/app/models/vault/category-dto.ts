@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { Type, Expose } from 'class-transformer';
+import {v4 as uuidv4} from 'uuid';
+import {Type, Expose} from 'class-transformer';
 
 export class CategoryDto {
   @Expose()
@@ -12,9 +12,9 @@ export class CategoryDto {
   credentials: string[] = [];
 
   constructor(
-      name: string,
-      credentials: string[] = [],
-      id?: string
+    name: string,
+    credentials: string[] = [],
+    id?: string
   ) {
     this.name = name;
     this.credentials = credentials;

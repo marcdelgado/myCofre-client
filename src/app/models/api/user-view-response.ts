@@ -1,5 +1,4 @@
-
-export class UserViewResponse{
+export class UserViewResponse {
 
   name: string;
   surname: string;
